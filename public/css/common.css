@@ -1,0 +1,30 @@
+.navbar-brand {
+    color: #000;
+}
+
+main {
+    display: flex;
+}
+
+
+.filter-sidebar {
+    width:fit-content; /* Fixed width for sidebar */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background color */
+}
+
+/* Main content area styles */
+.content-area {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.row {
+    margin-top: 20px;
+}
+
+.card-img-top {
+    width: 25vh;
+    height: 25vh;
+    object-fit: cover;
+    }
