@@ -13,7 +13,7 @@ if (header) {
               <ul class="navbar-nav"></ul>
               <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.html">カート (２)</a>
+                    <a class="nav-link" href="Cart">カート (２)</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">ログイン</a>
@@ -29,10 +29,10 @@ const navbar = document.querySelector(".navbar-nav");
 if (navbar) {
     navbar.insertAdjacentHTML('beforeend', `
         <li class="nav-item">
-            <a class="nav-link" href="/place">観光地の紹介</a>
+            <a class="nav-link" href="Place">観光地の紹介</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="plan.html">プラン</a>
+            <a class="nav-link" href="Plan">プラン</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">イベント</a>
