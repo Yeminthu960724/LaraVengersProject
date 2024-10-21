@@ -5,6 +5,8 @@ use App\Http\Controllers\PlaceDetailController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PlanController;
+use App\Http\Controllers\PlanDetailController;
 
 
 /*
@@ -27,3 +29,5 @@ Route::get('', [HomeController::class, 'index']);
 Route::get('/Place', [PlaceController::class, 'index']);
 Route::get('/PlaceDetail', [PlaceDetailController::class, 'index']);
 Route::get('/Cart', [CartController::class, 'index']);
+Route::get('/Plan', [PlanController::class, 'index']);
+Route::get('/PlanDetail', [PlanDetailController::class, 'index']);
