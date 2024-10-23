@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PlanDetailController;
-
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +31,5 @@ Route::get('/PlaceDetail', [PlaceDetailController::class, 'index']);
 Route::get('/Cart', [CartController::class, 'index']);
 Route::get('/Plan', [PlanController::class, 'index']);
 Route::get('/PlanDetail', [PlanDetailController::class, 'index']);
+Route::get('/register',[RegisterController::class,'showRegisterForm'])->name('register');
+Route::post('/register',[RegisterController::class,'register']);
