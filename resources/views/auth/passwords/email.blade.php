@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ユーザー登録</title>
+    <title>パスワード忘れ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
@@ -12,36 +12,30 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-sm">
+             
                 <div class="card-header bg-primary text-white text-center">
-                    <h3>ログイン</h3>
+                    <h3>パスワード忘れ</h3>
                 </div>
+
+             
                 <div class="card-body">
                     <form action="" method="POST">
                         @csrf
+                       
+
+
                         <div class="mb-3">
                             <label for="email" class="form-label">メールアドレス:</label>
                             <input type="email" id="email" name="email" class="form-control" required>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="password" class="form-label">パスワード:</label>
-                            <input type="password" id="password" name="password" class="form-control" required>
-                        </div>
+
+
 
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">ログイン</button>
+                            <button type="submit" class="btn btn-primary">送信</button>
                         </div>
                     </form>
-
-                    
-                    <div class="mt-3 text-center">
-                        <a href="./password/reset" class="text-decoration-none">パスワードをお忘れですか？</a>
-                    </div>
-
-                    <div class="mt-2 text-center">
-                        <span>新規登録はこちら: </span>
-                        <a href="./register" class="btn btn-outline-secondary btn-sm ms-2">新規登録</a>
-                    </div>
                 </div>
             </div>
         </div>

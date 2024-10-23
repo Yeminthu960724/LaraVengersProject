@@ -8,7 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PlanDetailController;
 use App\Http\Controllers\Auth\RegisterController;
-
+use App\Http\Controllers\Auth\ForgotPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,3 +33,4 @@ Route::get('/Plan', [PlanController::class, 'index']);
 Route::get('/PlanDetail', [PlanDetailController::class, 'index']);
 Route::get('/register',[RegisterController::class,'showRegisterForm'])->name('register');
 Route::post('/register',[RegisterController::class,'register']);
+Route::get('/password/reset',[ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
