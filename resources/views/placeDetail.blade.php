@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/slideshow.css') }}">
 </head>
 
 <body>
@@ -23,36 +24,32 @@
             <h2>天王寺動物園</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <div id="carouselExampleIndicators" class="carousel slide">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="https://prd-static.gltjp.com/glt/data/article/21000/20382/20230824_130026_34f0e5b2_w1920.webp"
-                                    class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i0.wp.com/travo.guide/wp-content/uploads/2019/08/%E5%A4%A9%E7%8E%8B%E5%AF%BA%E5%8B%95%E7%89%A9%E5%9C%92%E5%9C%B0%E5%9C%96-e1564649044129.jpg?w=1261&ssl=1"
-                                    class="d-block w-100" alt="...">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                <div class="slide-container">
+
+                    <div class="slides">
+                        <img src="https://www.akira-seitai2.com/wp-content/uploads/2021/02/pixta_70263615_M-1536x1024.jpg" class="active">
+                        <img src="https://www.tennojizoo.jp/wp-content/uploads/2024/10/IMG_1173.jpg">
+                        <img src="https://www.tennojizoo.jp/wp-content/uploads/2024/09/IMG_3225.jpeg">
+                        <img src="https://www.tennojizoo.jp/wp-content/uploads/2021/04/laion161128.jpg">
+
                     </div>
+
+                    <div class="buttons">
+                        <span class="next">&#10095;</span>
+                        <span class="prev">&#10094;</span>
+                    </div>
+
+                    <div class="dotsContainer">
+                        <div class="dot active" attr='0' onclick="switchImage(this)"></div>
+                        <div class="dot" attr='1' onclick="switchImage(this)"></div>
+                        <div class="dot" attr='2' onclick="switchImage(this)"></div>
+                        <div class="dot" attr='3' onclick="switchImage(this)"></div>
+                        <div class="dot" attr='4' onclick="switchImage(this)"></div>
+                    </div>
+
+                </div>
+
+
                 </div>
                 <div class="col-md-6">
                     <div>
@@ -81,6 +78,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script src="{{ asset('js/common.js') }}"></script>
+    <script src="{{ asset('js/slideshow.js') }}"></script>
 </body>
 
 </html>
