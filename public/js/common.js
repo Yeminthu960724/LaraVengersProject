@@ -16,7 +16,7 @@ if (header) {
                     <a class="nav-link" href="Cart">カート (２)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ログイン</a>
+                    <a class="nav-link" href="/login">ログイン</a>
                 </li>
               </ul>
             </div>
@@ -35,7 +35,7 @@ if (navbar) {
             <a class="nav-link" href="Plan">プラン</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">イベント</a>
+            <a class="nav-link" href="Event">イベント</a>
         </li>
     `);
 }
