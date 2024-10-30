@@ -10,7 +10,7 @@ use App\Http\Controllers\PlanDetailController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\ChatController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,7 +37,6 @@ Route::get('/register',[RegisterController::class,'showRegisterForm'])->name('re
 Route::post('/register',[RegisterController::class,'register']);
 Route::get('/password/reset',[ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::get('/Event', [EventController::class, 'index']);
-Route::any('/chat', [ChatController::class, 'chat']);
 
 
 
