@@ -37,7 +37,9 @@ Route::get('/register',[RegisterController::class,'showRegisterForm'])->name('re
 Route::post('/register',[RegisterController::class,'register']);
 Route::get('/password/reset',[ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::get('/Event', [EventController::class, 'index']);
+Route::get('/api/events', [EventController::class, 'getEvents']);
 Route::any('/chat', [ChatController::class, 'chat']);
+Route::get('/Event/{id}', [EventController::class, 'detail'])->name('events.detail');
 
 
 
