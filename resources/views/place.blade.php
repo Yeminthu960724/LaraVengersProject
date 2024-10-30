@@ -49,57 +49,20 @@
                 <!-- Cards -->
                 <div class="col-md-9">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
+                        @foreach ($post as $place)
                         <div class="col">
                             <div class="card">
                                 <a href="PlaceDetail"><img src="https://prd-static.gltjp.com/glt/data/article/21000/20382/20230824_130026_34f0e5b2_w1920.webp"
                                         class="card-img-top card-img-fixed card-img-fixed" alt=""></a>
                                 <div class="card-body">
-                                    <h5 class="card-title">天王寺動物園</h5>
-                                    <p class="card-text">天王寺公園で特に人気の動物園。サバンナから熱帯雨林までさまざまな環境に生息する 200 種以上の動物たちを展示。</p>
+                                    <h5 class="card-title">{{$place->placeName}}</h5>
+                                    <p class="card-text">{{$place->shortDetail}}</p>
                                     <a href="PlaceDetail" class="btn btn-primary">詳細</a>
                                     <a href="#" class="btn btn-primary">カードに入れる</a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col">
-                            <div class="card">
-                                <img src="https://img.rurubu.jp/img_srw/andmore/images/0000470187/bOrNpVYpgqcmW22RtTfJGdOpfahZ53skyj05kdFR.jpg"
-                                    class="card-img-top card-img-fixed" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title">万博記念公園</h5>
-                                    <p class="card-text">博物館、スタジアム、太陽の塔がある 1970 年の万博会場にある公園。</p>
-                                    <a href="PlaceDetail" class="btn btn-primary">詳細</a>
-                                    <a href="#" class="btn btn-primary">カードに入れる</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="card">
-                                <img src="https://img.rurubu.jp/img_srw/andmore/images/0000470187/bOrNpVYpgqcmW22RtTfJGdOpfahZ53skyj05kdFR.jpg"
-                                    class="card-img-top card-img-fixed" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title">万博記念公園</h5>
-                                    <p class="card-text">博物館、スタジアム、太陽の塔がある 1970 年の万博会場にある公園。</p>
-                                    <a href="PlaceDetail" class="btn btn-primary">詳細</a>
-                                    <a href="#" class="btn btn-primary">カードに入れる</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="card">
-                                <img src="https://img.rurubu.jp/img_srw/andmore/images/0000470187/bOrNpVYpgqcmW22RtTfJGdOpfahZ53skyj05kdFR.jpg"
-                                    class="card-img-top card-img-fixed" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title">万博記念公園</h5>
-                                    <p class="card-text">博物館、スタジアム、太陽の塔がある 1970 年の万博会場にある公園。</p>
-                                    <a href="PlaceDetail" class="btn btn-primary">詳細</a>
-                                    <a href="#" class="btn btn-primary">カードに入れる</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\EventController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,10 +22,6 @@ use App\Http\Controllers\EventController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/login',[LoginController::class, 'showLoginForm']);
 Route::get('', [HomeController::class, 'index']);
