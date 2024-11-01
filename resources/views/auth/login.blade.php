@@ -16,7 +16,7 @@
                     <h3>ログイン</h3>
                 </div>
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{ route('login') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="email" class="form-label">メールアドレス:</label>
@@ -32,6 +32,17 @@
                             <button type="submit" class="btn btn-primary">ログイン</button>
                         </div>
                     </form>
+
+
+                    @if ($errors->any())
+                    <div>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
 
                     <div class="mt-3 text-center">

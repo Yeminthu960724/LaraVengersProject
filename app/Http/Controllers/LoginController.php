@@ -3,31 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class LoginController extends Controller
 {
-
-
-
     public function showLoginForm()
     {
-        $message = " log in.";
-        return view('login',compact('message'));
+        $message = "ログインしてください。";
+        return view('auth.login');
     }
-    public function authenticate(Request $request){
 
+
+
+    public function login(Request $request)
+    {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)){
-            $request->session()->regenerate();
-            return redirect()->intended('/home');
+        $user = User::where('email', $credentials['email'])->first();
+
+        if ($user && Hash::check($credentials['password'], $user->password)) {
+            Auth::login($user);
+
+
+            return redirect()->route('Place');
+        } else {
+            return redirect()->back()->withErrors(['login' => '認証情報が間違っています。']);
         }
-        return back()->withErrors([
-            'email' => 'メールアドレスが間違ってます'
-
-        ]);
-
     }
-}
 
+
+}
