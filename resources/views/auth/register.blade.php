@@ -12,16 +12,27 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-sm">
-             
+
                 <div class="card-header bg-primary text-white text-center">
                     <h3>ユーザー登録</h3>
                 </div>
 
-             
+
                 <div class="card-body">
-                    <form action="" method="POST">
+
+
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                    <form action="{{ route('register') }}" method="POST">
                         @csrf
-                       
+
                         <div class="mb-3">
                             <label for="name" class="form-label">名前:</label>
                             <input type="text" id="name" name="name" class="form-control" required>
