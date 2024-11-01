@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <img src="{{ $event['image_url'] }}" alt="{{ $event['title'] }}"
-                         class="img-fluid rounded shadow-sm mb-4" style="width: 100%; height: 300px; object-fit: cover;">
+                        class="img-fluid rounded shadow-sm mb-4" style="width: 100%; height: 300px; object-fit: cover;">
                 </div>
                 <div class="col-md-6">
                     <h1 class="mb-3">{{ $event['title'] }}</h1>
@@ -49,7 +49,7 @@
                             <i class="bi bi-geo-alt me-2"></i>
                             開催場所：{{ $event['location'] }}
                             <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($event['location']) }}"
-                               class="btn btn-sm btn-outline-primary ms-2"
+                            class="btn btn-sm btn-outline-primary ms-2"
                                target="_blank">
                                 <i class="bi bi-map"></i> 地図を見る
                             </a>
