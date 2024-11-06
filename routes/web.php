@@ -23,9 +23,12 @@ use App\Http\Controllers\EventController;
 |
 */
 
-Route::get('/login',[LoginController::class, 'showLoginForm']);
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('', [HomeController::class, 'index']);
-Route::get('/Place', [PlaceController::class, 'index']);
+// Route::get('/Place', [PlaceController::class, 'index']);
+Route::get('/Place', [PlaceController::class, 'index'])->name('Place');
 Route::get('/PlaceDetail', [PlaceDetailController::class, 'index']);
 Route::get('/Cart', [CartController::class, 'index'])->name('cart.index');
 Route::get('/Plan', [PlanController::class, 'index']);
