@@ -27,7 +27,7 @@ Route::get('/login',[LoginController::class, 'showLoginForm']);
 Route::get('', [HomeController::class, 'index']);
 Route::get('/Place', [PlaceController::class, 'index']);
 Route::get('/PlaceDetail', [PlaceDetailController::class, 'index']);
-Route::get('/Cart', [CartController::class, 'index']);
+Route::get('/Cart', [CartController::class, 'index'])->name('cart.index');
 Route::get('/Plan', [PlanController::class, 'index']);
 Route::get('/PlanDetail', [PlanDetailController::class, 'index']);
 Route::get('/register',[RegisterController::class,'showRegisterForm'])->name('register');

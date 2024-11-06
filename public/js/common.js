@@ -36,7 +36,7 @@ if (header) {
                         <li class="nav-item">
                             <a class="nav-link d-flex align-items-center" href="Cart" style="font-size: 0.9rem;">
                                 <i class="bi bi-cart me-1"></i>
-                                カート <span class="badge bg-primary ms-1" style="font-size: 0.75rem;">2</span>
+                                カート <span class="badge bg-primary ms-1 cart-count">0</span>
                             </a>
                         </li>
                         <li class="nav-item">

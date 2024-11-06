@@ -49,16 +49,30 @@
                 <!-- Cards -->
                 <div class="col-md-9">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
-                        @foreach ($post as $place)
+                        @foreach ($post->take(15) as $place)
                         <div class="col">
                             <div class="card">
-                                <a href="PlaceDetail"><img src="https://prd-static.gltjp.com/glt/data/article/21000/20382/20230824_130026_34f0e5b2_w1920.webp"
-                                        class="card-img-top card-img-fixed card-img-fixed" alt=""></a>
+                                <img src="https://prd-static.gltjp.com/glt/data/article/21000/20382/20230824_130026_34f0e5b2_w1920.webp"
+                                     class="card-img-top"
+                                     style="height: 150px; object-fit: cover; width: 100%;"
+                                     alt="{{$place->placeName}}">
                                 <div class="card-body">
                                     <h5 class="card-title">{{$place->placeName}}</h5>
                                     <p class="card-text">{{$place->shortDetail}}</p>
-                                    <a href="PlaceDetail" class="btn btn-primary">詳細</a>
-                                    <a href="#" class="btn btn-primary">カードに入れる</a>
+                                    <div class="d-flex gap-2">
+                                        <a href="PlaceDetail" class="btn btn-outline-primary">詳細</a>
+                                        <button onclick="addToCart({
+                                            id: '{{$place->placeName}}',
+                                            title: '{{$place->placeName}}',
+                                            description: '{{$place->shortDetail}}',
+                                            image_url: 'https://prd-static.gltjp.com/glt/data/article/21000/20382/20230824_130026_34f0e5b2_w1920.webp',
+                                            location: '大阪',
+                                            category: '観光施設',
+                                            type: 'place'
+                                        })" class="btn btn-primary">
+                                            <i class="bi bi-cart-plus"></i> カートに追加
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

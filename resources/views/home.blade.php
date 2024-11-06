@@ -7,28 +7,17 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <style>
+    /* メインの背景色 */
+    body {
+        background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
+        color: white;
+    }
+
     .hero-section {
         position: relative;
         padding: 100px 0;
         min-height: 100vh;
-        background-color: #f8f9fa; /* デフォルトの背景色 */
-    }
-
-    .hero-section-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/background_image.jpg');
-        background-size: cover;
-        background-position: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .hero-section-bg.loaded {
-        opacity: 1;
+        background: transparent;
     }
 
     .hero-content {
@@ -42,6 +31,9 @@
         border-radius: 15px;
         transition: transform 0.3s ease;
         overflow: hidden;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
     }
 
     .feature-card:hover {
@@ -96,8 +88,13 @@
     }
 
     .team-section {
-        background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+        background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
+        color: white;
         padding: 80px 0;
+        margin-top: 40px;
+        border-radius: 10px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        backdrop-filter: blur(10px);
     }
 
     .team-card {
@@ -150,7 +147,7 @@
     }
 
     .team-image-wrapper {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s ease;
         border-radius: 15px;
         overflow: hidden;
         max-width: 250px;
@@ -174,11 +171,9 @@
     }
 
     .team-info {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.8s ease forwards;
+        background-color: rgba(255, 255, 255, 0.95);
+        color: #333;
         padding: 30px;
-        background: rgba(255, 255, 255, 0.95);
         border-radius: 15px;
         box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         margin-top: -20px;
@@ -189,27 +184,33 @@
         font-size: 0.85rem;
         padding: 6px 12px;
         margin: 3px;
-        background-color: #f8f9fa;
-        border: 1px solid #e9ecef;
+        background-color: #F5F2EB;
+        border: 1px solid #BF8F30;
+        color: #1B4B8F;
         transition: all 0.3s ease;
     }
 
     .team-skills .badge:hover {
-        background-color: #e9ecef;
+        background-color: #BF8F30;
+        color: white;
         transform: translateY(-2px);
     }
 
     .row.align-items-center {
-        margin-bottom: 100px;
+        background-color: rgba(255, 255, 255, 0.15);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .team-info h3 {
-        color: #2c3e50;
-        margin-bottom: 0.5rem;
+        color: #1B4B8F;
     }
 
     .team-info .text-primary {
-        color: #3498db !important;
+        color: #D64B29 !important;
     }
 
     .team-info .lead {
@@ -224,28 +225,352 @@
             transform: translateY(0);
         }
     }
+
+    .feature-card .card-title {
+        color: white;
+    }
+
+    .feature-card .card-text {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* パーティクル効果のコンテナ */
+    .hero-particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    /* 開発チームセクションのアニメーション */
+    .team-member {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+    }
+
+    .team-member.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* チームメンバーカードの3Dエフェクト */
+    .row.align-items-center {
+        transform-style: preserve-3d;
+        perspective: 1000px;
+        transition: transform 0.5s ease;
+    }
+
+    .row.align-items-center:hover {
+        transform: translateY(-10px) rotateX(2deg);
+    }
+
+    /* チーム情報カードのホバーエフェクト */
+    .team-info {
+        transform: perspective(1000px) rotateY(0deg);
+        transition: transform 0.6s ease;
+        transform-style: preserve-3d;
+    }
+
+    .team-info:hover {
+        transform: perspective(1000px) rotateY(5deg);
+    }
+
+    /* スキルバッジのアニメーション */
+    .team-skills .badge {
+        animation: skillBadge 2s ease infinite;
+        animation-delay: calc(var(--delay) * 0.2s);
+    }
+
+    @keyframes skillBadge {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
+
+    /* アニメーション用クラス */
+    .animate__animated {
+        animation-duration: 1s;
+    }
+
+    .animate__delay-1s {
+        animation-delay: 0.3s;
+    }
+
+    .animate__delay-2s {
+        animation-delay: 0.6s;
+    }
+
+    .animate__delay-3s {
+        animation-delay: 0.9s;
+    }
+
+    /* 背景アニメーション */
+    .animated-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(45deg, #4B8EC8, #1B4B8F);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* ナビゲーションバーのスタイルを更新 */
+    .navbar {
+        background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
+        backdrop-filter: blur(10px);
+        box-shadow: none;
+        border: none;
+        padding: 1rem 0;
+    }
+
+    .navbar-brand {
+        font-weight: 700;
+        color: white !important;
+        font-size: 1.4rem;
+    }
+
+    .navbar-brand i {
+        margin-right: 8px;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* メインメニューのリンクスタイル */
+    .nav-link.main-menu {
+        color: white !important;
+        font-weight: 500;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+        border: none !important;
+        background: none;
+    }
+
+    .nav-link.main-menu:hover {
+        color: rgba(255, 255, 255, 0.8) !important;
+        transform: translateY(-2px);
+    }
+
+    /* 下線と関連する要素を完全に削除 */
+    .nav-link.main-menu::after,
+    .nav-link.main-menu::before,
+    .nav-link.main-menu span {
+        display: none !important;
+    }
+
+    /* スクロール時のスタイルも調整 */
+    .navbar.scrolled {
+        box-shadow: none;
+        border: none;
+    }
+
+    /* ナビゲーションの下部の余分なスペースを削除 */
+    .navbar .container {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    /* ログインボタンのスタイル */
+    .login-button {
+        background-color: rgba(255, 255, 255, 0.15);
+        color: white !important;
+        padding: 8px 20px !important;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .login-button:hover {
+        background-color: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-button i {
+        font-size: 1.2rem;
+    }
+
+    /* ルートカードのスタイル */
+    .route-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .route-card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* レビューカードのスタイル */
+    .review-card {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+
+    .review-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .review-header img {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+    }
+
+    .stars {
+        color: #BF8F30;
+    }
+
+    /* 検索フォームのスタイル */
+    .search-wrapper {
+        position: relative;
+        width: 300px;
+    }
+
+    .search-input {
+        padding: 10px 40px 10px 20px;
+        border-radius: 25px;
+        border: 1px solid rgba(27, 75, 143, 0.2);
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        width: 100%;
+        transition: all 0.3s ease;
+        background-color: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+
+    .search-input:focus {
+        box-shadow: 0 0 0 2px rgba(27, 75, 143, 0.2);
+        border-color: #1B4B8F;
+        background-color: white;
+    }
+
+    .search-input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .search-input:focus {
+        background-color: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+
+    .search-button {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: none;
+        color: white;
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .search-button:hover {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    @media (max-width: 991.98px) {
+        .search-wrapper {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .search-input {
+            width: 100%;
+        }
+    }
+
+    /* ハンバーガーメニューの色を白に */
+    .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
 </style>
 </head>
 <body>
-<a href="/login" class="btn btn-outline-dark login-btn">
-    <i class="bi bi-person"></i> ログイン
-</a>
+<!-- ナビゲーションバーを修正 -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <i class="bi bi-compass"></i> 関西巡り
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link main-menu" href="/Place">
+                        <i class="bi bi-map"></i> 観光地
+                        <span></span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- 検索フォームを追加 -->
+            <form class="d-flex search-form me-3">
+                <div class="search-wrapper">
+                    <input type="search" class="form-control search-input" placeholder="観光地を検索...">
+                    <button class="search-button" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+
+            <div class="nav-item">
+                <a href="/login" class="nav-link login-button">
+                    <i class="bi bi-person-circle"></i>
+                    <span>ログイン</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
 
 <div class="hero-section">
-    <div class="hero-section-bg"></div>
+    <div class="animated-bg"></div>
+    <div class="hero-particles" id="particles-js"></div>
     <div class="hero-content text-center">
         <div class="container">
-            <h1 class="display-3 fw-bold mb-4" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeIn">
                 関西巡り
-                <small class="d-block display-6 mt-2" style="font-family: 'Noto Serif JP', serif;">
+                <small class="d-block display-6 mt-2 animate__animated animate__fadeIn animate__delay-1s">
                     ～伝統と文化の旅～
                 </small>
             </h1>
-            <p class="lead fs-4 mb-5" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">
+            <p class="lead fs-4 mb-5 animate__animated animate__fadeIn animate__delay-2s">
                 歴史ある寺社仏閣から現代の観光スポットまで<br>
                 あなただけの関西旅行プランを作りましょう
             </p>
-            <a href="/Place" class="btn btn-light btn-lg px-5 py-3 rounded-pill shadow">
+            <a href="/Place" class="btn btn-light btn-lg px-5 py-3 rounded-pill shadow animate__animated animate__fadeIn animate__delay-3s hover-float">
                 <i class="bi bi-compass"></i> 旅の計画を始める
             </a>
         </div>
@@ -262,12 +587,12 @@
                     <p class="card-text">
                         まず、訪れたい場所をいくつか選んでリストに追加しましょう。
                         <span class="more-text" id="moreText1">
-                            効率的な���程を組み立て、思い出に残る旅行を計画できます。
+                            効率的な程を組み立て、思い出に残る旅行を計画できます。
                         </span>
                     </p>
-                    <button class="read-more-btn" data-target="moreText1">
+                    {{-- <button class="read-more-btn" data-target="moreText1">
                         <i class="bi bi-chevron-down"></i> もっと見る
-                    </button>
+                    </button> --}}
                 </div>
             </div>
         </div>
@@ -278,14 +603,14 @@
                 <div class="card-body">
                     <h3 class="card-title h4">プラン作成</h3>
                     <p class="card-text">
-                        当サイトでは旅のプランを簡単に作成し、保存することができます。
+                        当サイトでは旅のプランを簡単作成し、保存することができます。
                         <span class="more-text" id="moreText2">
                             マップ機能や、他のユーザーとの共有機能も利用できます。
                         </span>
                     </p>
-                    <button class="read-more-btn" data-target="moreText2">
+                    {{-- <button class="read-more-btn" data-target="moreText2">
                         <i class="bi bi-chevron-down"></i> もっと見る
-                    </button>
+                    </button> --}}
                 </div>
             </div>
         </div>
@@ -301,24 +626,24 @@
                             地域の情報を常に更新し、最新の観光情報を提供しています。
                         </span>
                     </p>
-                    <button class="read-more-btn" data-target="moreText3">
+                    {{-- <button class="read-more-btn" data-target="moreText3">
                         <i class="bi bi-chevron-down"></i> もっと見る
-                    </button>
+                    </button> --}}
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="team-section py-5 mt-5 bg-light">
+<div class="team-section py-5 mt-5">
     <div class="container">
-        <h2 class="text-center mb-5">開発チーム</h2>
+        <h2 class="text-center mb-5 text-focus-in">開発チーム</h2>
 
-        <!-- メンバー1: 画像左、テキスト右 -->
-        <div class="row align-items-center mb-5">
+        <!-- メンバー1: タム -->
+        <div class="row align-items-center mb-5 team-member">
             <div class="col-md-6">
                 <div class="team-image-wrapper">
-                    <img src="{{ asset('images/home1.png') }}" alt="Team Member 1"
+                    <img src="{{ asset('images/home1.png') }}" alt="タム"
                         class="img-fluid rounded shadow-lg" style="width: 100%; height: 250px; object-fit: cover;">
                 </div>
             </div>
@@ -339,11 +664,11 @@
             </div>
         </div>
 
-        <!-- メンバー2: 画像右、テキスト左 -->
-        <div class="row align-items-center mb-5">
+        <!-- メンバー2: ホイ -->
+        <div class="row align-items-center mb-5 team-member">
             <div class="col-md-6 order-md-2">
                 <div class="team-image-wrapper">
-                    <img src="{{ asset('images/home1.png') }}" alt="Team Member 2"
+                    <img src="{{ asset('images/home2.png') }}" alt="ホイ"
                         class="img-fluid rounded shadow-lg" style="width: 100%; height: 250px; object-fit: cover;">
                 </div>
             </div>
@@ -353,7 +678,7 @@
                     <p class="text-primary mb-3">バックエンド担当</p>
                     <p class="lead mb-4">
                         データベース設計、API実装を担当。
-                        セキュアで効率的なシステム構築を目指しました。
+                        セキュア効率的なシステム構築を目指しました。
                     </p>
                     <div class="team-skills">
                         <span class="badge bg-light text-dark me-2 mb-2">PHP</span>
@@ -364,11 +689,11 @@
             </div>
         </div>
 
-        <!-- メンバー3: 画像左、テキスト右 -->
-        <div class="row align-items-center mb-5">
+        <!-- メンバー3: ミン -->
+        <div class="row align-items-center mb-5 team-member">
             <div class="col-md-6">
                 <div class="team-image-wrapper">
-                    <img src="{{ asset('images/home1.png') }}" alt="Team Member 3"
+                    <img src="{{ asset('images/home3.png') }}" alt="ミン"
                         class="img-fluid rounded shadow-lg" style="width: 100%; height: 250px; object-fit: cover;">
                 </div>
             </div>
@@ -378,7 +703,7 @@
                     <p class="text-primary mb-3">イベント担当</p>
                     <p class="lead mb-4">
                         イベント情報の収集と管理機能を担当。
-                        最新の情報をリアルタイムで提供できる仕組みを実装しました。
+                        最新の情報をリアルタイムで提供できる仕組みを実装しまた。
                     </p>
                     <div class="team-skills">
                         <span class="badge bg-light text-dark me-2 mb-2">API開発</span>
@@ -389,11 +714,11 @@
             </div>
         </div>
 
-        <!-- メンバー4: 画像右、テキスト左 -->
-        <div class="row align-items-center">
+        <!-- メンバー4: サン -->
+        <div class="row align-items-center team-member">
             <div class="col-md-6 order-md-2">
                 <div class="team-image-wrapper">
-                    <img src="{{ asset('images/home1.png') }}" alt="Team Member 4"
+                    <img src="{{ asset('images/home1.png') }}" alt="サン"
                         class="img-fluid rounded shadow-lg" style="width: 100%; height: 250px; object-fit: cover;">
                 </div>
             </div>
@@ -417,45 +742,90 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-    document.querySelectorAll('.read-more-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const targetId = this.dataset.target;
-            const moreText = document.getElementById(targetId);
-            moreText.classList.toggle('show');
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80 },
+            color: { value: '#ffffff' },
+            shape: { type: 'circle' },
+            opacity: {
+                value: 0.5,
+                random: true
+            },
+            size: {
+                value: 3,
+                random: true
+            },
+            move: {
+                enable: true,
+                speed: 2,
+                direction: 'none',
+                random: true,
+                out_mode: 'out'
+            }
+        },
+        interactivity: {
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: 'repulse'
+                }
+            }
+        }
+    });
 
-            const icon = this.querySelector('i');
-            if (moreText.classList.contains('show')) {
-                this.innerHTML = '<i class="bi bi-chevron-up"></i> 閉じる';
-            } else {
-                this.innerHTML = '<i class="bi bi-chevron-down"></i> もっと見る';
+    // スキルバッジにディレイを設定
+    document.querySelectorAll('.team-skills .badge').forEach((badge, index) => {
+        badge.style.setProperty('--delay', index);
+    });
+
+    // スクロ���ルアニメーション
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
             }
         });
+    }, observerOptions);
+
+    document.querySelectorAll('.team-member').forEach(element => {
+        observer.observe(element);
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.3
-        };
+    // マウス追従エフェクト
+    document.querySelectorAll('.team-info').forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
 
-        document.querySelectorAll('.team-section .row.align-items-center').forEach(row => {
-            observer.observe(row);
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+
+            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
         });
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const bg = document.querySelector('.hero-section-bg');
-        bg.classList.add('loaded');
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     });
 </script>
 </body>
