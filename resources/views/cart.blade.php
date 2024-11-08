@@ -25,7 +25,7 @@
         </div>
 
         <div class="text-center mt-4">
-            <button class="btn btn-primary btn-lg" onclick="generatePlan()">
+            <button id="makePlanButton" class="btn btn-primary btn-lg">
                 <i class="bi bi-calendar-check"></i> プランを生成する
             </button>
         </div>
@@ -35,6 +35,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/common.js') }}"></script>
+    <script src="{{ asset('js/cart.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const cart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -93,17 +94,22 @@
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">行く順番：</label>
-                                        <select class="form-select" onchange="updateEventOrder(${index}, this.value)">
+                                        <select id="placePriority" class="form-select" onchange="updateEventOrder(${index}, this.value)">
                                             ${generateOrderOptions(cart.length, index)}
                                         </select>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">滞在時間：</label>
-                                        <select class="form-select" onchange="updateEventDuration(${index}, this.value)">
-                                            <option value="1">1時間</option>
-                                            <option value="2">2時間</option>
-                                            <option value="3">3時間</option>
-                                            <option value="4">4時間</option>
+                                        <select id="durationSelect" class="form-select" onchange="updateEventDuration(${index}, this.value)">
+                                            <option value="30">30分</option>
+                                            <option value="60">1時間</option>
+                                            <option value="90">1時間30分</option>
+                                            <option value="120">2時間</option>
+                                            <option value="150">2時間30分</option>
+                                            <option value="180">3時間</option>
+                                            <option value="210">3時間30分</option>
+                                            <option value="240">4時間</option>
+                                            <option value="">他（自分で入力）</option>
                                         </select>
                                     </div>
                                 </div>
@@ -147,15 +153,7 @@
             location.reload();
         }
 
-        function generatePlan() {
-            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-            if (cart.length === 0) {
-                alert('プランを生成するにはイベントを追加してください。');
-                return;
-            }
-            // ここに後でAPI連携のコードを追加
-            alert('プラン生成機能は準備中です。');
-        }
+
     </script>
 </body>
 
