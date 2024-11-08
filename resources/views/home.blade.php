@@ -267,9 +267,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<<<<<<< HEAD
+
 <script src="{{ asset('js/home.js') }}"></script>
-=======
+
 <script>
     particlesJS('particles-js', {
         particles: {
@@ -355,6 +355,6 @@
         }
     });
 </script>
->>>>>>> 5f766c027db3fdcb95767524931e6447fd0ad2f4
+
 </body>
 </html>
