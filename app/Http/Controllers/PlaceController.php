@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PlaceController extends Controller
 {
     public function index(){
-        return view('place');
+        $post = DB::table('places')->get();
+
+        return view('place', compact('post'));
     }
+
 }
