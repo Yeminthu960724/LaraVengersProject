@@ -55,17 +55,46 @@
     <div class="hero-particles" id="particles-js"></div>
     <div class="hero-content text-center">
         <div class="container">
-            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeIn">
+            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeIn"
+                style="font-size: 6.5rem;
+                       letter-spacing: 0.08em;
+                       background: linear-gradient(45deg, #ffffff, #e0e0e0);
+                       -webkit-background-clip: text;
+                       -webkit-text-fill-color: transparent;
+                       text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);">
                 関西巡り
-                <small class="d-block display-6 mt-2 animate__animated animate__fadeIn animate__delay-1s">
-                    ～伝統と文化の旅～
-                </small>
             </h1>
-            <p class="lead fs-4 mb-5 animate__animated animate__fadeIn animate__delay-2s">
+
+            <div class="subtitle mb-4 animate__animated animate__fadeIn animate__delay-1s"
+                 style="font-size: 3rem;
+                        font-weight: 500;
+                        color: rgba(255, 255, 255, 0.95);
+                        letter-spacing: 0.15em;
+                        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+                        margin-top: 1.5rem;">
+                ～伝統と文化の旅～
+            </div>
+
+            <p class="lead fs-4 mb-5 animate__animated animate__fadeIn animate__delay-2s"
+               style="font-size: 2rem !important;
+                      line-height: 2;
+                      color: rgba(255, 255, 255, 0.9);
+                      max-width: 800px;
+                      margin: 0 auto;
+                      text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+                      letter-spacing: 0.05em;">
                 歴史ある寺社仏閣から現代の観光スポットまで<br>
                 あなただけの関西旅行プランを作りましょう
             </p>
-            <a href="/Place" class="btn btn-light btn-lg px-5 py-3 rounded-pill shadow animate__animated animate__fadeIn animate__delay-3s hover-float">
+
+            <a href="/Place"
+               class="btn btn-light btn-lg px-5 py-3 rounded-pill shadow animate__animated animate__fadeIn animate__delay-3s hover-float"
+               style="font-size: 1.6rem;
+                      font-weight: 600;
+                      letter-spacing: 0.1em;
+                      background: rgba(255, 255, 255, 0.95);
+                      border: none;
+                      transition: all 0.3s ease;">
                 <i class="bi bi-compass"></i> 旅の計画を始める
             </a>
         </div>
@@ -238,6 +267,94 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<<<<<<< HEAD
 <script src="{{ asset('js/home.js') }}"></script>
+=======
+<script>
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80 },
+            color: { value: '#ffffff' },
+            shape: { type: 'circle' },
+            opacity: {
+                value: 0.5,
+                random: true
+            },
+            size: {
+                value: 3,
+                random: true
+            },
+            move: {
+                enable: true,
+                speed: 2,
+                direction: 'none',
+                random: true,
+                out_mode: 'out'
+            }
+        },
+        interactivity: {
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: 'repulse'
+                }
+            }
+        }
+    });
+
+    // スキルバッジにディレイを設定
+    document.querySelectorAll('.team-skills .badge').forEach((badge, index) => {
+        badge.style.setProperty('--delay', index);
+    });
+
+    // スクロルアニメーション
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.team-member').forEach(element => {
+        observer.observe(element);
+    });
+
+    // マウス追従エフェクト
+    document.querySelectorAll('.team-info').forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+
+            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        });
+    });
+
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+</script>
+>>>>>>> 5f766c027db3fdcb95767524931e6447fd0ad2f4
 </body>
 </html>

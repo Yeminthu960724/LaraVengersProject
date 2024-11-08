@@ -67,9 +67,26 @@ function createHeader() {
         .navbar {
             background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
             backdrop-filter: blur(10px);
-            box-shadow: none;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             border: none;
             padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* 背景との一体感を出すためのオーバーレイ */
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            backdrop-filter: blur(10px);
+            z-index: -1;
         }
 
         /* ナビゲーションのカードとログインボタンの修正 */

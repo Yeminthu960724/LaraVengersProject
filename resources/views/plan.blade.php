@@ -21,10 +21,10 @@
 
         /* タイトルスタイル */
         h2 {
-            font-size: 2.5rem;
-            font-weight: 600;
+            font-size: 3.5rem;
+            font-weight: bold;
             letter-spacing: 0.05em;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             background: linear-gradient(45deg, #ffffff, #e0e0e0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -114,7 +114,7 @@
     <!-- Main Content Section -->
     <main>
         <div class="container">
-            <div class="row">
+            <div class="row text-center mb-4">
                 <h2>定番プラン</h2>
             </div>
 
