@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="{{ asset('css/event.css') }}">
     <style>
         body {
-            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
             color: white;
             min-height: 100vh;
         }
 
-        .container {
-            padding-top: 2rem;
+        main {
+            padding-top: 100px;
         }
 
         /* 検索フィルターのスタイル */
@@ -39,22 +39,30 @@
 
         /* カードのスタイル */
         .card {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         .card-title {
-            color: white;
+            color: #333;
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
         }
 
         .card-text {
-            color: rgba(255, 255, 255, 0.9);
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .text-muted {
@@ -63,22 +71,37 @@
 
         /* ボタンのスタイル */
         .btn-outline-primary {
-            color: white;
-            border-color: rgba(255, 255, 255, 0.5);
+            color: #1B4B8F !important;
+            border-color: #1B4B8F !important;
+            background-color: transparent;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
         }
 
         .btn-outline-primary:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: white;
+            background-color: #1B4B8F !important;
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(27, 75, 143, 0.2);
         }
 
         .btn-primary {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: #FF5733 !important;  /* 新しい背景色 */
             border: none;
+            color: white !important;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
         }
 
         .btn-primary:hover {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: #C70039 !important;  /* ホバー時の色 */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(199, 0, 57, 0.3);
+            color: white !important;
         }
 
         /* ローディングとno-resultsのスタイル */
@@ -114,75 +137,141 @@
         .form-select::placeholder {
             color: rgba(255, 255, 255, 0.7);
         }
+
+        .card {
+            transform: translateY(0);
+            transition: all 0.3s ease !important;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #1B4B8F !important;
+            color: white !important;
+            border-color: #1B4B8F !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #154178 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(27, 75, 143, 0.2);
+        }
+
+        .card-img-top {
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+
+        /* カード内のアイコンとテキスト */
+        .card i {
+            color: #333;
+        }
+
+        .card p {
+            color: #666 !important;
+            font-size: 0.9rem;
+        }
+
+        /* ボタンコンテナ */
+        .d-flex.gap-2.mt-auto {
+            margin-top: 1rem;
+        }
+
+        /* バッジのスタイル */
+        .badge.bg-primary {
+            background-color: #1B4B8F !important;
+            font-weight: 500;
+            padding: 0.5em 1em;
+            border-radius: 30px;
+            font-size: 0.8rem;
+        }
+
+        /* 日付とロケーション情報のスタイル */
+        .card .date-info,
+        .card .location-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #794848 !important;
+            margin-bottom: 8px;
+        }
+
+        .card .bi-calendar,
+        .card .bi-geo-alt {
+            color: #1B4B8F;
+            font-size: 1rem;
+        }
     </style>
 </head>
 <body>
     <header id="header"></header>
 
-    <main class="container py-4">
-        <h1 class="mb-4 text-white">イベント情報</h1>
-
-        <!-- 検索フィルター -->
-        <div class="row mb-4">
-            <div class="col-md-4">
-                <input type="text" id="keyword" class="form-control" placeholder="キーワードで検索">
+    <main>
+        <div class="container">
+            <!-- ヘッダーセクション -->
+            <div class="text-center mb-5 animate__animated animate__fadeIn">
+                <h1 class="display-4 fw-bold"
+                    style="font-size: 3.5rem;
+                           letter-spacing: 0.05em;
+                           margin-bottom: 1rem;
+                           background: linear-gradient(45deg, #ffffff, #e0e0e0);
+                           -webkit-background-clip: text;
+                           -webkit-text-fill-color: transparent;
+                           text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);">
+                    イベント情報
+                </h1>
+                <!-- 既存のコンテンツ... -->
             </div>
-            <div class="col-md-4">
-                <select id="area" class="form-select">
-                    <option value="">エリアを選択</option>
-                    <option value="osaka">大阪</option>
-                    <option value="kyoto">京都</option>
-                    <option value="kobe">神戸</option>
-                    <option value="nara">奈良</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <select id="category" class="form-select">
-                    <option value="">カテゴリーを選択</option>
-                    <option value="祭り">祭り</option>
-                    <option value="花火大会">花火大会</option>
-                    <option value="グルメ">グルメ</option>
-                    <option value="音楽">音楽</option>
-                </select>
-            </div>
-        </div>
 
-        <!-- イベント一覧 -->
-        <div id="event-list" class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- イベントカードがここに動的に挿入されます -->
-        </div>
-
-        <!-- ローディング表示 -->
-        <div id="loading" class="text-center py-4 d-none">
-            <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
+            <!-- 検索フィルター -->
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <input type="text" id="keyword" class="form-control" placeholder="キーワードで検索">
+                </div>
+                <div class="col-md-4">
+                    <select id="area" class="form-select">
+                        <option value="">エリアを選択</option>
+                        <option value="osaka">大阪</option>
+                        <option value="kyoto">京都</option>
+                        <option value="kobe">神戸</option>
+                        <option value="nara">奈良</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select id="category" class="form-select">
+                        <option value="">カテゴリーを選択</option>
+                        <option value="祭り">祭り</option>
+                        <option value="花火大会">花火大会</option>
+                        <option value="グルメ">グルメ</option>
+                        <option value="音楽">音楽</option>
+                    </select>
+                </div>
             </div>
-        </div>
 
-        <!-- 検索結果なしの表示 -->
-        <div id="no-results" class="text-center py-4 d-none">
-            <p class="text-muted">該当するイベントが見つかりませんでした。</p>
+            <!-- イベント一覧 -->
+            <div id="event-list" class="row row-cols-1 row-cols-md-3 g-4">
+                <!-- イベントカードがここに動的に挿入されます -->
+            </div>
+
+            <!-- ローディング表示 -->
+            <div id="loading" class="text-center py-4 d-none">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
+            <!-- 検索結果なしの表示 -->
+            <div id="no-results" class="text-center py-4 d-none">
+                <p class="text-muted">該当するイベントが見つかりませんでした。</p>
+            </div>
         </div>
     </main>
-
-    <!-- カート追加モーダル -->
-    <div class="modal fade" id="cartModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">カートに追加しました</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    イベントをカートに追加しました。
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">続けて見る</button>
-                    <a href="/Cart" class="btn btn-primary">カートを見る</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <footer id="footer"></footer>
 
@@ -210,23 +299,53 @@
         function createEventCard(event) {
             return `
                 <div class="col">
-                    <div class="card h-100">
-                        <img src="${event.image_url}" class="card-img-top" alt="${event.title}" style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">${event.title}</h5>
-                            <p class="card-text">${event.description}</p>
-                            <p class="card-text">
-                                <small class="text-muted">
-                                    <i class="bi bi-calendar"></i> ${new Date(event.start_date).toLocaleDateString('ja-JP')}
-                                </small>
+                    <div class="card h-100" style="background: linear-gradient(135deg, #ffffff 0%, #e6f2ff 100%); border: none; border-radius: 25px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                        <div class="position-relative">
+                            <img src="${event.image_url}" class="card-img-top" alt="${event.title}"
+                                 style="height: 200px; object-fit: cover;">
+                            <div class="position-absolute top-0 end-0 m-2">
+                                <span class="badge" style="background-color: #4B8EC8; font-size: 0.8rem; padding: 0.5em 1em; border-radius: 30px;">
+                                    ${event.category}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column" style="padding: 1.5rem; background: linear-gradient(135deg, #ffffff 0%, #e6f2ff 100%);">
+                            <h5 class="card-title" style="color: #2c3e50; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;">
+                                ${event.title}
+                            </h5>
+                            <p class="card-text" style="color: #34495e; font-size: 0.95rem; line-height: 1.6; flex-grow: 1;">
+                                ${event.description}
                             </p>
-                            <div class="d-flex gap-2">
-                                <a href="/Event/${event.id}" class="btn btn-outline-primary">
-                                    <i class="bi bi-info-circle"></i> 詳細
-                                </a>
-                                <button onclick="addToCart(${JSON.stringify(event)})" class="btn btn-primary">
-                                    <i class="bi bi-cart-plus"></i> カートに追加
-                                </button>
+                            <div class="mt-3">
+                                <p class="mb-2" style="display: flex; align-items: center; gap: 8px;">
+                                    <i class="bi bi-calendar me-2" style="color: #4B8EC8;"></i>
+                                    <span style="color: #2c3e50; font-weight: 600;">開催期間:</span>
+                                    <span style="color: #34495e; font-weight: 500;">
+                                        ${event.date || `${event.start_date} ～ ${event.end_date}`}
+                                    </span>
+                                </p>
+                                <p class="mb-3" style="display: flex; align-items: center; gap: 8px;">
+                                    <i class="bi bi-geo-alt me-2" style="color: #4B8EC8;"></i>
+                                    <span style="color: #34495e; font-weight: 500;">${event.location}</span>
+                                </p>
+                                <div class="d-flex gap-2 mt-auto">
+                                    <a href="/Event/${event.id}"
+                                       class="btn btn-outline-primary flex-grow-1"
+                                       style="border-radius: 30px; padding: 8px 20px; font-weight: 600; border-color: #4B8EC8; color: #4B8EC8; transition: all 0.3s ease;">
+                                        <i class="bi bi-info-circle me-1"></i> 詳細を見る
+                                    </a>
+                                    <button onclick="addToCart(${JSON.stringify(event)})"
+                                            class="btn btn-primary flex-grow-1"
+                                            style="border-radius: 30px;
+                                                   padding: 8px 20px;
+                                                   font-weight: 600;
+                                                   background-color: #FF5733 !important;  /* 新しい背景色 */
+                                                   border: none;
+                                                   color: white !important;
+                                                   transition: all 0.3s ease;">
+                                        <i class="bi bi-cart-plus me-1"></i> カートに追加
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

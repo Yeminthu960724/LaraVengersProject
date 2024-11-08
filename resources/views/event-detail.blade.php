@@ -6,64 +6,70 @@
     <title>{{ $event['title'] }} - イベント詳細</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{{ asset('css/event.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <style>
         body {
-            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
             color: white;
             min-height: 100vh;
         }
 
-        .container {
-            padding-top: 2rem;
+        main {
+            padding-top: 100px;
+            padding-bottom: 50px;
         }
 
-        /* パンくずリスト */
-        .breadcrumb {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-
-        .breadcrumb-item a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-        }
-
-        .breadcrumb-item.active {
-            color: white;
-        }
-
-        /* イベント詳細カード */
-        .event-detail {
-            background-color: rgba(255, 255, 255, 0.1);
+        /* コンテンツカード */
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.6s ease forwards;
         }
 
-        .event-detail img {
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        /* タイトルスタイル */
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            color: #1B4B8F;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        .event-detail h1 {
-            color: white;
-            margin-bottom: 1rem;
-        }
-
+        /* イベント情報 */
         .event-info {
-            color: rgba(255, 255, 255, 0.9);
+            color: #555;
+            line-height: 1.8;
         }
 
         .event-info i {
-            color: rgba(255, 255, 255, 0.8);
+            color: #1B4B8F;
+        }
+
+        .event-info p {
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .event-description {
+            color: #555;
+        }
+
+        .event-description h2 {
+            color: #1B4B8F;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .event-description p {
-            color: rgba(255, 255, 255, 0.9) !important;
+            color: #555 !important;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
 
         /* ステータスバッジ */
@@ -73,130 +79,150 @@
             border-radius: 20px;
             font-size: 0.9rem;
             margin-bottom: 1rem;
-            background-color: rgba(255, 255, 255, 0.2);
         }
 
         /* ボタン */
-        .btn-outline-primary {
-            color: white;
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .btn-outline-primary:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: white;
-            color: white;
-        }
-
         .btn-primary {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: #1B4B8F;
             border: none;
             color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(27, 75, 143, 0.2);
         }
 
         .btn-primary:hover {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: #154178;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(27, 75, 143, 0.3);
         }
 
         .btn-outline-secondary {
-            color: rgba(255, 255, 255, 0.9);
-            border-color: rgba(255, 255, 255, 0.3);
+            color: #555;
+            border-color: #555;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .btn-outline-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            border-color: white;
+            background-color: #f8f9fa;
+            color: #1B4B8F;
+            border-color: #1B4B8F;
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* モーダル */
         .modal-content {
-            background-color: #1a237e;
-            color: white;
+            background: white;
+            border-radius: 15px;
         }
 
         .modal-header {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: none;
+            padding: 20px 30px;
+        }
+
+        .modal-body {
+            padding: 20px 30px;
+            color: #333;
         }
 
         .modal-footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: none;
+            padding: 20px 30px;
         }
 
-        .btn-close {
-            filter: invert(1) grayscale(100%) brightness(200%);
+        .btn-map {
+            color: #1B4B8F;
+            border-color: #1B4B8F;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
 
-        .text-muted {
-            color: rgba(255, 255, 255, 0.7) !important;
+        .btn-map:hover {
+            background-color: #1B4B8F;
+            color: white;
         }
     </style>
 </head>
 <body>
     <header id="header"></header>
 
-    <main class="container py-4">
-        <nav aria-label="breadcrumb" class="mb-4">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/Event">イベント一覧</a></li>
-                <li class="breadcrumb-item active">{{ $event['title'] }}</li>
-            </ol>
-        </nav>
-
-        <div class="event-detail">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="{{ $event['image_url'] }}" alt="{{ $event['title'] }}"
-                        class="img-fluid rounded shadow-sm mb-4" style="width: 100%; height: 300px; object-fit: cover;">
-                </div>
-                <div class="col-md-6">
-                    <h1 class="mb-3">{{ $event['title'] }}</h1>
-
-                    <div class="status-badge mb-3
-                        @if($event['status'] === '開催予定') bg-info
-                        @elseif($event['status'] === '開催中') bg-success
-                        @else bg-secondary
-                        @endif text-white px-3 py-1 rounded-pill d-inline-block">
-                        {{ $event['status'] }}
+    <main>
+        <div class="container">
+            <div class="content-card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="{{ $event['image_url'] }}" alt="{{ $event['title'] }}"
+                            class="img-fluid rounded shadow-sm mb-4" style="width: 100%; height: 300px; object-fit: cover;">
                     </div>
+                    <div class="col-md-6">
+                        <h1>{{ $event['title'] }}</h1>
 
-                    <div class="event-info">
-                        <p class="mb-3">
-                            <i class="bi bi-calendar-event me-2"></i>
-                            開催期間：{{ \Carbon\Carbon::parse($event['start_date'])->format('Y年m月d日') }}
-                            @if($event['start_date'] !== $event['end_date'])
-                                ～ {{ \Carbon\Carbon::parse($event['end_date'])->format('Y年m月d日') }}
-                            @endif
-                        </p>
+                        <div class="status-badge
+                            @if($event['status'] === '開催予定') bg-info
+                            @elseif($event['status'] === '開催中') bg-success
+                            @else bg-secondary
+                            @endif text-white">
+                            {{ $event['status'] }}
+                        </div>
 
-                        <p class="mb-3">
-                            <i class="bi bi-geo-alt me-2"></i>
-                            開催場所：{{ $event['location'] }}
-                            <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($event['location']) }}"
-                            class="btn btn-sm btn-outline-primary ms-2"
-                            target="_blank">
-                                <i class="bi bi-map"></i> 地図を見る
+                        <div class="event-info">
+                            <p>
+                                <i class="bi bi-calendar-event me-2"></i>
+                                開催期間：{{ \Carbon\Carbon::parse($event['start_date'])->format('Y年m月d日') }}
+                                @if($event['start_date'] !== $event['end_date'])
+                                    ～ {{ \Carbon\Carbon::parse($event['end_date'])->format('Y年m月d日') }}
+                                @endif
+                            </p>
+
+                            <p>
+                                <i class="bi bi-geo-alt me-2"></i>
+                                開催場所：{{ $event['location'] }}
+                                <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($event['location']) }}"
+                                class="btn btn-map btn-sm btn-outline-primary ms-2"
+                                target="_blank">
+                                    <i class="bi bi-map"></i> 地図を見る
+                                </a>
+                            </p>
+
+                            <p>
+                                <i class="bi bi-tag me-2"></i>
+                                カテゴリー：{{ $event['category'] }}
+                            </p>
+                        </div>
+
+                        <div class="event-description mt-4">
+                            <h2>イベント詳細</h2>
+                            <p>{{ $event['description'] }}</p>
+                        </div>
+
+                        <div class="mt-4 d-flex gap-3">
+                            <button onclick="addToCart({{ json_encode($event) }})" class="btn btn-primary">
+                                <i class="bi bi-cart-plus me-2"></i>カートに追加
+                            </button>
+                            <a href="/Event" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>イベント一覧に戻る
                             </a>
-                        </p>
-
-                        <p class="mb-3">
-                            <i class="bi bi-tag me-2"></i>
-                            カテゴリー：{{ $event['category'] }}
-                        </p>
-                    </div>
-
-                    <div class="event-description mt-4">
-                        <h2 class="h5 mb-3">イベント詳細</h2>
-                        <p class="text-muted">{{ $event['description'] }}</p>
-                    </div>
-
-                    <div class="mt-4 d-flex gap-3">
-                        <button onclick="addToCart({{ json_encode($event) }})" class="btn btn-primary">
-                            <i class="bi bi-cart-plus me-2"></i>カートに追加
-                        </button>
-                        <a href="/Event" class="btn btn-outline-secondary">
-                            <i class="bi bi-arrow-left me-2"></i>イベント一覧に戻る
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>

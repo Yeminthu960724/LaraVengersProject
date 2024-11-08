@@ -39,6 +39,7 @@ Route::get('/password/reset',[ForgotPasswordController::class, 'showLinkRequestF
 Route::get('/Event', [EventController::class, 'index']);
 Route::get('/api/events', [EventController::class, 'getEvents']);
 Route::get('/Event/{id}', [EventController::class, 'detail'])->name('events.detail');
+Route::get('/placeDetail/{id}', [PlaceDetailController::class, 'show'])->name('placeDetail');
 
 
 
