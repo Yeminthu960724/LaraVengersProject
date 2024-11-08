@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\DB;
 class PlaceController extends Controller
 {
     public function index(){
-        $post = DB::table('places')->paginate(12);
+        $post = DB::table('places')->get();
+
         return view('place', compact('post'));
     }
+
 }
