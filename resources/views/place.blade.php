@@ -133,7 +133,7 @@
                 <!-- Cards -->
                 <div class="col-md-9">
                     <div class="row row-cols-1 row-cols-md-3 g-4" style="min-height: calc(100vh - 280px);">
-                        @foreach ($post->take(12) as $place)
+                        @foreach ($post as $place)
                         <div class="col">
                             <div class="card h-100"
                                  data-category="{{ $place->category ?? '動物園' }}"
@@ -162,33 +162,6 @@
                             </div>
                         </div>
                         @endforeach
-
-                        <!-- 12枚目のカードを追加 -->
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="https://prd-static.gltjp.com/glt/data/article/21000/20382/20230824_130026_34f0e5b2_w1920.webp"
-                                     class="card-img-top"
-                                     style="height: 200px; object-fit: cover; width: 100%;"
-                                     alt="追加の観光地">
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title" style="font-size: 1.2rem; margin-bottom: 0.75rem;">大阪城</h5>
-                                    <div class="d-flex gap-2 mt-auto">
-                                        <a href="/PlaceDetail" class="btn btn-outline-primary btn-sm" style="z-index: 1;">詳細</a>
-                                        <button onclick="addToCart({
-                                            id: '大阪城',
-                                            title: '大阪城',
-                                            description: '大阪のシンボル的存在である大阪城。豊臣秀吉によて築城され、現在は歴史と文の観光名所として人気を集めています。',
-                                            image_url: 'https://prd-static.gltjp.com/glt/data/article/21000/20382/20230824_130026_34f0e5b2_w1920.webp',
-                                            location: '大阪',
-                                            category: '観光施設',
-                                            type: 'place'
-                                        })" class="btn btn-primary btn-sm" style="z-index: 1;">
-                                            <i class="bi bi-cart-plus"></i> カートに追加
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -289,6 +262,8 @@
         .col:nth-child(10) .card { animation-delay: 1.0s; }
         .col:nth-child(11) .card { animation-delay: 1.1s; }
         .col:nth-child(12) .card { animation-delay: 1.2s; }
+        .col:nth-child(13) .card { animation-delay: 1.2s; }
+        .col:nth-child(14) .card { animation-delay: 1.2s; }
 
         /* ボタンのスタイル改善 */
         .btn-outline-primary {
