@@ -63,7 +63,7 @@
                 <p>{{$place_detail->openningHours}}</p>
                 <a href="{{$place_detail->websiteLink}}">公式サイト：{{$place_detail->websiteLink}}</a>
             </div>
-               <p> {{$place_detail->googleMapLink}}</p>
+            <iframe src="{{$place_detail->googleMapLink}}"width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>>
             <button>カードに入れる</button>
         </div>
     </main>
