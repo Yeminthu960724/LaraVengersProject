@@ -2,19 +2,19 @@
         function addToCart(event) {
             // イベントの詳細情報を追加
             event.details = {
-                start_date: '{{ $event['start_date'] }}',
-                end_date: '{{ $event['end_date'] }}',
-                status: '{{ $event['status'] }}',
-                location: '{{ $event['location'] }}',
-                category: '{{ $event['category'] }}',
-                description: '{{ $event['description'] }}',
-                access_info: '最寄り駅からのアクセス情報',
-                price: '入場料や参加費用の情報',
-                organizer: 'イベント主催者情報',
-                contact: '連絡先情報',
-                website: 'イベントの公式サイトURL'
+                start_date: event.start_date,
+                end_date: event.end_date,
+                status: event.status || '開催予定',  // デフォルトステータスを設定
+                location: event.location,
+                category: event.category,
+                description: event.description,
+                access_info: event.access_info || '最寄り駅からのアクセス情報',
+                price: event.price || 0,
+                organizer: event.organizer || 'イベント主催者情報',
+                contact: event.contact || '連絡先情報',
+                website: event.website || 'イベントの公式サイトURL'
             };
-            event.type = 'event';  // イベントタイプを明示
+            event.type = 'event';
 
             // 現在のカートの内容を取得
             let cart = JSON.parse(localStorage.getItem('cart') || '[]');

@@ -54,6 +54,18 @@
                                 <i class="bi bi-tag me-2"></i>
                                 カテゴリー：{{ $event['category'] }}
                             </p>
+
+                            <p>
+                                <i class="bi bi-cash me-2"></i>
+                                料金：{{ $event['price'] === 0 ? '無料' : number_format($event['price']) . '円' }}
+                            </p>
+
+                            @if(isset($event['access']))
+                            <p>
+                                <i class="bi bi-train-front me-2"></i>
+                                アクセス：{{ $event['access'] }}
+                            </p>
+                            @endif
                         </div>
 
                         <div class="event-description mt-4">

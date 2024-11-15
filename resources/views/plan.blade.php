@@ -36,7 +36,7 @@
                         <div class="card-body">
                             <h5 class="card-title">ミンのプラン</h5>
                             <p class="card-text">大阪一日遊び</p>
-                            <a href="PlanDetail" class="btn btn-primary">詳細</a>
+                            <a href="PlanDetail/osaka" class="btn btn-primary">詳細</a>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                         <div class="card-body">
                             <h5 class="card-title">サンのプラン</h5>
                             <p class="card-text">神戸一日遊び</p>
-                            <a href="PlanDetail" class="btn btn-primary">詳細</a>
+                            <a href="PlanDetail/kobe" class="btn btn-primary">詳細</a>
                         </div>
                     </div>
                 </div>
