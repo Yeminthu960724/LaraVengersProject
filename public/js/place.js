@@ -1,3 +1,31 @@
+document.getElementById('filterButton').addEventListener('click', () => {
+    // Get selected areas and characteristics
+    const selectedLocations = Array.from(document.querySelectorAll('input[name="location"]:checked'))
+        .map(checkbox => checkbox.value);
+    const selectedCharacteristics = Array.from(document.querySelectorAll('input[name="characteristics"]:checked'))
+        .map(checkbox => checkbox.value);
+
+    // Filter places
+    document.querySelectorAll('#posts .col').forEach(card => {
+        const location = card.dataset.location;
+        const characteristics = card.dataset.characteristics.split(',');
+
+        // Check if the place matches selected filters
+        const matchesLocation = selectedLocations.length === 0 || selectedLocations.includes(location);
+        const matchesCharacteristic = selectedCharacteristics.length === 0 ||
+            selectedCharacteristics.some(selected => characteristics.includes(selected));
+
+        // Toggle visibility based on filter match
+        if (matchesLocation && matchesCharacteristic) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+});
+
+
+
 function addToCart(place) {
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
     cart.push(place);
