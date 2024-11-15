@@ -10,6 +10,10 @@ use App\Http\Controllers\PlanDetailController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ProfileController;
+
+use App\Http\Controllers\AuthController;
+
 
 
 /*
@@ -24,11 +28,11 @@ use App\Http\Controllers\EventController;
 */
 
 
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('', [HomeController::class, 'index']);
-// Route::get('/Place', [PlaceController::class, 'index']);
-Route::get('/Place', [PlaceController::class, 'index'])->name('Place');
+Route::resource('Place', PlaceController::class);
 Route::get('/PlaceDetail', [PlaceDetailController::class, 'index']);
 Route::get('/Cart', [CartController::class, 'index'])->name('cart.index');
 Route::get('/Plan', [PlanController::class, 'index']);
@@ -40,9 +44,6 @@ Route::get('/Event', [EventController::class, 'index']);
 Route::get('/api/events', [EventController::class, 'getEvents']);
 Route::get('/Event/{id}', [EventController::class, 'detail'])->name('events.detail');
 Route::get('/placeDetail/{id}', [PlaceDetailController::class, 'show'])->name('placeDetail');
-
-
-
 
 
 

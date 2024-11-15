@@ -39,129 +39,54 @@
                 <!-- Sidebar -->
                 <div class="col-md-3">
                     <aside class="filter-sidebar">
-                        <div class="filter-content-wrapper">
-                            <h3 class="filter-title">
-                                <i class="bi bi-funnel-fill me-2"></i>
-                                絞り込み検索
-                            </h3>
-
-                            <div class="filter-sections-container">
-                                <!-- カテゴリーセクション -->
-                                <div class="filter-section">
-                                    <div class="filter-header">
-                                        <h4>
-                                            <i class="bi bi-grid me-2"></i>
-                                            カテゴリー
-                                        </h4>
-                                    </div>
-                                    <div class="filter-content">
-                                        <div class="filter-options">
-                                            <div class="filter-item">
-                                                <label class="filter-label">
-                                                    <input type="checkbox" class="filter-checkbox">
-                                                    <span class="checkmark"></span>
-                                                    <span class="label-text">動物園</span>
-                                                    <span class="count">12</span>
-                                                </label>
-                                            </div>
-                                            <div class="filter-item">
-                                                <label class="filter-label">
-                                                    <input type="checkbox" class="filter-checkbox">
-                                                    <span class="checkmark"></span>
-                                                    <span class="label-text">公園</span>
-                                                    <span class="count">8</span>
-                                                </label>
-                                            </div>
-                                            <div class="filter-item">
-                                                <label class="filter-label">
-                                                    <input type="checkbox" class="filter-checkbox">
-                                                    <span class="checkmark"></span>
-                                                    <span class="label-text">美術館</span>
-                                                    <span class="count">15</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- エリアセクション -->
-                                <div class="filter-section">
-                                    <div class="filter-header">
-                                        <h4>
-                                            <i class="bi bi-geo-alt me-2"></i>
-                                            エリア
-                                        </h4>
-                                    </div>
-                                    <div class="filter-content">
-                                        <div class="filter-options">
-                                            <div class="filter-item">
-                                                <label class="filter-label">
-                                                    <input type="checkbox" class="filter-checkbox">
-                                                    <span class="checkmark"></span>
-                                                    <span class="label-text">大阪</span>
-                                                    <span class="count">20</span>
-                                                </label>
-                                            </div>
-                                            <div class="filter-item">
-                                                <label class="filter-label">
-                                                    <input type="checkbox" class="filter-checkbox">
-                                                    <span class="checkmark"></span>
-                                                    <span class="label-text">京都</span>
-                                                    <span class="count">15</span>
-                                                </label>
-                                            </div>
-                                            <div class="filter-item">
-                                                <label class="filter-label">
-                                                    <input type="checkbox" class="filter-checkbox">
-                                                    <span class="checkmark"></span>
-                                                    <span class="label-text">神戸</span>
-                                                    <span class="count">10</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <h3>絞り込み検索</h3>
+                        <form>
+                            <div>
+                                <h4>カテゴリー</h4>
+                                <label><input type="checkbox" name="characteristics" value="お寺"> お寺</label><br>
+                                <label><input type="checkbox" name="characteristics" value="買い物"> 買い物</label><br>
+                                <label><input type="checkbox" name="characteristics" value="自然"> 自然</label><br>
+                                <label><input type="checkbox" name="characteristics" value="風景"> 風景</label><br>
+                                <label><input type="checkbox" name="characteristics" value="建築"> 建築</label><br>
+                                <label><input type="checkbox" name="characteristics" value="公園"> 公園</label><br>
+                                <label><input type="checkbox" name="characteristics" value="植物園"> 植物園</label><br>
+                                <label><input type="checkbox" name="characteristics" value="水族館"> 水族館</label><br>
+                                <label><input type="checkbox" name="characteristics" value="動物園"> 動物園</label><br>
+                                <label><input type="checkbox" name="characteristics" value="博物館"> 博物館</label><br>
+                                <label><input type="checkbox" name="characteristics" value="美術館"> 美術館</label><br>
+                                <label><input type="checkbox" name="characteristics" value="遊園地"> 遊園地</label><br>
                             </div>
-
-                            <button class="search-btn">
-                                <i class="bi bi-search me-2"></i>
-                                検索する
-                            </button>
-                        </div>
+                            <div>
+                                <h4>エリア</h4>
+                                <label><input type="checkbox" name="location " value="大阪府"> 大阪府</label><br>
+                                <label><input type="checkbox" name="location " value="京都府"> 京都府</label><br>
+                                <label><input type="checkbox" name="location " value="神戶市"> 神戶市</label><br>
+                                <label><input type="checkbox" name="location " value="奈良県"> 奈良県</label><br>
+                                <label><input type="checkbox" name="location " value="滋賀県"> 滋賀県</label><br>
+                                <label><input type="checkbox" name="location " value="姫路市"> 姫路市</label><br>
+                            </div>
+                            <button type="button" id="filterButton">絞り込み</button>
+                        </form>
                     </aside>
                 </div>
 
                 <!-- Cards -->
                 <div class="col-md-9">
-                    <div class="row row-cols-1 row-cols-md-3 g-4" style="min-height: calc(100vh - 280px);">
-                        @foreach ($post as $place)
-                        <div class="col">
-                            <div class="card h-100"
-                                 data-category="{{ $place->category ?? '動物園' }}"
-                                 data-area="{{ $place->area ?? '大阪' }}">
-                                <img src="https://prd-static.gltjp.com/glt/data/article/21000/20382/20230824_130026_34f0e5b2_w1920.webp"
-                                     class="card-img-top"
-                                     style="height: 200px; object-fit: cover; width: 100%;"
-                                     alt="{{$place->placeName}}">
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title" style="font-size: 1.2rem; margin-bottom: 0.75rem;">{{$place->placeName}}</h5>
-                                    <div class="d-flex gap-2 mt-auto">
-                                        <a href="/PlaceDetail" class="btn btn-outline-primary btn-sm" style="z-index: 1;">詳細</a>
-                                        <button onclick="addToCart({
-                                            id: '{{$place->placeName}}',
-                                            title: '{{$place->placeName}}',
-                                            description: '{{$place->shortDetail}}',
-                                            image_url: 'https://prd-static.gltjp.com/glt/data/article/21000/20382/20230824_130026_34f0e5b2_w1920.webp',
-                                            location: '大阪',
-                                            category: '観光施設',
-                                            type: 'place'
-                                        })" class="btn btn-primary btn-sm" style="z-index: 1;">
-                                            <i class="bi bi-cart-plus"></i> カートに追加
-                                        </button>
+                    <div class="row row-cols-1 row-cols-md-3 g-4" id="posts">
+                        @foreach ($places as $place)
+                            <div class="col" data-location ="{{ $place->location }}" data-characteristics="{{ $place->characteristics }}">
+                                <div class="card">
+                                    <a href="/PlaceDetail">
+                                        <img src="{{$place->im1}}" class="card-img-top card-img-fixed" alt="">
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $place->placeName }}</h5>
+                                        <p class="card-text">{{ $place->shortDetail }}</p>
+                                        <a href="{{ route('Place.show', $place->placeNumber) }}" class="btn btn-primary">詳細</a>
+                                        <a href="#" class="btn btn-primary">カードに入れる</a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
