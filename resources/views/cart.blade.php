@@ -20,6 +20,7 @@
         <ul id="ulSetection"></ul>
     </nav>
 
+
     <!-- Main Content Section -->
     <main>
         <div class="container py-4">
@@ -42,6 +43,22 @@
             </div>
         </div>
     </main>
+
+        <!-- イベント情報を表示するセクション -->
+        <div class="mb-4">
+            <h2 class="h4 mb-3">追加したイベント</h2>
+            <div id="cartEvents" class="accordion mb-4">
+
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button id="createPlanButton" class="btn btn-primary btn-lg">
+                <i class="bi bi-calendar-check"></i> プランを生成する
+            </button>
+        </div>
+    </div>
+
 
     <footer id="footer"></footer>
 
