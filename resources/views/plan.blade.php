@@ -34,9 +34,15 @@
                         <img src="https://prd-static.gltjp.com/glt/data/article/21000/20382/20230824_130026_34f0e5b2_w1920.webp"
                             class="card-img-top card-img-fixed card-img-fixed" alt="">
                         <div class="card-body">
-                            <h5 class="card-title">ミンのプラン</h5>
-                            <p class="card-text">大阪一日遊び</p>
-                            <a href="PlanDetail/osaka" class="btn btn-primary">詳細</a>
+                            <h5 class="card-title">大阪のプラン</h5>
+                            <p class="card-text">
+                                <i class="bi bi-clock me-2"></i>所要時間: 1日
+                            </p>
+                            <p class="card-text">
+                                <i class="bi bi-geo-alt me-2"></i>エリア: 大阪市内
+                            </p>
+                            <p class="card-text">大阪城、道頓堀、心斎橋など、大阪の定番スポットを巡る充実の1日コース</p>
+                            <a href="/PlanDetail/osaka" class="btn btn-primary">詳細</a>
                         </div>
                     </div>
                 </div>
@@ -46,9 +52,15 @@
                         <img src="https://img.rurubu.jp/img_srw/andmore/images/0000470187/bOrNpVYpgqcmW22RtTfJGdOpfahZ53skyj05kdFR.jpg"
                             class="card-img-top card-img-fixed" alt="">
                         <div class="card-body">
-                            <h5 class="card-title">サンのプラン</h5>
-                            <p class="card-text">神戸一日遊び</p>
-                            <a href="PlanDetail/kobe" class="btn btn-primary">詳細</a>
+                            <h5 class="card-title">神戸のプラン</h5>
+                            <p class="card-text">
+                                <i class="bi bi-clock me-2"></i>所要時間: 1日
+                            </p>
+                            <p class="card-text">
+                                <i class="bi bi-geo-alt me-2"></i>エリア: 神戸市内
+                            </p>
+                            <p class="card-text">異国情緒あふれる港町・神戸を満喫する、グルメ＆観光の1日コース</p>
+                            <a href="/PlanDetail/kobe" class="btn btn-primary">詳細</a>
                         </div>
                     </div>
                 </div>
@@ -57,9 +69,15 @@
                         <img src="https://img.rurubu.jp/img_srw/andmore/images/0000470187/bOrNpVYpgqcmW22RtTfJGdOpfahZ53skyj05kdFR.jpg"
                             class="card-img-top card-img-fixed" alt="">
                         <div class="card-body">
-                            <h5 class="card-title">タムのプラン</h5>
-                            <p class="card-text">京都一日遊び</p>
-                            <a href="PlanDetail" class="btn btn-primary">詳細</a>
+                            <h5 class="card-title">京都のプラン</h5>
+                            <p class="card-text">
+                                <i class="bi bi-clock me-2"></i>所要時間: 1日
+                            </p>
+                            <p class="card-text">
+                                <i class="bi bi-geo-alt me-2"></i>エリア: 京都市内
+                            </p>
+                            <p class="card-text">金閣寺、清水寺など、京都の名所を効率よく巡る1日コース</p>
+                            <a href="/PlanDetail/kyoto" class="btn btn-primary">詳細</a>
                         </div>
                     </div>
                 </div>
@@ -68,16 +86,110 @@
                         <img src="https://img.rurubu.jp/img_srw/andmore/images/0000470187/bOrNpVYpgqcmW22RtTfJGdOpfahZ53skyj05kdFR.jpg"
                             class="card-img-top card-img-fixed" alt="">
                         <div class="card-body">
-                            <h5 class="card-title">ホイのプラン</h5>
-                            <p class="card-text">奈良一日遊び</p>
-                            <a href="PlanDetail" class="btn btn-primary">詳細</a>
+                            <h5 class="card-title">奈良のプラン</h5>
+                            <p class="card-text">
+                                <i class="bi bi-clock me-2"></i>所要時間: 1日
+                            </p>
+                            <p class="card-text">
+                                <i class="bi bi-geo-alt me-2"></i>エリア: 奈良市内
+                            </p>
+                            <p class="card-text">東大寺、奈良公園など、世界遺産と鹿に出会える1日コース</p>
+                            <a href="/PlanDetail/nara" class="btn btn-primary">詳細</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <img src="https://img.rurubu.jp/img_srw/andmore/images/0000470187/bOrNpVYpgqcmW22RtTfJGdOpfahZ53skyj05kdFR.jpg"
+                            class="card-img-top card-img-fixed" alt="京都寺院巡り">
+                        <div class="card-body">
+                            <h5 class="card-title">京都寺社仏閣巡り</h5>
+                            <p class="card-text">
+                                <i class="bi bi-clock me-2"></i>所要時間: 2日
+                            </p>
+                            <p class="card-text">
+                                <i class="bi bi-geo-alt me-2"></i>エリア: 京都市内
+                            </p>
+                            <p class="card-text">金閣寺、清水寺、伏見稲荷など、京都の名刹を巡る2日間コース</p>
+                            <a href="/PlanDetail/kyoto-temples" class="btn btn-primary">詳細</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <img src="https://img.rurubu.jp/img_srw/andmore/images/0000470187/bOrNpVYpgqcmW22RtTfJGdOpfahZ53skyj05kdFR.jpg"
+                            class="card-img-top card-img-fixed" alt="関西グルメ">
+                        <div class="card-body">
+                            <h5 class="card-title">関西グルメツアー</h5>
+                            <p class="card-text">
+                                <i class="bi bi-clock me-2"></i>所要時間: 1日
+                            </p>
+                            <p class="card-text">
+                                <i class="bi bi-geo-alt me-2"></i>エリア: 大阪・京都
+                            </p>
+                            <p class="card-text">たこ焼き、お好み焼き、京料理など、関西の味覚を堪能する食べ歩きプラン</p>
+                            <a href="/PlanDetail/food-tour" class="btn btn-primary">詳細</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <img src="https://img.rurubu.jp/img_srw/andmore/images/0000470187/bOrNpVYpgqcmW22RtTfJGdOpfahZ53skyj05kdFR.jpg"
+                            class="card-img-top card-img-fixed" alt="USJ">
+                        <div class="card-body">
+                            <h5 class="card-title">USJファミリープラン</h5>
+                            <p class="card-text">
+                                <i class="bi bi-clock me-2"></i>所要時間: 1-2日
+                            </p>
+                            <p class="card-text">
+                                <i class="bi bi-geo-alt me-2"></i>エリア: 大阪・USJ
+                            </p>
+                            <p class="card-text">ユニバーサル・スタジオ・ジャパンを満喫する家族向けプラン</p>
+                            <a href="/PlanDetail/usj" class="btn btn-primary">詳細</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <img src="https://img.rurubu.jp/img_srw/andmore/images/0000470187/bOrNpVYpgqcmW22RtTfJGdOpfahZ53skyj05kdFR.jpg"
+                            class="card-img-top card-img-fixed" alt="アクセス">
+                        <div class="card-body">
+                            <h5 class="card-title">関西周遊プラン</h5>
+                            <p class="card-text">
+                                <i class="bi bi-clock me-2"></i>所要時間: 3日
+                            </p>
+                            <p class="card-text">
+                                <i class="bi bi-geo-alt me-2"></i>エリア: 関西全域
+                            </p>
+                            <p class="card-text">大阪、京都、神戸を効率よく巡る3日間の周遊プラン</p>
+                            <a href="/PlanDetail/kansai-tour" class="btn btn-primary">詳細</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <img src="https://img.rurubu.jp/img_srw/andmore/images/0000470187/bOrNpVYpgqcmW22RtTfJGdOpfahZ53skyj05kdFR.jpg"
+                            class="card-img-top card-img-fixed" alt="桜">
+                        <div class="card-body">
+                            <h5 class="card-title">春の桜巡りプラン</h5>
+                            <p class="card-text">
+                                <i class="bi bi-clock me-2"></i>所要時間: 1日
+                            </p>
+                            <p class="card-text">
+                                <i class="bi bi-geo-alt me-2"></i>エリア: 京都・奈良
+                            </p>
+                            <p class="card-text">関西の有名な桜の名所を巡る春限定のプラン</p>
+                            <a href="/PlanDetail/sakura" class="btn btn-primary">詳細</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-
     </main>
 
     <footer id="footer"></footer>

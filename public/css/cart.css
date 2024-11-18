@@ -1,0 +1,229 @@
+body {
+    background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
+    color: white;
+    min-height: 100vh;
+}
+
+main {
+    padding-top: 80px;
+}
+
+/* タイトルスタイル */
+h2 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #ffffff, #e0e0e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* アコーディオンのスタイル */
+.accordion-item {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+/* アコーディオンボタンのスタイル */
+.accordion-button {
+    background-color: #1B4B8F !important;  /* 背景色を濃い青に */
+    color: white !important;  /* テキストを白に */
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #1B4B8F !important;
+    color: white !important;
+}
+
+/* アコーディオンヘッダー内の要素のスタイル */
+.accordion-button h5 {
+    color: white !important;  /* タイトルを白に */
+    font-weight: 600;
+}
+
+.accordion-button small {
+    color: rgba(255, 255, 255, 0.8) !important;  /* 小さいテキストを薄い白に */
+}
+
+.accordion-button i {
+    color: white !important;  /* アイコンを白に */
+}
+
+/* バッジのスタイル */
+.accordion-button .badge {
+    background-color: rgba(255, 255, 255, 0.2) !important;  /* バッジの背景を半透明白に */
+    color: white !important;
+    font-weight: 500;
+}
+
+/* アコーディオンの展開アイコンを白に */
+.accordion-button::after {
+    filter: brightness(0) invert(1);  /* アイコンを白に */
+}
+
+/* アコーディオン本文のスタイル */
+.accordion-body {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* カード内のテキストカラー */
+.accordion-body p {
+    color: #333;
+}
+
+.accordion-body .text-muted {
+    color: #666 !important;
+}
+
+.accordion-body h5 {
+    color: #1B4B8F;
+    font-weight: 600;
+}
+
+.accordion-body h6 {
+    color: #1B4B8F;
+    font-weight: 600;
+}
+
+/* フォームラベルの色 */
+.form-label {
+    color: #333;
+}
+
+/* 基本情報セクション */
+.accordion-body h6 {
+    color: #1B4B8F;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* フォームラベルとセレクト */
+.form-label {
+    color: #333;
+    font-weight: 500;
+}
+
+.form-select {
+    color: #333;
+    background-color: white;
+}
+
+/* バッジのスタイル */
+.badge {
+    font-weight: 500;
+}
+
+.badge.bg-info {
+    background-color: #1B4B8F !important;
+    color: white;
+}
+
+/* 削除ボタン */
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+    color: white;
+    background-color: #dc3545;
+}
+
+/* ボタンのスタイル */
+.btn-primary {
+    background-color: #1B4B8F;
+    border: none;
+    transition: all 0.3s ease;
+    padding: 0.5rem 2rem;
+}
+
+.btn-primary:hover {
+    background-color: #154178;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(27, 75, 143, 0.3);
+}
+
+/* サブタイトルのスタイル */
+h3 {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* フォーム要素のスタイル */
+.form-select {
+    border-radius: 8px;
+    border: 1px solid rgba(27, 75, 143, 0.2);
+}
+
+.form-label {
+    color: #333;
+    font-weight: 500;
+}
+
+/* カード内の小さいテキスト */
+.text-muted {
+    color: #666 !important;
+}
+
+/* 基本情報のテキスト */
+.details-info p {
+    color: #333;
+}
+
+/* 見出し */
+h6 {
+    color: #1B4B8F;
+    font-weight: 600;
+}
+
+/* カートが空の時のメッセージスタイル */
+#cartEvents .text-white {
+    color: white !important;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+/* サブタイトルのスタイル */
+h3.h4 {
+    color: white !important;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* アコーディオンヘッダーのスタイル */
+.accordion-header h5 {
+    color: #1B4B8F !important;  /* タイトルを濃い青に */
+    font-weight: 600;
+}
+
+.accordion-header small {
+    color: #666 !important;  /* 小さいテキストを濃いグレーに */
+}
+
+.accordion-header i {
+    color: #1B4B8F !important;  /* アイコンを濃い青に */
+}
+
+/* バッジのスタイル */
+.accordion-header .badge {
+    color: white !important;  /* バッジのテキストを白に */
+    font-weight: 500;
+}
+
+.accordion-header .badge.bg-info {
+    background-color: #1B4B8F !important;  /* イベントバッジの背景色 */
+}
+
+.accordion-header .badge.bg-success {
+    background-color: #198754 !important;  /* 観光施設バッジの背景色 */
+}

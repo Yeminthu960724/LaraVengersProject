@@ -9,80 +9,8 @@ class EventController extends Controller
 {
     public function index()
     {
-        return view('event');
-    }
-
-    public function getEvents(Request $request)
-    {
-        try {
-            $events = $this->getEventData();
-
-            // キーワード検索
-            if ($request->keyword) {
-                $events = array_filter($events, function($event) use ($request) {
-                    return str_contains(mb_strtolower($event['title']), mb_strtolower($request->keyword)) ||
-                        str_contains(mb_strtolower($event['description']), mb_strtolower($request->keyword));
-                });
-            }
-
-            // エリアでフィルタリング
-            if ($request->area) {
-                $events = array_filter($events, function($event) use ($request) {
-                    $area = mb_strtolower($request->area);
-                    $location = mb_strtolower($event['location']);
-
-                    // エリアごとのキーワードマッピング
-                    $areaKeywords = [
-                        'osaka-city' => ['大阪市'],
-                        'umeda' => ['梅田', '大阪駅'],
-                        'namba' => ['難波', 'なんば'],
-                        'tennoji' => ['天王寺'],
-                        'shin-osaka' => ['新大阪'],
-                        'sakai' => ['堺'],
-                        'kyoto-city' => ['京都市'],
-                        'arashiyama' => ['嵐山'],
-                        'gion' => ['祇園'],
-                        'fushimi' => ['伏見'],
-                        'uji' => ['宇治'],
-                        'sannomiya' => ['三宮'],
-                        'harborland' => ['ハーバーランド'],
-                        'kitano' => ['北野'],
-                        'suma' => ['須磨'],
-                        'rokko' => ['六甲'],
-                        'nara-city' => ['奈良市'],
-                        'todaiji' => ['東大寺'],
-                        'horyuji' => ['法隆寺'],
-                        'yoshino' => ['吉野']
-                    ];
-
-                    if (isset($areaKeywords[$area])) {
-                        foreach ($areaKeywords[$area] as $keyword) {
-                            if (str_contains($location, $keyword)) {
-                                return true;
-                            }
-                        }
-                        return false;
-                    }
-                    return true;
-                });
-            }
-
-            // カテゴリーでフィルタリング
-            if ($request->category) {
-                $events = array_filter($events, function($event) use ($request) {
-                    return $event['category'] === $request->category;
-                });
-            }
-
-            // 結果が空の場合のチェック
-            if (empty($events)) {
-                return response()->json([]);
-            }
-
-            return response()->json(array_values($events));
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'イベント情報の取得に失敗しました'], 500);
-        }
+        $events = $this->getEventData();
+        return view('event', ['events' => $events]);
     }
 
     public function detail($id)
@@ -368,7 +296,7 @@ class EventController extends Controller
             16 => [
                 'id' => 16,
                 'title' => '京都・嵐山花灯路',
-                'description' => '嵐山一帯をLEDの光で彩るライトアップイベント。竹林の道や渡月橋が幻想的な雰囲気に。',
+                'description' => '嵐山一��をLEDの光で彩るライトアップイベント。竹林の道や渡月橋が幻想的な雰囲気に。',
                 'image_url' => $defaultImage,
                 'category' => 'イルミネーション',
                 'start_date' => '2024-12-08',
@@ -409,7 +337,7 @@ class EventController extends Controller
                 'price' => 1800,
                 'status' => '開催予定',
                 'access' => 'JR「須磨駅」から徒歩10分',
-                'organizer' => '神戸イルミナージュ実行委員会',
+                'organizer' => '神戸イルミナージュ実行委員',
                 'contact' => '078-XXX-XXXX',
                 'website' => 'https://www.kobe-illuminage.jp/'
             ],

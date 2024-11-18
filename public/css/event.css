@@ -270,3 +270,50 @@
             font-size: 1rem;
         }
 
+        /* モーダルのスタイル */
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            border: none;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
+            color: white;
+            border-bottom: none;
+        }
+
+        .modal-title {
+            color: white;
+        }
+
+        .modal-body {
+            color: #333;  /* モーダル本文のテキスト色を濃いグレーに */
+        }
+
+        .modal-footer {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        /* カード内のカートアイコンのスタイル */
+        .card .bi-cart-plus {
+            color: white !important;  /* カートアイコンを白に */
+        }
+
+        .btn-primary .bi-cart-plus {
+            color: white !important;  /* カートアイコンを白に */
+        }
+
+        /* カード内のボタンテキストも白に */
+        .btn-primary {
+            color: white !important;
+        }
+
+        .btn-primary:hover {
+            color: white !important;
+        }
+

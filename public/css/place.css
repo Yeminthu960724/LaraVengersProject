@@ -4,9 +4,7 @@ body {
 
 /* Card Container */
 .card {
-    max-width: 650px; /* Adjust the width as desired */
-    max-height: 500px; /* Set the height as needed */
-    margin: 10px auto; /* Center the card horizontally */
+    height: 100%;
     background: rgba(255, 255, 255, 0.95);
     border: none;
     border-radius: 15px;
@@ -23,6 +21,9 @@ body {
 }
 
 .card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     padding: 20px;
 }
 
@@ -695,7 +696,7 @@ h1 {
     align-items: center;
 }
 
-/* ラベルと��ウント */
+/* ラベルとウント */
 .label-text {
     color: rgba(255, 255, 255, 0.9);
     font-size: 0.9rem;
@@ -745,4 +746,9 @@ h1 {
 .row.row-cols-1.row-cols-md-3.g-4 {
     margin-top: 30px;
     /* 絞り込み検索と同じ高さに合わせる */
+}
+
+/* グリッドコンテナの調整 */
+.row-cols-md-3 > * {
+    padding: 15px;    /* カード間の余白 */
 }
