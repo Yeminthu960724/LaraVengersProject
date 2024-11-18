@@ -44,22 +44,6 @@
         </div>
     </main>
 
-        <!-- イベント情報を表示するセクション -->
-        <div class="mb-4">
-            <h2 class="h4 mb-3">追加したイベント</h2>
-            <div id="cartEvents" class="accordion mb-4">
-
-            </div>
-        </div>
-
-        <div class="text-center mt-4">
-            <button id="createPlanButton" class="btn btn-primary btn-lg">
-                <i class="bi bi-calendar-check"></i> プランを生成する
-            </button>
-        </div>
-    </div>
-
-
     <footer id="footer"></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
