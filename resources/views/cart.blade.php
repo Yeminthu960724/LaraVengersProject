@@ -20,7 +20,6 @@
         <ul id="ulSetection"></ul>
     </nav>
 
-<<<<<<< HEAD
         <!-- イベント情報を表示するセクション -->
         <div class="mb-4">
             <h2 class="h4 mb-3">追加したイベント</h2>
@@ -109,7 +108,6 @@
                         <a href="/" class="btn btn-primary">戻る</a>
                     </div>
                 </div>
-=======
 
     <!-- Main Content Section -->
     <main>
@@ -130,20 +128,17 @@
                 <button id="makePlanButton" class="btn btn-primary btn-lg">
                     <i class="bi bi-calendar-check"></i> プランを生成する
                 </button>
->>>>>>> 4e3d84dd07b29ca45fbaa63de5f03ea3fc7c2e4f
             </div>
         </div>
     </main>
 
     <footer id="footer"></footer>
 
-<<<<<<< HEAD
 
-=======
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/common.js') }}"></script>
     <script src="{{ asset('js/cart.js') }}"></script>
->>>>>>> 4e3d84dd07b29ca45fbaa63de5f03ea3fc7c2e4f
+
 </body>
 
 </html>
