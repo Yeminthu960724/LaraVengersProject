@@ -94,9 +94,7 @@
                             @endforeach
                         </div>
                     </div>
-                <div class="pagination-container">
-                    {{ $places->links() }}
-                </div>
+
             </div>
         </div>
     </main>
