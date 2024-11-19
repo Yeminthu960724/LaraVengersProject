@@ -9,7 +9,7 @@ class PlaceController extends Controller
     public function index() {
 
         // Fetch data from the database
-        $places = DB::table('places')->paginate(6);
+        $places = DB::table('places')->get();
 
         foreach ($places as $place) {
             $place->im1 = 'data:image/jpeg;base64,' . base64_encode($place->im1);

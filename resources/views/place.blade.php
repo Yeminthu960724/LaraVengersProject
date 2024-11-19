@@ -58,12 +58,12 @@
                             </div>
                             <div>
                                 <h4>エリア</h4>
-                                <label><input type="checkbox" name="location " value="大阪府"> 大阪府</label><br>
-                                <label><input type="checkbox" name="location " value="京都府"> 京都府</label><br>
-                                <label><input type="checkbox" name="location " value="神戶市"> 神戶市</label><br>
-                                <label><input type="checkbox" name="location " value="奈良県"> 奈良県</label><br>
-                                <label><input type="checkbox" name="location " value="滋賀県"> 滋賀県</label><br>
-                                <label><input type="checkbox" name="location " value="姫路市"> 姫路市</label><br>
+                                <label><input type="checkbox" name="location" value="大阪府"> 大阪府</label><br>
+                                <label><input type="checkbox" name="location" value="京都府"> 京都府</label><br>
+                                <label><input type="checkbox" name="location" value="神戶市"> 神戶市</label><br>
+                                <label><input type="checkbox" name="location" value="奈良県"> 奈良県</label><br>
+                                <label><input type="checkbox" name="location" value="滋賀県"> 滋賀県</label><br>
+                                <label><input type="checkbox" name="location" value="姫路市"> 姫路市</label><br>
                             </div>
                             <button type="button" id="filterButton">絞り込み</button>
                         </form>
@@ -94,9 +94,7 @@
                             @endforeach
                         </div>
                     </div>
-                <div class="pagination-container">
-                    {{ $places->links() }}
-                </div>
+
             </div>
         </div>
     </main>
