@@ -71,24 +71,31 @@
                 </div>
 
                 <!-- Cards -->
-                <div class="col-md-9">
-                    <div class="row row-cols-1 row-cols-md-3 g-4" id="posts">
-                        @foreach ($places as $place)
-                            <div class="col" data-location ="{{ $place->location }}" data-characteristics="{{ $place->characteristics }}">
-                                <div class="card">
-                                    <a href="/PlaceDetail">
-                                        <img src="{{$place->im1}}" class="card-img-top card-img-fixed" alt="">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $place->placeName }}</h5>
-                                        <p class="card-text">{{ $place->shortDetail }}</p>
-                                        <a href="{{ route('Place.show', $place->placeNumber) }}" class="btn btn-primary">詳細</a>
-                                        <a href="#" class="btn btn-primary">カードに入れる</a>
+                    <div class="col-md-9">
+                        <div class="row row-cols-1 row-cols-md-3 g-4" id="posts">
+                            @foreach ($places as $place)
+                                <div class="col" data-location ="{{ $place->location }}" data-characteristics="{{ $place->characteristics }}">
+                                    <div class="card">
+                                        <a href="/PlaceDetail">
+                                            <img src="{{$place->im1}}" class="card-img-top card-img-fixed" alt="">
+                                        </a>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $place->placeName }}</h5>
+                                            <p class="card-text">{{ $place->shortDetail }}</p>
+                                            <a href="{{ route('Place.show', $place->placeNumber) }}" class="btn btn-primary">詳細</a>
+                                            <form action="{{ route('cart.add') }}" method="POST" class="d-inline">
+                                                @csrf
+                                                <input type="hidden" name="placeId" value="{{ $place->placeNumber }}">
+                                                <button type="submit" class="btn btn-primary">カードに入れる</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
+                <div class="pagination-container">
+                    {{ $places->links() }}
                 </div>
             </div>
         </div>

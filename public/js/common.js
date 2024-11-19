@@ -1,12 +1,13 @@
 document.title = "関西巡り"
 
+
 // ヘッダー要素の作成を修正
 function createHeader() {
     const header = document.getElementById('header');
     header.innerHTML = `
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="/">
+                <a class="navbar-brand" href="{{route('home')}}">
                     <i class="bi bi-compass"></i> 関西巡り
                 </a>
 
@@ -17,12 +18,12 @@ function createHeader() {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link main-menu" href="/Place">
+                            <a class="nav-link main-menu" href="{{ route('Place.index') }}">
                                 <i class="bi bi-map"></i> 観光地
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link main-menu" href="/Event">
+                            <a class="nav-link main-menu" href="{{ route('event') }}">
                                 <i class="bi bi-calendar-event"></i> イベント
                             </a>
                         </li>
@@ -42,7 +43,7 @@ function createHeader() {
                     </div>
 
                     <div class="nav-item">
-                        <a href="/Cart" class="nav-link cart-button me-2">
+                        <a href="{{ route('cart.view') }}" class="nav-link cart-button me-2">
                             <i class="bi bi-cart3"></i>
                             <span>カート</span>
                             <span class="cart-count">0</span>
@@ -50,7 +51,7 @@ function createHeader() {
                     </div>
 
                     <div class="nav-item">
-                        <a href="/login" class="nav-link login-button">
+                        <a href="{{ route('login') }}" class="nav-link login-button">
                             <i class="bi bi-person-circle"></i>
                             <span>ログイン</span>
                         </a>

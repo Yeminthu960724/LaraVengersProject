@@ -11,7 +11,6 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
-
 use App\Http\Controllers\AuthController;
 
 
@@ -31,19 +30,22 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::get('', [HomeController::class, 'index']);
+Route::get('', [HomeController::class, 'index'])->name('home');
 Route::resource('Place', PlaceController::class);
 Route::get('/PlaceDetail', [PlaceDetailController::class, 'index']);
-Route::get('/Cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/Cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/Cart', [CartController::class, 'viewCart'])->name('cart.view');
+Route::post('/Cart/remove/{placeId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::post('/Cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
 Route::get('/Plan', [PlanController::class, 'index']);
 Route::get('/PlanDetail', [PlanDetailController::class, 'index']);
 Route::get('/register',[RegisterController::class,'showRegisterForm'])->name('register');
 Route::post('/register',[RegisterController::class,'register']);
 Route::get('/password/reset',[ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-Route::get('/Event', [EventController::class, 'index']);
+Route::get('/Event', [EventController::class, 'index'])->name('event');
 Route::get('/api/events', [EventController::class, 'getEvents']);
 Route::get('/Event/{id}', [EventController::class, 'detail'])->name('events.detail');
-Route::get('/placeDetail/{id}', [PlaceDetailController::class, 'show'])->name('placeDetail');
+
 
 
 

@@ -87,7 +87,7 @@
                 あなただけの関西旅行プランを作りましょう
             </p>
 
-            <a href="/Place"
+            <a href="{{ route('Place.index') }}"
                class="btn btn-light btn-lg px-5 py-3 rounded-pill shadow animate__animated animate__fadeIn animate__delay-3s hover-float"
                style="font-size: 1.6rem;
                       font-weight: 600;

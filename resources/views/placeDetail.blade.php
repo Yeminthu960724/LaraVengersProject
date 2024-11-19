@@ -64,7 +64,11 @@
                 <a href="{{$place_detail->websiteLink}}">公式サイト：{{$place_detail->websiteLink}}</a>
             </div>
             {!! $place_detail->googleMapLink !!}
-            <button>カードに入れる</button>
+            <form action="{{ route('cart.add') }}" method="POST" class="d-inline">
+                @csrf
+                <input type="hidden" name="placeId" value="{{ $place_detail->placeNumber }}">
+                <button type="submit" class="btn btn-primary">カードに入れる</button>
+            </form>
         </div>
     </main>
 
