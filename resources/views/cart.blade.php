@@ -20,6 +20,9 @@
         <ul id="ulSetection"></ul>
     </nav>
 
+    <!-- Main Content Section -->
+    <main>
+
         <!-- イベント情報を表示するセクション -->
         <div class="mb-4">
             <h2 class="h4 mb-3">追加したイベント</h2>
@@ -109,20 +112,6 @@
                     </div>
                 </div>
 
-    <!-- Main Content Section -->
-    <main>
-        <div class="container py-4">
-            <div class="row text-center mb-4">
-                <h2>カート</h2>
-            </div>
-
-            <!-- イベント情報を表示するセクション -->
-            <div class="mb-4">
-                <h3 class="h4 mb-3">追加したイベント</h3>
-                <div id="cartEvents" class="accordion mb-4">
-                    <!-- JavaScriptでイベント情報が挿入されます -->
-                </div>
-            </div>
 
             <div class="text-center mt-4">
                 <button id="makePlanButton" class="btn btn-primary btn-lg">
