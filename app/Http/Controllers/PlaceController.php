@@ -3,21 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class PlaceController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
+        // 1ページあたり6件表示するようにページネーションを設定
+        $places = DB::table('places')->paginate(6);
 
-        // Fetch data from the database
-        $places = DB::table('places')->get();
-
+        // 画像データをbase64エンコード
         foreach ($places as $place) {
             $place->im1 = 'data:image/jpeg;base64,' . base64_encode($place->im1);
         }
 
-         // Pass data to the view
-         return view('place', compact('places'));
-
+        return view('place', compact('places'));
     }
 
     public function show(string $placeNumber)

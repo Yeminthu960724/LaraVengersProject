@@ -65,35 +65,60 @@
                                 <label><input type="checkbox" name="location" value="滋賀県"> 滋賀県</label><br>
                                 <label><input type="checkbox" name="location" value="姫路市"> 姫路市</label><br>
                             </div>
-                            <button type="button" id="filterButton">絞り込み</button>
+                            <button type="button" id="filterButton" class="filter-button">
+                                <i class="bi bi-funnel-fill"></i>
+                                絞り込み検索
+                            </button>
                         </form>
                     </aside>
                 </div>
 
                 <!-- Cards -->
-                    <div class="col-md-9">
-                        <div class="row row-cols-1 row-cols-md-3 g-4" id="posts">
-                            @foreach ($places as $place)
-                                <div class="col" data-location ="{{ $place->location }}" data-characteristics="{{ $place->characteristics }}">
-                                    <div class="card">
-                                        <a href="/PlaceDetail">
-                                            <img src="{{$place->im1}}" class="card-img-top card-img-fixed" alt="">
-                                        </a>
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $place->placeName }}</h5>
-                                            <p class="card-text">{{ $place->shortDetail }}</p>
-                                            <a href="{{ route('Place.show', $place->placeNumber) }}" class="btn btn-primary">詳細</a>
-                                            <form action="{{ route('cart.add') }}" method="POST" class="d-inline">
+                <div class="col-md-9">
+                    <div class="row row-cols-1 row-cols-md-3 g-4" id="posts">
+                        @foreach ($places as $place)
+                            <div class="col" data-location ="{{ $place->location }}" data-characteristics="{{ $place->characteristics }}">
+                                <div class="card">
+                                    <a href="/PlaceDetail">
+                                        <img src="{{$place->im1}}" class="card-img-top card-img-fixed" alt="">
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $place->placeName }}</h5>
+                                        <p class="card-text">{{ $place->shortDetail }}</p>
+                                        <div class="d-flex gap-2">
+                                            <a href="{{ route('Place.show', $place->placeNumber) }}" class="btn btn-primary flex-fill">詳細</a>
+                                            <form action="{{ route('cart.add') }}" method="POST" class="flex-fill">
                                                 @csrf
                                                 <input type="hidden" name="placeId" value="{{ $place->placeNumber }}">
-                                                <button type="submit" class="btn btn-primary">カードに入れる</button>
+                                                <button type="submit" class="btn btn-primary w-100">カートに追加</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- ページネーション -->
+                    <div class="pagination-container mt-4">
+                        <div class="page-info">
+                            {{ $places->firstItem() }}-{{ $places->lastItem() }} / {{ $places->total() }}件
+                        </div>
+                        <div class="pagination">
+                            @if ($places->onFirstPage())
+                                <button class="btn btn-secondary btn-sm" disabled>前へ</button>
+                            @else
+                                <a href="{{ $places->previousPageUrl() }}" class="btn btn-primary btn-sm">前へ</a>
+                            @endif
+
+                            @if ($places->hasMorePages())
+                                <a href="{{ $places->nextPageUrl() }}" class="btn btn-primary btn-sm">次へ</a>
+                            @else
+                                <button class="btn btn-secondary btn-sm" disabled>次へ</button>
+                            @endif
                         </div>
                     </div>
+                </div>
 
             </div>
         </div>
