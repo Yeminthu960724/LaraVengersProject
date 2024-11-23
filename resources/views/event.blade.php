@@ -83,33 +83,33 @@
                 <div class="col">
                     <div class="card h-100">
                         <div class="position-relative">
-                            <img src="{{ $event['image_url'] }}" class="card-img-top" alt="{{ $event['title'] }}"
+                            <img src="{{ $event->image_url }}" class="card-img-top" alt="{{ $event->title }}"
                                  style="height: 200px; object-fit: cover;">
                             <div class="position-absolute top-0 end-0 m-2">
                                 <span class="badge" style="background-color: #1B4B8F;">
-                                    {{ $event['category'] }}
+                                    {{ $event->category }}
                                 </span>
                             </div>
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">{{ $event['title'] }}</h5>
-                            <p class="card-text">{{ $event['description'] }}</p>
+                            <h5 class="card-title">{{ $event->title }}</h5>
+                            <p class="card-text">{{ $event->description }}</p>
                             <div class="mt-3">
                                 <p class="mb-2">
                                     <i class="bi bi-calendar me-2"></i>
-                                    開催期間: {{ $event['start_date'] }} ～ {{ $event['end_date'] }}
+                                    開催期間: {{ $event->start_date }} ～ {{ $event->end_date}}
                                 </p>
                                 <p class="mb-2">
                                     <i class="bi bi-geo-alt me-2"></i>
-                                    {{ $event['location'] }}
+                                    {{ $event->location }}
                                 </p>
                                 <p class="mb-2">
                                     <i class="bi bi-tag me-2"></i>
-                                    料金: {{ $event['price'] === 0 ? '無料' : number_format($event['price']) . '円' }}
+                                    料金: {{ $event->price === 0 ? '無料' : number_format($event->price) . '円' }}
                                 </p>
                             </div>
                             <div class="d-flex gap-2 mt-auto">
-                                <a href="/Event/{{ $event['id'] }}" class="btn btn-outline-primary flex-grow-1">
+                                <a href="/Event/{{ $event->id }}" class="btn btn-outline-primary flex-grow-1">
                                     <i class="bi bi-info-circle me-1"></i> 詳細を見る
                                 </a>
                                 <button onclick="addToCart({{ json_encode($event) }})"
@@ -157,7 +157,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/common.js') }}"></script>
-    <script src="{{ asset('js/event.js') }}"></script>
-    <script src="{{ asset('js/event.js') }}"></script>
+    {{-- <script src="{{ asset('js/event.js') }}"></script> --}}
 </body>
 </html>

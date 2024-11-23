@@ -39,10 +39,11 @@ Route::get('/PlanDetail/{id?}', [PlanDetailController::class, 'index'])->name('p
 Route::get('/register',[RegisterController::class,'showRegisterForm'])->name('register');
 Route::post('/register',[RegisterController::class,'register']);
 Route::get('/password/reset',[ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-Route::get('/Event', [EventController::class, 'index'])->name('event');
-Route::get('/api/events', [EventController::class, 'getEvents']);
-Route::get('/Event', [EventController::class, 'index']);
-Route::get('/Event/{id}', [EventController::class, 'detail'])->name('events.detail');
+Route::resource('Event', EventController::class);
+// Route::get('/Event', [EventController::class, 'index'])->name('event');
+// Route::get('/api/events', [EventController::class, 'getEvents']);
+// Route::get('/Event', [EventController::class, 'index']);
+// Route::get('/Event/{id}', [EventController::class, 'detail'])->name('events.detail');
 
 
 
