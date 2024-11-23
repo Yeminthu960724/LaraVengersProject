@@ -23,12 +23,12 @@ function createHeader() {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link main-menu" href="{{ route('event') }}">
+                            <a class="nav-link main-menu" href="{{ route('Event') }}">
                                 <i class="bi bi-calendar-event"></i> イベント
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link main-menu" href="/Plan">
+                            <a class="nav-link main-menu" href="{{ route('Plan') }}">
                                 <i class="bi bi-journal-text"></i> プラン
                             </a>
                         </li>

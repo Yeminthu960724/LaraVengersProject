@@ -37,14 +37,15 @@
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#item-{{ $index }}" aria-expanded="true" aria-controls="item-{{ $index }}">
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ $item['image_url']}}"
-                                                 alt="{{ $item['name'] }}"
+                                            <img src="{{ $item['image_url'] }}" alt="{{ $item['name'] }}"
                                                  class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                             <div>
                                                 <h5 class="mb-0">{{ $item['name'] }}</h5>
                                                 <small class="text-muted">
                                                     <i class="bi bi-geo-alt"></i> {{ $item['location'] ?? '不明な場所' }}
-                                                    <span class="badge bg-success ms-2">観光施設</span>
+                                                    <span class="badge bg-success ms-2">
+                                                        {{ $item['type'] === 'place' ? '観光施設' : 'イベント' }}
+                                                    </span>
                                                 </small>
                                             </div>
                                         </div>
@@ -58,8 +59,10 @@
                                                 <p class="mb-2">{{ $item['description'] ?? '説明がありません。' }}</p>
                                                 @if (!empty($item['details']))
                                                     <div class="details-info mt-3">
-                                                        <p><strong>営業時間:</strong> {{ $item['details']['openingHours'] ?? '不明' }}</p>
-                                                        {{-- <p><strong>料金:</strong> {{ $item['details']['price'] ?? '不明' }}</p> --}}
+                                                        <p><strong>営業時間:</strong> {{ $item['details']['openingHours'] ?? '公式サイトで確認してください。' }}</p>
+                                                        @if ($item['type'] === 'event')
+                                                            <p><strong>料金:</strong> {{ $item['details']['price'] ?? '公式サイトで確認してください。' }}</p>
+                                                        @endif
                                                         @if (!empty($item['details']['website']))
                                                             <p><strong>公式サイト:</strong>
                                                                 <a href="{{ $item['details']['website'] }}" target="_blank">{{ $item['details']['website'] }}</a>
@@ -68,6 +71,7 @@
                                                     </div>
                                                 @endif
                                             </div>
+
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">行く順番：</label>
                                                 <select class="form-select" onchange="updatePriority({{ $index }}, this.value)">
@@ -78,6 +82,7 @@
                                                     @endfor
                                                 </select>
                                             </div>
+
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">滞在時間：</label>
                                                 <select class="form-select" onchange="updateDuration({{ $index }}, this.value)">
@@ -93,12 +98,12 @@
                                                 </select>
                                             </div>
                                         </div>
+
                                         <div class="text-end">
                                             <form action="{{ route('cart.remove', $item['id']) }}" method="POST">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm">削除</button>
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>

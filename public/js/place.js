@@ -1,5 +1,5 @@
 document.getElementById('filterButton').addEventListener('click', () => {
-    // Get selected areas and characteristics
+    // Get selected location and characteristics
     const selectedLocations = Array.from(document.querySelectorAll('input[name="location"]:checked'))
         .map(checkbox => checkbox.value);
     const selectedCharacteristics = Array.from(document.querySelectorAll('input[name="characteristics"]:checked'))
