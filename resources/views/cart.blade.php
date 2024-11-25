@@ -100,7 +100,7 @@
                                         </div>
 
                                         <div class="text-end">
-                                            <form action="{{ route('cart.remove', $item['id']) }}" method="POST">
+                                            <form action="{{ route('cart.remove', $index) }}" method="POST">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm">削除</button>
                                             </form>

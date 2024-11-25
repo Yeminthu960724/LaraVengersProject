@@ -86,19 +86,21 @@ class CartController extends Controller
     /**
      * Remove an item from the cart.
      */
-    public function removeFromCart(Request $request, $placeId)
+    public function removeFromCart(Request $request, $itemId)
     {
         $cart = session()->get('cart', []);
 
-        if (isset($cart[$placeId])) {
-            unset($cart[$placeId]);
-            session()->put('cart', $cart);
+        // Check if the item exists in the cart
+        if (isset($cart[$itemId])) {
+            unset($cart[$itemId]); // Remove the item
+            session()->put('cart', $cart); // Update the session
 
             return redirect()->back()->with('success', 'Item removed from cart.');
         }
 
         return redirect()->back()->with('error', 'Item not found in cart.');
     }
+
 
     /**
      * Clear the entire cart.
