@@ -76,7 +76,7 @@
                                                 <label class="form-label">行く順番：</label>
                                                 <select class="form-select" onchange="updatePriority({{ $index }}, this.value)">
                                                     @for ($i = 1; $i <= count($cart); $i++)
-                                                        <option value="{{ $i }}" {{ $i == $index + 1 ? 'selected' : '' }}>
+                                                        <option value="{{ $i }}" {{ $i == (int)$index + 1 ? 'selected' : '' }}>
                                                             {{ $i }}
                                                         </option>
                                                     @endfor

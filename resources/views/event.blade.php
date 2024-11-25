@@ -112,9 +112,15 @@
                                 <a href="/Event/{{ $event->id }}" class="btn btn-outline-primary flex-grow-1">
                                     <i class="bi bi-info-circle me-1"></i> 詳細を見る
                                 </a>
-                                <button onclick="addToCart({{ json_encode($event) }})"
+                                <form action="{{ route('cart.add') }}" method="POST" class="flex-fill">
+                                    @csrf
+                                    <input type="hidden" name="eventId" value="{{ $event->id }}">
+                                    <button type="submit" class="btn btn-primary flex-grow-1">
+                                        <i class= "bi bi-cart-plus me-1"></i> カートに追加</button>
+                                </form>
+                                {{-- <button onclick="addToCart({{ json_encode($event) }})"
                                         class="btn btn-primary flex-grow-1">
-                                    <i class="bi bi-cart-plus me-1"></i> カートに追加
+                                    <i class="bi bi-cart-plus me-1"></i> カートに追加 --}}
                                 </button>
                             </div>
                         </div>
