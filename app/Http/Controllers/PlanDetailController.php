@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PlanDetailController extends Controller
 {
-    public function index($id)
+    public function index(Request $request)
     {
-        $planId = $id ?? 'osaka'; // デフォルトは大阪プラン
-        return view('planDetail', ['planId' => $planId]);
+        $planId = $request->route('planId', 'osaka');
+
+        // placesテーブルから全ての場所データを取得
+        $places = DB::table('places')->get();
+
+        // ビューに両方の変数を渡す
+        return view('planDetail', compact('planId', 'places'));
     }
 }
