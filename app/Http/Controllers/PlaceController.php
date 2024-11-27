@@ -7,17 +7,36 @@ use Illuminate\Http\Request;
 
 class PlaceController extends Controller
 {
-    public function index(Request $request) {
-        // 1ページあたり6件表示するようにページネーションを設定
-        $places = DB::table('places')->paginate(6);
+    public function index(Request $request)
+    {
+        $query = DB::table('places');
 
-        // 画像データをbase64エンコード
+        // Apply filters if present
+        if ($request->has('location')) {
+            $query->whereIn('location', $request->location);
+        }
+
+        if ($request->has('characteristics')) {
+            $query->where(function ($q) use ($request) {
+                foreach ($request->characteristics as $characteristic) {
+                    $q->orWhere('characteristics', 'like', "%{$characteristic}%");
+                }
+            });
+        }
+
+        // Paginate the filtered results (6 per page)
+        $places = $query->paginate(6);
+
+        // Encode images in base64 format
         foreach ($places as $place) {
             $place->im1 = 'data:image/jpeg;base64,' . base64_encode($place->im1);
         }
 
-        return view('place', compact('places'));
+        // Return the view with filters and paginated places
+        return view('place', compact('places'))
+            ->with('filters', $request->only(['location', 'characteristics']));
     }
+
 
     public function show(string $placeNumber)
     {

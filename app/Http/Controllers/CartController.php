@@ -112,12 +112,6 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Cart cleared successfully.');
     }
 
-    public function getCartCount()
-    {
-        $cart = session()->get('cart', []);
-        return response(count($cart), 200) // Plain text response
-                    ->header('Content-Type', 'text/plain');
-    }
 
 
 }

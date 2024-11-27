@@ -40,36 +40,33 @@
                 <div class="col-md-3">
                     <aside class="filter-sidebar">
                         <h3>絞り込み検索</h3>
-                        <form>
+                        <form method="GET" action="{{ route('Place.index') }}">
                             <div>
                                 <h4>カテゴリー</h4>
-                                <label><input type="checkbox" name="characteristics" value="お寺"> お寺</label><br>
-                                <label><input type="checkbox" name="characteristics" value="買い物"> 買い物</label><br>
-                                <label><input type="checkbox" name="characteristics" value="自然"> 自然</label><br>
-                                <label><input type="checkbox" name="characteristics" value="風景"> 風景</label><br>
-                                <label><input type="checkbox" name="characteristics" value="建築"> 建築</label><br>
-                                <label><input type="checkbox" name="characteristics" value="公園"> 公園</label><br>
-                                <label><input type="checkbox" name="characteristics" value="植物園"> 植物園</label><br>
-                                <label><input type="checkbox" name="characteristics" value="水族館"> 水族館</label><br>
-                                <label><input type="checkbox" name="characteristics" value="動物園"> 動物園</label><br>
-                                <label><input type="checkbox" name="characteristics" value="博物館"> 博物館</label><br>
-                                <label><input type="checkbox" name="characteristics" value="美術館"> 美術館</label><br>
-                                <label><input type="checkbox" name="characteristics" value="遊園地"> 遊園地</label><br>
+                                @foreach (['お寺', '買い物', '自然', '風景', '建築', '公園', '植物園', '水族館', '動物園', '博物館', '美術館', '遊園地'] as $characteristic)
+                                    <label>
+                                        <input type="checkbox" name="characteristics[]" value="{{ $characteristic }}"
+                                            {{ in_array($characteristic, request('characteristics', [])) ? 'checked' : '' }}>
+                                        {{ $characteristic }}
+                                    </label><br>
+                                @endforeach
                             </div>
                             <div>
                                 <h4>エリア</h4>
-                                <label><input type="checkbox" name="location" value="大阪府"> 大阪府</label><br>
-                                <label><input type="checkbox" name="location" value="京都府"> 京都府</label><br>
-                                <label><input type="checkbox" name="location" value="神戶市"> 神戶市</label><br>
-                                <label><input type="checkbox" name="location" value="奈良県"> 奈良県</label><br>
-                                <label><input type="checkbox" name="location" value="滋賀県"> 滋賀県</label><br>
-                                <label><input type="checkbox" name="location" value="姫路市"> 姫路市</label><br>
+                                @foreach (['大阪府', '京都府', '神戶市', '奈良県', '滋賀県', '姫路市'] as $location)
+                                    <label>
+                                        <input type="checkbox" name="location[]" value="{{ $location }}"
+                                            {{ in_array($location, request('location', [])) ? 'checked' : '' }}>
+                                        {{ $location }}
+                                    </label><br>
+                                @endforeach
                             </div>
-                            <button type="button" id="filterButton" class="filter-button">
+                            <button type="submit" class="filter-button">
                                 <i class="bi bi-funnel-fill"></i>
                                 絞り込み検索
                             </button>
                         </form>
+
                     </aside>
                 </div>
 
@@ -100,24 +97,45 @@
                     </div>
 
                     <!-- ページネーション -->
-                    <div class="pagination-container mt-4">
-                        <div class="page-info">
-                            {{ $places->firstItem() }}-{{ $places->lastItem() }} / {{ $places->total() }}件
-                        </div>
-                        <div class="pagination">
-                            @if ($places->onFirstPage())
-                                <button class="btn btn-secondary btn-sm" disabled>前へ</button>
-                            @else
-                                <a href="{{ $places->previousPageUrl() }}" class="btn btn-primary btn-sm">前へ</a>
-                            @endif
+                    <div class="pagination-container">
+                        <div class="pagination-wrapper">
+                            <ul class="pagination">
+                                {{-- Previous Page Link --}}
+                                @if ($places->onFirstPage())
+                                    <li class="page-item disabled">
+                                        <span class="page-link">Previous</span>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $places->appends(request()->query())->previousPageUrl() }}">Previous</a>
+                                    </li>
+                                @endif
 
-                            @if ($places->hasMorePages())
-                                <a href="{{ $places->nextPageUrl() }}" class="btn btn-primary btn-sm">次へ</a>
-                            @else
-                                <button class="btn btn-secondary btn-sm" disabled>次へ</button>
-                            @endif
+                                {{-- Pagination Elements --}}
+                                @foreach ($places->getUrlRange(1, $places->lastPage()) as $page => $url)
+                                    <li class="page-item {{ $places->currentPage() == $page ? 'active' : '' }}">
+                                        <a class="page-link" href="{{ $places->appends(request()->query())->url($page) }}">{{ $page }}</a>
+                                    </li>
+                                @endforeach
+
+                                {{-- Next Page Link --}}
+                                @if ($places->hasMorePages())
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $places->appends(request()->query())->nextPageUrl() }}">Next</a>
+                                    </li>
+                                @else
+                                    <li class="page-item disabled">
+                                        <span class="page-link">Next</span>
+                                    </li>
+                                @endif
+                                <div class="total-count" style="font-size: 1.2em; font-weight: bold;color:#ffffff">
+                                    全{{ $places->total() }}件
+                                </div>
+                            </ul>
                         </div>
                     </div>
+
+
                 </div>
 
             </div>

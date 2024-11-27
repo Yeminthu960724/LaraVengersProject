@@ -109,7 +109,7 @@
                                 </p>
                             </div>
                             <div class="d-flex gap-2 mt-auto">
-                                <a href="/Event/{{ $event->id }}" class="btn btn-outline-primary flex-grow-1">
+                                <a href="{{ route('Event.show', $event->id) }}" class="btn btn-outline-primary flex-grow-1">
                                     <i class="bi bi-info-circle me-1"></i> 詳細を見る
                                 </a>
                                 <form action="{{ route('cart.add') }}" method="POST" class="flex-fill">

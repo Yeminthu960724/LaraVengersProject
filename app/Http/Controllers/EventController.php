@@ -33,7 +33,7 @@ class EventController extends Controller
 
          // Pass data to the view
 
-        return view("events-detail", compact('event_detail'));
+        return view("event-detail", compact('event_detail'));
     }
 
 

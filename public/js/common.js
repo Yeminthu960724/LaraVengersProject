@@ -7,7 +7,7 @@ function createHeader() {
     header.innerHTML = `
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="{{route('home')}}">
+                <a class="navbar-brand" href="/~se2a_24_lara/public/">
                     <i class="bi bi-compass"></i> 関西巡り
                 </a>
 
@@ -18,23 +18,22 @@ function createHeader() {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link main-menu" href="{{ route('Place.index') }}">
+                            <a class="nav-link main-menu" href="/~se2a_24_lara/public/Place">
                                 <i class="bi bi-map"></i> 観光地
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link main-menu" href="{{ route('Event') }}">
+                            <a class="nav-link main-menu" href="/~se2a_24_lara/public/Event">
                                 <i class="bi bi-calendar-event"></i> イベント
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link main-menu" href="{{ route('Plan') }}">
+                            <a class="nav-link main-menu" href="/~se2a_24_lara/public/Plan">
                                 <i class="bi bi-journal-text"></i> プラン
                             </a>
                         </li>
                     </ul>
 
-                    <!-- 検索フォームを改善 -->
                     <div class="search-box me-3">
                         <div class="search-wrapper">
                             <i class="bi bi-search search-icon"></i>
@@ -43,7 +42,7 @@ function createHeader() {
                     </div>
 
                     <div class="nav-item">
-                        <a href="{{ route('cart.view') }}" class="nav-link cart-button me-2">
+                        <a href="/~se2a_24_lara/public/Cart" class="nav-link cart-button me-2">
                             <i class="bi bi-cart3"></i>
                             <span>カート</span>
                             <span class="cart-count">0</span>
@@ -51,7 +50,7 @@ function createHeader() {
                     </div>
 
                     <div class="nav-item">
-                        <a href="{{ route('login') }}" class="nav-link login-button">
+                        <a href="/~se2a_24_lara/public/login" class="nav-link login-button">
                             <i class="bi bi-person-circle"></i>
                             <span>ログイン</span>
                         </a>

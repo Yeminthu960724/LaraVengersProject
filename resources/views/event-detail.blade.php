@@ -17,11 +17,11 @@
             <div class="content-card">
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="{{ $event_detail->image_url }}" alt="{{ $event_detail->title'] }}"
+                        <img src="{{ $event_detail->image_url }}" alt="{{ $event_detail->title}}"
                             class="img-fluid rounded shadow-sm mb-4" style="width: 100%; height: 300px; object-fit: cover;">
                     </div>
                     <div class="col-md-6">
-                        <h1>{{ $event['title'] }}</h1>
+                        <h1>{{ $event_detail->title }}</h1>
 
                         <div class="status-badge
                             @if($event_detail->status === '開催予定') bg-info
@@ -34,9 +34,14 @@
                         <div class="event-info">
                             <p>
                                 <i class="bi bi-calendar-event me-2"></i>
-                                開催期間：{{ $event_detail->start_date->format('Y年m月d日') }}
-                                @if($event['start_date'] !== $event['end_date'])
-                                    ～ {{$event_detail->end_date->format('Y年m月d日') }}
+                                @php
+                                    $start_date = new \DateTime($event_detail->start_date);
+                                    $end_date = new \DateTime($event_detail->end_date);
+                                @endphp
+
+                                開催期間：{{ $start_date->format('Y年m月d日') }}
+                                @if($start_date != $end_date)
+                                    ～ {{ $end_date->format('Y年m月d日') }}
                                 @endif
                             </p>
 
@@ -75,23 +80,15 @@
                         <div class="mt-4 d-flex gap-3">
                             <form action="{{ route('cart.add') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="eventId" value="{{ $place_detail->id }}">
+                                <input type="hidden" name="eventId" value="{{ $event_detail->id }}">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="bi bi-cart-plus me-2"></i>カートに追加
                                 </button>
-                                <a href="/Event" class="btn btn-outline-secondary">
+                                <a href="/~se2a_24_lara/public/Event" class="btn btn-outline-secondary">
                                     <i class="bi bi-arrow-left me-2"></i>イベント一覧に戻る
                                 </a>
                             </form>
                         </div>
-                    // <div class="mt-4 d-flex gap-3">
-                    //     <button onclick="addToCart({{ json_encode($event) }})" class="btn btn-primary">
-                    //         <i class="bi bi-cart-plus me-2"></i>カートに追加
-                    //     </button>
-                    //     <a href="{{ route('Event') }}" class="btn btn-outline-secondary">
-                    //         <i class="bi bi-arrow-left me-2"></i>イベント一覧に戻る
-                    //     </a>
-                    // </div>
                     </div>
                 </div>
             </div>

@@ -773,7 +773,7 @@ h1 {
 .page-link:hover {
     background-color: #f0f0f0; /* ホバー時の背景色 */
     color: #0056b3; /* ホバー時のテキストカラー */
-
+}
 /* グリッドコンテナの調整 */
 .row-cols-md-3 > * {
     padding: 15px;    /* カード間の余白 */
@@ -837,6 +837,8 @@ h1 {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+
 
 /* ボタンコンテナのスタイル */
 .button-container {

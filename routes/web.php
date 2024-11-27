@@ -10,6 +10,7 @@ use App\Http\Controllers\PlanDetailController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventDetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 
@@ -40,6 +41,7 @@ Route::get('/register',[RegisterController::class,'showRegisterForm'])->name('re
 Route::post('/register',[RegisterController::class,'register']);
 Route::get('/password/reset',[ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::resource('Event', EventController::class);
+Route::get('/EventDetail', [EventDetailController::class, 'index']);
 // Route::get('/Event', [EventController::class, 'index'])->name('event');
 // Route::get('/api/events', [EventController::class, 'getEvents']);
 // Route::get('/Event', [EventController::class, 'index']);
