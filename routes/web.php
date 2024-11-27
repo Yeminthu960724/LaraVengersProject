@@ -35,7 +35,9 @@ Route::get('/Cart', [CartController::class, 'viewCart'])->name('cart.view');
 Route::post('/Cart/remove/{placeId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::post('/Cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
 Route::get('/Plan', [PlanController::class, 'index']);
-Route::get('/PlanDetail/{id?}', [PlanDetailController::class, 'index'])->name('plan.detail');
+Route::get('/PlanDetail/{planId}', [PlanDetailController::class, 'index'])
+    ->where('planId', 'osaka|kobe|kyoto|nara|wakayama|shiga|arashiyama|usj|arima|narapark|amanohashidate|himeji')
+    ->name('plan.detail');
 Route::get('/register',[RegisterController::class,'showRegisterForm'])->name('register');
 Route::post('/register',[RegisterController::class,'register']);
 Route::get('/password/reset',[ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
