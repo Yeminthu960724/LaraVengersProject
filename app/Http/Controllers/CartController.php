@@ -16,8 +16,8 @@ class CartController extends Controller
     $eventId = $request->input('eventId');
 
     // Fetch place and event details from the database
-    $place = $placeId ? DB::table('places')->where('placeNumber', $placeId)->first() : null;
-    $event = $eventId ? DB::table('events')->where('id', $eventId)->first() : null;
+    $place = $placeId !== null ? DB::table('places')->where('placeNumber', $placeId)->first() : null;
+    $event = $eventId !== null ? DB::table('events')->where('id', $eventId)->first() : null;
 
     if (!$place && !$event) {
         return redirect()->back()->with('error', 'No valid place or event found.');
@@ -111,4 +111,13 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'Cart cleared successfully.');
     }
+
+    public function getCartCount()
+    {
+        $cart = session()->get('cart', []);
+        return response(count($cart), 200) // Plain text response
+                    ->header('Content-Type', 'text/plain');
+    }
+
+
 }
