@@ -35,6 +35,26 @@
                 </h1>
             </div>
 
+            @if (session('success'))
+                <div id="alert-message"
+                    class="alert alert-success position-fixed top-50 start-50 translate-middle p-2 text-center"
+                    style="z-index: 1050; display: inline-block; white-space: nowrap;">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div id="alert-message"
+                    class="alert alert-success position-fixed top-50 start-50 translate-middle p-2 text-center"
+                    style="z-index: 1050; display: inline-block; white-space: nowrap;">
+                    {{ session('error') }}
+                </div>
+            @endif
+            @if(session('cartCount'))
+                <script>
+                    document.querySelector('.cart-count').textContent = {{ session('cartCount') }};
+                </script>
+            @endif
+
             <div class="row">
                 <!-- Sidebar -->
                 <div class="col-md-3">
@@ -89,6 +109,7 @@
                                                 <input type="hidden" name="placeId" value="{{ $place->placeNumber }}">
                                                 <button type="submit" class="btn btn-primary w-100">カートに追加</button>
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -140,6 +161,7 @@
 
             </div>
         </div>
+
     </main>
 
     <footer id="footer"></footer>
@@ -148,6 +170,9 @@
     </script>
     <script src="{{ asset('js/common.js') }}"></script>
     <script src="{{ asset('js/place.js') }}"></script>
+    <script>
+        window.cartCount = @json(session('cartCount', 0)); // Default to 0 if no cartCount is in the session
+    </script>
 </body>
 
 </html>

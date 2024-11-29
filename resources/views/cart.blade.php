@@ -22,6 +22,11 @@
 
     <!-- Main Content Section -->
     <main>
+        @if(session('cartCount'))
+            <script>
+                document.querySelector('.cart-count').textContent = {{ session('cartCount') }};
+            </script>
+        @endif
 
         <!-- イベント情報を表示するセクション -->
         <div class="mb-4">
@@ -131,7 +136,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/common.js') }}"></script>
-    <script src="{{ asset('js/cart.js') }}"></script>
+    <script>
+        window.cartCount = @json(session('cartCount', 0)); // Default to 0 if no cartCount is in the session
+    </script>
+    {{-- <script src="{{ asset('js/cart.js') }}"></script> --}}
 
 </body>
 

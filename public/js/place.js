@@ -1,3 +1,15 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const alertMessage = document.getElementById('alert-message');
+    if (alertMessage) {
+        setTimeout(() => {
+            alertMessage.style.transition = "opacity 0.5s ease";
+            alertMessage.style.opacity = "0";
+            setTimeout(() => alertMessage.remove(), 500); // Completely remove the element after fade-out
+        }, 1000); // 1 seconds delay
+    }
+});
+
+
 // document.getElementById('filterButton').addEventListener('click', () => {
 //     // Get selected location and characteristics
 //     const selectedLocations = Array.from(document.querySelectorAll('input[name="location"]:checked'))

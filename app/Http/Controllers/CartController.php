@@ -20,7 +20,7 @@ class CartController extends Controller
     $event = $eventId !== null ? DB::table('events')->where('id', $eventId)->first() : null;
 
     if (!$place && !$event) {
-        return redirect()->back()->with('error', 'No valid place or event found.');
+        return redirect()->back()->with('error', '観光地またはイベントが見つかりません');
     }
 
     // Initialize session cart
@@ -69,7 +69,9 @@ class CartController extends Controller
     // Store updated cart in the session
     session()->put('cart', $cart);
 
-    return redirect()->back()->with('success', 'Item(s) added to cart successfully!');
+    $cartCount = count($cart); // Get the updated cart count
+
+    return redirect()->back()->with('success', 'カートに入れました')->with('cartCount', $cartCount);
 }
 
 
@@ -79,8 +81,10 @@ class CartController extends Controller
     public function viewCart()
     {
         $cart = session()->get('cart', []);
+        $cartCount = count($cart);
+        session()->put('cartCount', $cartCount);
 
-        return view('cart', compact('cart'));
+        return view('cart', compact('cart'))->with('cartCount', $cartCount);
     }
 
     /**
@@ -95,10 +99,12 @@ class CartController extends Controller
             unset($cart[$itemId]); // Remove the item
             session()->put('cart', $cart); // Update the session
 
-            return redirect()->back()->with('success', 'Item removed from cart.');
+            $cartCount = count($cart); // Get the updated cart count
+
+            return redirect()->back()->with('success', 'カートから削除されました')->with('cartCount', $cartCount);
         }
 
-        return redirect()->back()->with('error', 'Item not found in cart.');
+        return redirect()->back()->with('error', 'Item not found in cart.')->with('cartCount', $cartCount);
     }
 
 
