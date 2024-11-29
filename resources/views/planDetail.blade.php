@@ -55,11 +55,11 @@
                                        style="color: #1B4B8F;">
                                         JR「天王寺駅」、地下鉄「動物園前駅」から徒歩5分
                                     </a>
-                                    <span class="place-link-container ms-3">
+                                    {{-- <span class="place-link-container ms-3">
                                         <a href="{{ route('Place.show', ['Place' => 1]) }}" class="btn btn-sm btn-outline-primary ms-2">
                                             <i class="bi bi-info-circle"></i> 詳細を見る
                                         </a>
-                                    </span>
+                                    </span> --}}
                                 </p>
                             </div>
                         </div>
