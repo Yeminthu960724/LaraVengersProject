@@ -32,6 +32,7 @@ class PlaceController extends Controller
             $place->im1 = 'data:image/jpeg;base64,' . base64_encode($place->im1);
         }
 
+
         // Return the view with filters and paginated places
         return view('place', compact('places'))
             ->with('filters', $request->only(['location', 'characteristics']));

@@ -1,3 +1,5 @@
+@include('layouts.common')
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -170,9 +172,7 @@
     </script>
     <script src="{{ asset('js/common.js') }}"></script>
     <script src="{{ asset('js/place.js') }}"></script>
-    <script>
-        window.cartCount = @json(session('cartCount', 0)); // Default to 0 if no cartCount is in the session
-    </script>
+
 </body>
 
 </html>

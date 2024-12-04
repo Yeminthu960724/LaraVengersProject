@@ -1,3 +1,5 @@
+@include('layouts.common')
+
 <!DOCTYPE html>
 <html lang="ja">
 
