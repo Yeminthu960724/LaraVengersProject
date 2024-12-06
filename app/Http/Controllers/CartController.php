@@ -73,7 +73,6 @@ class CartController extends Controller
 
     return response()->json(['success' => true, 'cartCount' => $cartCount]);
 
-    // return redirect()->back()->with('success', 'カートに入れました')->with('cartCount', $cartCount);
 }
 
 

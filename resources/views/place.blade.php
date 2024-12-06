@@ -172,7 +172,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script src="{{ asset('js/common.js') }}"></script>
-    <script src="{{ asset('js/place.js') }}"></script>
+    <script src="{{ asset('js/addtocart.js') }}"></script>
 
 </body>
 

@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>関西巡り</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -61,7 +62,7 @@
 
                                 <!-- カートボタンを詳細の下に配置 -->
                                 <div class="cart-button-container">
-                                    <form action="{{ route('cart.add') }}" method="POST">
+                                    <form action="{{ route('cart.add') }}" method="POST" class="add-to-cart-form">
                                         @csrf
                                         <input type="hidden" name="placeId" value="{{ $place_detail->placeNumber }}">
                                         <button type="submit" class="cart-button">
@@ -108,6 +109,7 @@
     </script>
     <script src="{{ asset('js/common.js') }}"></script>
     <script src="{{ asset('js/slideshow.js') }}"></script>
+    <script src="{{ asset('js/addtocart.js') }}"></script>
 </body>
 
 </html>

@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>イベント - 関西巡り</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -119,16 +120,13 @@
                                 <a href="{{ route('Event.show', $event->id) }}" class="btn btn-outline-primary flex-grow-1">
                                     <i class="bi bi-info-circle me-1"></i> 詳細を見る
                                 </a>
-                                <form action="{{ route('cart.add') }}" method="POST" class="flex-fill">
+                                <form action="{{ route('cart.add') }}" method="POST" class="add-to-cart-form">
                                     @csrf
                                     <input type="hidden" name="eventId" value="{{ $event->id }}">
                                     <button type="submit" class="btn btn-primary flex-grow-1">
                                         <i class= "bi bi-cart-plus me-1"></i> カートに追加</button>
                                 </form>
-                                {{-- <button onclick="addToCart({{ json_encode($event) }})"
-                                        class="btn btn-primary flex-grow-1">
-                                    <i class="bi bi-cart-plus me-1"></i> カートに追加 --}}
-                                </button>
+
                             </div>
                         </div>
                     </div>
@@ -150,26 +148,8 @@
         </div>
     </main>
 
-    <div class="modal fade" id="cartModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">カートに追加しました</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    イベントをカートに追加しました。
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">続けて見る</button>
-                    <a href="/Cart" class="btn btn-primary">カートを見る</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/common.js') }}"></script>
-    {{-- <script src="{{ asset('js/event.js') }}"></script> --}}
+    <script src="{{ asset('js/addtocart.js') }}"></script>
 </body>
 </html>

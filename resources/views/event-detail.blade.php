@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $event_detail->title}} - イベント詳細</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -79,7 +80,7 @@
                             <p>{{ $event_detail->description }}</p>
                         </div>
                         <div class="mt-4 d-flex gap-3">
-                            <form action="{{ route('cart.add') }}" method="POST">
+                            <form action="{{ route('cart.add') }}" method="POST" class="add-to-cart-form">
                                 @csrf
                                 <input type="hidden" name="eventId" value="{{ $event_detail->id }}">
                                 <button type="submit" class="btn btn-primary">
@@ -96,28 +97,10 @@
         </div>
     </main>
 
-    <div class="modal fade" id="cartModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">カートに追加しました</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    イベントをカートに追加しました。
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">続けて見る</button>
-                    <a href="/Cart" class="btn btn-primary">カートを見る</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <footer id="footer"></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/common.js') }}"></script>
-    <script src="{{ asset('js/eventDetail.js') }}"></script>
+    <script src="{{ asset('js/addtocart.js') }}"></script>
 </body>
 </html>

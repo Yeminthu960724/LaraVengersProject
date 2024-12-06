@@ -226,30 +226,16 @@ function createHeader() {
 }
 
 // ページ読み込み時にヘッダーを作成
-// document.addEventListener('DOMContentLoaded', function() {
-//     createHeader();
-//     // カート数の更新
-//     updateCartCount();
-// });
-
 document.addEventListener('DOMContentLoaded', () => {
+
     createHeader();
-    if (typeof window.cartCount !== 'undefined') { // Ensure the variable is defined
+
+    // カート数の更新
+    if (typeof window.cartCount !== 'undefined') {
         const cartCountElement = document.querySelector('.cart-count');
         if (cartCountElement) {
-            cartCountElement.textContent = window.cartCount; // Update the cart count dynamically
+            cartCountElement.textContent = window.cartCount;
         }
     }
 });
-
-
-
-// カート数を更新する関数
-// function updateCartCount() {
-//     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-//     const cartCount = document.querySelector('.cart-count');
-//     if (cartCount) {
-//         cartCount.textContent = cart.length;
-//     }
-// }
 
