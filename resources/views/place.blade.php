@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>関西巡り</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -106,7 +107,7 @@
                                         <p class="card-text">{{ $place->shortDetail }}</p>
                                         <div class="d-flex gap-2">
                                             <a href="{{ route('Place.show', $place->placeNumber) }}" class="btn btn-primary flex-fill">詳細</a>
-                                            <form action="{{ route('cart.add') }}" method="POST" class="flex-fill">
+                                            <form action="{{ route('cart.add') }}" method="POST" class="add-to-cart-form">
                                                 @csrf
                                                 <input type="hidden" name="placeId" value="{{ $place->placeNumber }}">
                                                 <button type="submit" class="btn btn-primary w-100">カートに追加</button>

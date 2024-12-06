@@ -71,7 +71,9 @@ class CartController extends Controller
 
     $cartCount = count($cart); // Get the updated cart count
 
-    return redirect()->back()->with('success', 'カートに入れました')->with('cartCount', $cartCount);
+    return response()->json(['success' => true, 'cartCount' => $cartCount]);
+
+    // return redirect()->back()->with('success', 'カートに入れました')->with('cartCount', $cartCount);
 }
 
 
