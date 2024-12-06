@@ -16,11 +16,11 @@
     <header id="header"></header>
 
     <main>
-        @if(session('cartCount'))
+        {{-- @if(session('cartCount'))
             <script>
                 document.querySelector('.cart-count').textContent = {{ session('cartCount') }};
             </script>
-        @endif
+        @endif --}}
         <div class="container">
             <!-- ヘッダーセクション -->
             <div class="text-center mb-5 animate__animated animate__fadeIn">

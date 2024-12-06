@@ -38,7 +38,7 @@
                 </h1>
             </div>
 
-            @if (session('success'))
+            {{-- @if (session('success'))
                 <div id="alert-message"
                     class="alert alert-success position-fixed top-50 start-50 translate-middle p-2 text-center"
                     style="z-index: 1050; display: inline-block; white-space: nowrap;">
@@ -56,7 +56,7 @@
                 <script>
                     document.querySelector('.cart-count').textContent = {{ session('cartCount') }};
                 </script>
-            @endif
+            @endif --}}
 
             <div class="row">
                 <!-- Sidebar -->

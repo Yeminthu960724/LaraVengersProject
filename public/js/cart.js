@@ -7,16 +7,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (cart.length === 0) {
         // No items in the cart
-        cartEventsDiv.innerHTML = '<p class="text-muted text-center">カートにイベントが追加されていません。</p>';
+        cartEventsDiv.innerHTML = `
+            <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+                <p style="color: black; text-align: center; font-size: 2rem;">カートにイベントが追加されていません。</p>
+            </div>`;
         timeSelectorContainer.style.display = 'none';
     } else {
         // Cart has items
         timeSelectorContainer.style.display = 'block';
         console.log('Cart items:', cart);
-        // Optionally, dynamically populate the cart if needed
     }
 });
-
 
 
 // // DOM要素の取得
