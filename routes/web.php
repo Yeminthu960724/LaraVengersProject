@@ -46,6 +46,17 @@ Route::resource('Event', EventController::class);
 Route::get('/EventDetail', [EventDetailController::class, 'index']);
 
 
+// ログイン関連のルート
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
 
+// マイプロフィール関連のルート
+Route::get('/myprofile', [AuthController::class, 'showMyProfile'])->name('showMyProfile');
+Route::post('/myprofile/password', [AuthController::class, 'updatePassword']);
+Route::post('/logout', [AuthController::class, 'logout']);
+
+// 登録関連のルート
+Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 
 
