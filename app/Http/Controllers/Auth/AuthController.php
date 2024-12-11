@@ -34,14 +34,13 @@ class AuthController extends Controller
         $user = DB::table('users')->where('email', $request->email)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
-            // セッションにユーザー���報を保存
+            // セッションにユーザー情報を保存
             session([
                 'email' => $user->email,
                 'username' => $user->name
             ]);
 
-            // Placeページにリダイレクト
-            return redirect('/Place')->with('success', 'ログインしました');
+            return redirect()->route('showMyProfile');
         }
 
         return back()->withErrors([
@@ -56,10 +55,12 @@ class AuthController extends Controller
 
     public function showMyProfile()
     {
-
+        $email = session('email');
+        $username = session('username');
 
         return view('myprofile', [
-
+            'email' => $email,
+            'username' => $username
         ]);
     }
 

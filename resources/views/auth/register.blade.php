@@ -5,60 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ユーザー登録</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/register.css') }}" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-sm">
+<div class="register-container">
+    <div class="register-card">
+        <div class="register-header">
+            <h3>新規登録</h3>
+        </div>
 
-                <div class="card-header bg-primary text-white text-center">
-                    <h3>ユーザー登録</h3>
+        <div class="register-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ url('/register') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="name" class="form-label">お名前</label>
+                    <input type="text"
+                           class="form-control"
+                           id="name"
+                           name="name"
+                           value="{{ old('name') }}"
+                           required>
                 </div>
 
+                <div class="form-group">
+                    <label for="email" class="form-label">メールアドレス</label>
+                    <input type="email"
+                           class="form-control"
+                           id="email"
+                           name="email"
+                           value="{{ old('email') }}"
+                           required>
+                </div>
 
-                <div class="card-body">
-
-
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
+                <div class="form-group">
+                    <label for="password" class="form-label">パスワード</label>
+                    <input type="password"
+                           class="form-control"
+                           id="password"
+                           name="password"
+                           required>
+                    <div class="password-requirements">
+                        <small>パスワードの要件：</small>
                         <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
+                            <li>8文字以上</li>
+                            <li>英字と数字を含む</li>
                         </ul>
                     </div>
-                @endif
-                    <form action="{{ route('register') }}" method="POST">
-                        @csrf
-
-                        <div class="mb-3">
-                            <label for="name" class="form-label">名前:</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="email" class="form-label">メールアドレス:</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="password" class="form-label">パスワード:</label>
-                            <input type="password" id="password" name="password" class="form-control" required>
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label for="password_confirmation" class="form-label">パスワードの再確認</label>
-                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required>
-                        </div>
-
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">登録</button>
-                        </div>
-                    </form>
                 </div>
+
+                <div class="form-group">
+                    <label for="password_confirmation" class="form-label">パスワード（確認）</label>
+                    <input type="password"
+                           class="form-control"
+                           id="password_confirmation"
+                           name="password_confirmation"
+                           required>
+                </div>
+
+                <button type="submit" class="btn btn-register">
+                    登録する
+                </button>
+            </form>
+
+            <div class="login-link">
+                すでにアカウントをお持ちの方は<a href="{{ url('/login') }}">こちら</a>
+            </div>
+
+            <div class="terms-text">
+                登録することで、利用規約とプライバシーポリシーに同意したことになります。
             </div>
         </div>
     </div>

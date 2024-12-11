@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -23,12 +24,21 @@ class RegisterController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        User::create([
+        $user = DB::table('users')->insert([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
-        return redirect()->route('Place.index');
+        // 登録後すぐにセッションにユーザー情報を保存
+        session([
+            'email' => $request->email,
+            'username' => $request->name
+        ]);
+
+        // マイプロフィールページにリダイレクト
+        return redirect()->route('showMyProfile')->with('success', '登録が完了しました');
     }
 }

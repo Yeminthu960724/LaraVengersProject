@@ -2,37 +2,65 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ログイン</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 </head>
-<body class="bg-light">
-    <div class="container d-flex align-items-center justify-content-center min-vh-100">
-        <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;">
-            <h2 class="text-center mb-4">ログイン</h2>
-            <!-- エラーメッセージの表示 -->
-            @if ($errors->has('login'))
+<body>
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <h3>ログイン</h3>
+        </div>
+
+        <div class="login-body">
+            @if ($errors->any())
                 <div class="alert alert-danger">
-                    {{ $errors->first('login') }}
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
-            <!-- ログインフォーム -->
-            <form action="{{ route('login') }}" method="POST">
+
+            <form action="{{ url('/login') }}" method="POST">
                 @csrf
-                <div class="mb-3">
-                    <label for="email" class="form-label">メールアドレス</label>
-                    <input type="email" name="email" id="email" class="form-control" required autofocus>
+                <div class="form-floating mb-3">
+                    <input type="email"
+                           class="form-control"
+                           id="email"
+                           name="email"
+                           placeholder="name@example.com"
+                           value="{{ old('email') }}"
+                           required>
+                    <label for="email">メールアドレス</label>
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">パスワード</label>
-                    <input type="password" name="password" id="password" class="form-control" required>
+
+                <div class="form-floating mb-3">
+                    <input type="password"
+                           class="form-control"
+                           id="password"
+                           name="password"
+                           placeholder="パスワード"
+                           required>
+                    <label for="password">パスワード</label>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">ログイン</button>
+
+                <button type="submit" class="btn btn-login">
+                    ログイン
+                </button>
             </form>
+
+            <div class="register-link">
+                アカウントをお持ちでない方は<a href="{{ url('/register') }}">こちら</a>
+            </div>
         </div>
     </div>
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
