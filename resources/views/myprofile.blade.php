@@ -10,6 +10,17 @@
 <body>
 
 <div class="profile-container">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+
     <div class="profile-card">
         <div class="profile-header">
             <h2>My Profile</h2>
