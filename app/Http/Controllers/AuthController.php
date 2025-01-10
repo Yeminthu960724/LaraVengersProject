@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 
 class AuthController extends Controller
@@ -34,14 +35,14 @@ class AuthController extends Controller
         $user = DB::table('users')->where('email', $request->email)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
-            // セッションにユーザー���報を保存
+            // セッションにユーザー情報を保存
             session([
                 'email' => $user->email,
                 'username' => $user->name
             ]);
 
-            // Placeページにリダイレクト
-            return redirect('/Place')->with('success', 'ログインしました');
+            // マイページにリダイレクト
+            return redirect('/myprofile')->with('success', 'ログインしました');
         }
 
         return back()->withErrors([
@@ -65,10 +66,11 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        // セッションをクリア
-        $request->session()->flush();
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-        return redirect('/login')->with('success', 'ログアウトしました');
+        return redirect('/Place'); // Placeページにリダイレクト
     }
 
     public function updatePassword(Request $request)

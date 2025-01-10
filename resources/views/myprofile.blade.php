@@ -10,20 +10,12 @@
 <body>
 
 <div class="profile-container">
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-
     <div class="profile-card">
         <div class="profile-header">
-            <h2>My Profile</h2>
+            <h2>マイページ</h2>
+            <a href="{{ url('/Place') }}" class="btn btn-outline-primary back-btn">
+                観光地一覧に戻る
+            </a>
         </div>
 
         @if (session('success'))
@@ -53,25 +45,6 @@
                     <strong>ユーザー名:</strong>
                     {{ $username ?? session('username') ?? '未設定' }}
                 </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">お気に入り場所</div>
-            <div class="row">
-                @if(isset($favorites) && count($favorites) > 0)
-                    @foreach($favorites as $favorite)
-                        <div class="col-md-6 mb-3">
-                            <div class="favorite-item">
-                                <h5>{{ $favorite->name }}</h5>
-                                <p>{{ $favorite->description }}</p>
-                                <a href="{{ url('/placeDetail/' . $favorite->id) }}" class="btn btn-sm btn-primary">詳細を見る</a>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <p>お気に入りの場所はまだありません</p>
-                @endif
             </div>
         </div>
 
