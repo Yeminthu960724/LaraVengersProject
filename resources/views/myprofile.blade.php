@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マイプロフィール</title>
+    <title>マイページ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
 </head>
@@ -12,7 +12,9 @@
 <div class="profile-container">
     <div class="profile-card">
         <div class="profile-header">
-            <h2>マイページ</h2>
+            <div class="user-profile">
+                <h2>{{ $username ?? session('username') ?? 'ユーザー' }}さん</h2>
+            </div>
             <a href="{{ url('/Place') }}" class="btn btn-outline-primary back-btn">
                 観光地一覧に戻る
             </a>
