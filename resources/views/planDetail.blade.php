@@ -540,7 +540,7 @@
                             <h2><i class="bi bi-sun"></i> 午後</h2>
                             <div class="activity" data-place-name="和歌山マリーナシティ">
                                 <h3>2:00 PM - 和歌山マリーナシティ</h3>
-                                <p>黒潮市場でショッピングと海���を楽しむ。</p>
+                                <p>黒潮市場でショッピングと海を楽しむ。</p>
                                 <p class="access">
                                     <i class="bi bi-train-front"></i>
                                     <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode('和歌山マリーナシティ') }}"
@@ -1222,6 +1222,13 @@
                     <p>プランIDをご確認ください。</p>
                 </div>
             @endif
+
+            <!-- 戻るボタンを追加 -->
+            <div class="text-center mt-4 mb-5">
+                <a href="{{ url('/Plan') }}" class="btn btn-outline-primary return-btn">
+                    <i class="bi bi-arrow-left"></i> プラン一覧に戻る
+                </a>
+            </div>
         @else
             <div class="alert alert-warning mt-4">
                 <h2>プランが指定されていません</h2>

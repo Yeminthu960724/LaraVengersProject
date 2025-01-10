@@ -85,6 +85,32 @@
                 </div>
             </div>
         </div>
+
+        <div class="section">
+            <div class="section-title">マイプラン</div>
+            <div class="plan-box">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="plan-item">
+                            <h5>最近見たプラン</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="/PlanDetail/osaka" class="plan-link">大阪観光モデルコース</a></li>
+                                <li><a href="/PlanDetail/kyoto" class="plan-link">京都観光モデルコース</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="plan-item">
+                            <h5>おすすめプラン</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="/PlanDetail/usj" class="plan-link">USJを楽しむプラン</a></li>
+                                <li><a href="/PlanDetail/arashiyama" class="plan-link">嵐山散策プラン</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

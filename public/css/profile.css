@@ -212,3 +212,49 @@ body {
         display: inline-block;
     }
 }
+
+.plan-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.plan-item {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    height: 100%;
+}
+
+.plan-item h5 {
+    color: #1B4B8F;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.plan-link {
+    color: #4B8EC8;
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+    transition: all 0.3s ease;
+}
+
+.plan-link:hover {
+    color: #1B4B8F;
+    transform: translateX(5px);
+}
+
+.list-unstyled li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.list-unstyled li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #4B8EC8;
+}

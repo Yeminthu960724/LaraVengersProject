@@ -275,3 +275,22 @@
     color: #4B8EC8 !important;
     text-decoration: underline !important;
 }
+
+.return-btn {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: 2px solid #4B8EC8;
+    color: #4B8EC8;
+}
+
+.return-btn:hover {
+    background: #4B8EC8;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(75, 142, 200, 0.2);
+}
+
+.return-btn i {
+    margin-right: 8px;
+}
