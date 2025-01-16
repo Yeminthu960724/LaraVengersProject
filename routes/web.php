@@ -13,6 +13,8 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventDetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ResultController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +35,9 @@ Route::resource('Place', PlaceController::class);
 Route::get('/PlaceDetail', [PlaceDetailController::class, 'index']);
 Route::post('/Cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/Cart', [CartController::class, 'viewCart'])->name('cart.view');
-Route::post('/Cart/remove/{placeId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::post('/Cart/remove/{itemId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::post('/Cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+Route::post('/Cart/post', [CartController::class, 'post']);
 Route::get('/Plan', [PlanController::class, 'index']);
 Route::get('/PlanDetail/{planId}', [PlanDetailController::class, 'index'])
     ->where('planId', 'osaka|kobe|kyoto|nara|wakayama|shiga|arashiyama|usj|arima|narapark|amanohashidate|himeji')
@@ -44,7 +47,8 @@ Route::post('/register',[RegisterController::class,'register']);
 Route::get('/password/reset',[ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::resource('Event', EventController::class);
 Route::get('/EventDetail', [EventDetailController::class, 'index']);
-
+Route::get('/Result', [ResultController::class, 'index']);
+Route::post('/api/chat', [ResultController::class, 'chat']);
 
 // ログイン関連のルート
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
