@@ -1,90 +1,141 @@
 <!-- カスタムフッター -->
-<footer class="custom-footer">
-    <div class="footer-wrapper">
-        <!-- サイト情報 -->
-        <div class="footer-section">
-            <h3>サイト情報</h3>
-            <ul>
-                <li>
-                    <a href="{{ route('about') }}">
-                        ℹ️ About Us
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('terms') }}">
-                        📄 利用規約
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('privacy') }}">
-                        🔒 プライバシーポリシー
-                    </a>
-                </li>
-            </ul>
-        </div>
+<footer class="custom-footer text-white py-5">
+    <div class="container">
+        <div class="row justify-content-center text-center g-4">
+            <!-- サイト情報 -->
+            <div class="col-md-4 col-lg-3">
+                <h3 class="h5 mb-4 position-relative pb-3 fw-bold">
+                    サイト情報
+                </h3>
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <a href="{{ route('about') }}" class="text-white-50 text-decoration-none d-inline-flex align-items-center hover-link">
+                            <span class="emoji-icon">ℹ️</span>About Us
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="{{ route('terms') }}" class="text-white-50 text-decoration-none d-inline-flex align-items-center hover-link">
+                            <span class="emoji-icon">📄</span>利用規約
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="{{ route('privacy') }}" class="text-white-50 text-decoration-none d-inline-flex align-items-center hover-link">
+                            <span class="emoji-icon">🔒</span>プライバシーポリシー
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-        <!-- サポート -->
-        <div class="footer-section">
-            <h3>サポート</h3>
-            <ul>
-                <li>
-                    <a href="{{ route('guide') }}">
-                        📚 ご利用ガイド
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('faq') }}">
-                        ❓ よくある質問
-                    </a>
-                </li>
-            </ul>
-        </div>
+            <!-- サポート -->
+            <div class="col-md-4 col-lg-3">
+                <h3 class="h5 mb-4 position-relative pb-3 fw-bold">
+                    サポート
+                </h3>
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <a href="{{ route('guide') }}" class="text-white-50 text-decoration-none d-inline-flex align-items-center hover-link">
+                            <span class="emoji-icon">📚</span>ご利用ガイド
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="{{ route('faq') }}" class="text-white-50 text-decoration-none d-inline-flex align-items-center hover-link">
+                            <span class="emoji-icon">❓</span>よくある質問
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-        <!-- SNSリンク -->
-        <div class="footer-section">
-            <h3>SNSでフォロー</h3>
-            <div class="social-links">
-                <a href="#">𝕏 Twitter</a>
-                <a href="#">📘 Facebook</a>
-                <a href="#">📸 Instagram</a>
+            <!-- SNSリンク -->
+            <div class="col-md-4 col-lg-3">
+                <h3 class="h5 mb-4 position-relative pb-3 fw-bold">
+                    SNSでフォロー
+                </h3>
+                <div class="d-flex flex-column gap-3 align-items-center">
+                    <a href="#" class="text-white-50 text-decoration-none hover-link">
+                        <span class="emoji-icon">𝕏</span>Twitter
+                    </a>
+                    <a href="#" class="text-white-50 text-decoration-none hover-link">
+                        <span class="emoji-icon">📘</span>Facebook
+                    </a>
+                    <a href="#" class="text-white-50 text-decoration-none hover-link">
+                        <span class="emoji-icon">📸</span>Instagram
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- コピーライト -->
-    <div class="copyright">
-        <p>&copy; 2024 関西巡り All Rights Reserved.</p>
+        <!-- コピーライト -->
+        <div class="text-center mt-5 pt-4 border-top border-white-50">
+            <p class="text-white-50 mb-0">&copy; 2025 関西巡り All Rights Reserved.</p>
+        </div>
     </div>
 </footer>
 
 <style>
 .custom-footer {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    padding: 4rem 1rem;
-    font-family: "Hiragino Kaku Gothic Pro", "メイリオ", sans-serif;
-    color: #fff;
-}
-
-.footer-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-    text-align: center;
-}
-
-.footer-section h3 {
-    color: #fff;
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
     position: relative;
-    padding-bottom: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    overflow: hidden;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.2);
 }
 
-.footer-section h3::after {
+.custom-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+}
+
+.emoji-icon {
+    display: inline-block;
+    font-size: 1.2em;
+    margin-right: 0.3em;
+    filter: none;  /* 親要素の色指定を無視 */
+    opacity: 1;    /* 完全な不透明度を保持 */
+}
+
+.hover-link {
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+}
+
+.hover-link i {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hover-link:hover {
+    color: #fff !important;
+    transform: translateY(-2px);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.hover-link:hover i {
+    color: #fff;
+}
+
+.h5 {
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-weight: 600;
+}
+
+.h5::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -92,78 +143,12 @@
     transform: translateX(-50%);
     width: 30px;
     height: 2px;
-    background: #fff;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-section ul li {
-    margin-bottom: 1.2rem;
-}
-
-.footer-section ul li a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-    letter-spacing: 0.03em;
-}
-
-.footer-section ul li a:hover {
-    color: #fff;
-    transform: translateY(-2px);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-.social-links {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    align-items: center;
-}
-
-.social-links a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-block;
-    font-size: 0.95rem;
-}
-
-.social-links a:hover {
-    color: #fff;
-    transform: translateY(-2px);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-.copyright {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.8);
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.9rem;
-    letter-spacing: 0.02em;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 @media (max-width: 768px) {
-    .footer-wrapper {
-        flex-direction: column;
-        gap: 3rem;
-    }
-
-    .footer-section {
-        padding: 0 1rem;
-    }
-
-    .footer-section ul li a:hover,
-    .social-links a:hover {
+    .hover-link:hover {
         transform: scale(1.05);
     }
 }
