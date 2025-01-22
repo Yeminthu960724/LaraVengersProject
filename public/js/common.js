@@ -43,7 +43,7 @@ function createHeader() {
                     </div>
 
                     <div class="nav-item">
-                            <a href="/profile" class="nav-link profile-button">
+                            <a href="/~se2a_24_lara/public/myprofile" class="nav-link profile-button">
                                 <i class="bi bi-person-lines-fill"></i>
                                 <span>マイページ</span>
                             </a>
