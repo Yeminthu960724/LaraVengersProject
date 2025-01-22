@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             messages: [
                 { role: 'user', content: question }
             ],
-            model: 'llama-3.1-sonar-large-128k-online'
+            model: 'sonar'
         })
     })
         .then(response => {

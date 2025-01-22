@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const endTime = document.getElementById('endTime')?.value || '';
         const departurePlace = document.getElementById('departurePlace')?.value || '';
         const destination = document.getElementById('destination')?.value || '';
+        const lunchTime = document.getElementById('lunchTime');
+        const dinnerTime = document.getElementById('dinnerTime');
+        const startStation = document.getElementById('startStation')?.value || '';
+        const reachStation = document.getElementById('reachStation')?.value || '';
 
         cartArray.forEach((item, index) => {
             const { priorityValue, durationValue } = getSelectValues(item.id); // 使用 item.id
@@ -48,6 +52,26 @@ document.addEventListener('DOMContentLoaded', function () {
             alert(`${errorMessage.join('、')}を選択してください。`);
             return;
         }
+        ///////////////////////////////////////////////////
+        let lunchTimeInfo = '';
+        if(lunchTime.checked){
+            lunchTimeInfo = '一時間ランチタイムを追加して'
+        };
+        let dinnerTimeInfo = '';
+        if(dinnerTime.checked){
+            dinnerTimeInfo = '一時間ディナータイムを追加して'
+        };
+        /////////////////////////////////////////////////////
+        let startStationInfo = '';
+        if(startStation){
+            startStationInfo = startStation;
+        }
+
+        let reachStationInfo = '';
+        if(startStation){
+            reachStationInfo = reachStation;
+        }
+        /////////////////////////////////////////////////////
 
         const question = `
         以下の場所を訪れるプランを作成してください：
@@ -57,17 +81,13 @@ document.addEventListener('DOMContentLoaded', function () {
         - 訪問日: ${startDate}
         - 開始時間: ${startTime}時
         - 終了時間: ${endTime}時
-        - 出発地: ${departurePlace}
-        - 到着地: ${destination}
-
-        以下の情報も考慮してプランを作成してください：
-        ${priority.map(place => `
-        - ${place.title}
-          - 営業時間: ${place.details?.openingHours || '情報なし'}
-          - アクセス: ${place.details?.access || '情報なし'}
-        `).join('')}
-        
+        - 出発地: ${departurePlace},${startStationInfo}
+        - 到着地: ${destination},${reachStationInfo}
+        - ${lunchTimeInfo}
+        - ${dinnerTimeInfo}
+        乗換案内、営業時間、アクセス、料金を確認してください。
         日本語で具体的な時間のスケジュールを作成してください。
+        アドバイスをください。
         `.trim();
 
         sessionStorage.setItem('question', JSON.stringify(question));
@@ -78,15 +98,15 @@ document.addEventListener('DOMContentLoaded', function () {
 function getSelectValues(id) {
     const priorityId = `placePriority${id}`;
     const durationId = `durationSelect${id}`;
-    
+
     const priorityElement = document.getElementById(priorityId);
     const durationElement = document.getElementById(durationId);
-    
+
     if (!priorityElement || !durationElement) {
         console.error(`元素未找到: ${priorityId} 或 ${durationId}`);
         return { priorityValue: '1', durationValue: '60' };
     }
-    
+
     const priorityValue = priorityElement.value || '1';
     const durationValue = durationElement.value || '60';
     return { priorityValue, durationValue };

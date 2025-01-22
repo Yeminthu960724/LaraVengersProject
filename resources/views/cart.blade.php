@@ -106,7 +106,6 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
                                                     <option value="180">3時間</option>
                                                     <option value="210">3時間30分</option>
                                                     <option value="240">4時間</option>
-                                                    <option value="">他（自分で入力）</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -189,30 +188,36 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
                         </div>
                         <div class="row justify-content-center mb-4">
                             <div class="col-md-4 mb-3">
+                                <form class="row g-3 needs-validation" novalidate>
+                                    <div class="col-md-4">
+                                        <label for="validationCustom01" class="form-label">出発駅(ご自由に)</label>
+                                        <input type="text" class="form-control" id="startStation" value="">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <form class="row g-3 needs-validation" novalidate>
+                                    <div class="col-md-4">
+                                        <label for="validationCustom01" class="form-label">到着駅(ご自由に)</label>
+                                        <input type="text" class="form-control" id="reachStation" value="">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-md-4 mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="lunchtime">
+                                    <input class="form-check-input" type="checkbox" value="" id="lunchTime">
                                     <label class="form-check-label" for="flexCheckIndeterminate">
                                         昼ご飯時間追加
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
-                                    <label class="form-check-label" for="flexCheckIndeterminate">
-                                        夕飯時間追加
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                    <input class="form-check-input" type="checkbox" value="" id="dinnerTime">
                                     <label class="form-check-label" for="flexCheckIndeterminate">
-                                        考えてる
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
-                                    <label class="form-check-label" for="flexCheckIndeterminate">
-                                        考えてる
+                                        夕飯時間追加
                                     </label>
                                 </div>
                             </div>
