@@ -86,9 +86,9 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
 
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">行く順番：</label>
-                                                <select id="placePriority{{$index}}" class="form-select" onchange="updatePriority({{ $index }}, this.value)">
+                                                <select id="placePriority{{$item['id']}}" class="form-select" onchange="getSelectValues('{{ $item['id'] }}')">
                                                     @for ($i = 1; $i <= count($cart); $i++)
-                                                        <option value="{{ $i }}" {{ $i == (int)$index + 1 ? 'selected' : '' }}>
+                                                    <option value="{{ $i }}" {{ $i == (int)$index + 1 ? 'selected' : '' }}>
                                                             {{ $i }}番目
                                                         </option>
                                                     @endfor
@@ -97,7 +97,7 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
 
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">滞在時間：</label>
-                                                <select id="durationSelect{{$index}}" class="form-select" onchange="updateDuration({{ $index }}, this.value)">
+                                                <select id="durationSelect{{$item['id']}}" class="form-select" onchange="getSelectValues('{{ $item['id'] }}')">
                                                     <option value="30">30分</option>
                                                     <option value="60">1時間</option>
                                                     <option value="90">1時間30分</option>

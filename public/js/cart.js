@@ -1,22 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     const timeSelectorContainer = document.querySelector('.time-selector-container');
     const cartEventsDiv = document.getElementById('cartEvents');
+    const cartArray = Object.values(window.cart || {}); // 將物件轉為陣列
+    const priority = [];
 
-    // Use the globally defined window.cart variable
-    const cart = window.cart || [];
-
-    if (cart.length === 0) {
-        // No items in the cart
+    if (cartArray.length === 0) {
         cartEventsDiv.innerHTML = `
             <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
                 <p style="color: black; text-align: center; font-size: 2rem;">カートにイベントが追加されていません。</p>
             </div>`;
         timeSelectorContainer.style.display = 'none';
     } else {
-        // Cart has items
         timeSelectorContainer.style.display = 'block';
-        console.log('Cart items:', cart);
+        console.log('Cart items:', cartArray);
     }
 
     const createPlanButton = document.getElementById('createPlanButton');
@@ -27,24 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const endTime = document.getElementById('endTime')?.value || '';
         const departurePlace = document.getElementById('departurePlace')?.value || '';
         const destination = document.getElementById('destination')?.value || '';
-        const priority = [];
-
-        const cart = window.cart || [];
-
-        const cartArray = Object.values(cart);
-
-        // let cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
         cartArray.forEach((item, index) => {
-            // Dynamically construct the ID
-            const priorityId = `placePriorityplace_${index}`;
-            const durationId = `durationSelect${index}`;
-
-            // Get values from the select elements
-            const priorityValue = document.getElementById(priorityId)?.value || '1';
-            const durationValue = document.getElementById(durationId)?.value || '60';
-
-            // Push the data to the priority array
+            const { priorityValue, durationValue } = getSelectValues(item.id); // 使用 item.id
             priority.push({
                 title: item.name,
                 priority: priorityValue,
@@ -53,66 +34,63 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-
-
-        const placesList = priority.map(place => {
-            return `${place.title}（優先度: ${place.priority}, 滞在時間: ${place.duration}分）`;
-        }).join('、');
-
-    /////////////////////セット///////////////////////
-        const fields = {
+        const errorMessage = Object.entries({
             startDate: '訪問日',
             startTime: '開始時間',
             endTime: '終了時間',
             departurePlace: '出発地',
-            destination: '到着地'
-        };
-
-        const errorMessage = [];
-        for (const [fieldId, fieldName] of Object.entries(fields)) {
-            const fieldValue = document.getElementById(fieldId)?.value || '';
-            if (!fieldValue) {
-                errorMessage.push(fieldName);
-            }
-        }
+            destination: '到着地',
+        })
+            .filter(([fieldId]) => !document.getElementById(fieldId)?.value)
+            .map(([, fieldName]) => fieldName);
 
         if (errorMessage.length > 0) {
-            alert(errorMessage.join('、') + "を選択してください。");
+            alert(`${errorMessage.join('、')}を選択してください。`);
             return;
         }
-    ///////////////////////////////////////////////////
 
         const question = `
-    以下の場所を訪れるプランを作成してください：
-    ${placesList}
+        以下の場所を訪れるプランを作成してください：
+        ${priority.map(place => `${place.title}（優先度: ${place.priority}, 滞在時間: ${place.duration}分）`).join('、')}
 
-    条件：
-    - 訪問日: ${startDate}
-    - 開始時間: ${startTime}時
-    - 終了時間: ${endTime}時
-    - 出発地: ${departurePlace}
-    - 到着地: ${destination}
+        条件：
+        - 訪問日: ${startDate}
+        - 開始時間: ${startTime}時
+        - 終了時間: ${endTime}時
+        - 出発地: ${departurePlace}
+        - 到着地: ${destination}
 
-    以下の情報も考慮してプランを作成してください：
-    ${priority.map(place => `
-    - ${place.title}
-      - 営業時間: ${place.details?.openingHours || '情報なし'}
-      - アクセス: ${place.details?.access || '情報なし'}
-    `).join('\n')}
+        以下の情報も考慮してプランを作成してください：
+        ${priority.map(place => `
+        - ${place.title}
+          - 営業時間: ${place.details?.openingHours || '情報なし'}
+          - アクセス: ${place.details?.access || '情報なし'}
+        `).join('')}
+        
+        日本語で具体的な時間のスケジュールを作成してください。
+        `.trim();
 
-    日本語で具体的な時間のスケジュールを作成してください。
-    `;
-
-
-    sessionStorage.setItem('question', JSON.stringify(question));
-
-
-
-    window.location.href = "/~se2a_24_lara/public/Result";
-
-    }
-
+        sessionStorage.setItem('question', JSON.stringify(question));
+        window.location.href = "/~se2a_24_lara/public/Result";
+    };
 });
+
+function getSelectValues(id) {
+    const priorityId = `placePriority${id}`;
+    const durationId = `durationSelect${id}`;
+    
+    const priorityElement = document.getElementById(priorityId);
+    const durationElement = document.getElementById(durationId);
+    
+    if (!priorityElement || !durationElement) {
+        console.error(`元素未找到: ${priorityId} 或 ${durationId}`);
+        return { priorityValue: '1', durationValue: '60' };
+    }
+    
+    const priorityValue = priorityElement.value || '1';
+    const durationValue = durationElement.value || '60';
+    return { priorityValue, durationValue };
+}
 
     // function generateOrderOptions(total, current) {
     //         return Array.from({ length: total }, (_, i) => {

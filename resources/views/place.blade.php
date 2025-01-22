@@ -71,7 +71,7 @@
                                         <input type="checkbox" name="characteristics[]" value="{{ $characteristic }}"
                                             {{ in_array($characteristic, request('characteristics', [])) ? 'checked' : '' }}>
                                         {{ $characteristic }}
-                                    </label><br>
+                                    </label>
                                 @endforeach
                             </div>
                             <div>
@@ -81,7 +81,7 @@
                                         <input type="checkbox" name="location[]" value="{{ $location }}"
                                             {{ in_array($location, request('location', [])) ? 'checked' : '' }}>
                                         {{ $location }}
-                                    </label><br>
+                                    </label>
                                 @endforeach
                             </div>
                             <button type="submit" class="filter-button">
