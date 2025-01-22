@@ -14,6 +14,7 @@ use App\Http\Controllers\EventDetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ResultController;
+use App\Http\Controllers\FooterPagesController;
 
 
 /*
@@ -62,5 +63,12 @@ Route::post('/logout', [AuthController::class, 'logout']);
 // 登録関連のルート
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
+
+// フッター関連のルート
+Route::get('/about', [FooterPagesController::class, 'about'])->name('about');
+Route::get('/terms', [FooterPagesController::class, 'terms'])->name('terms');
+Route::get('/privacy', [FooterPagesController::class, 'privacy'])->name('privacy');
+Route::get('/guide', [FooterPagesController::class, 'guide'])->name('guide');
+Route::get('/faq', [FooterPagesController::class, 'faq'])->name('faq');
 
 
