@@ -74,8 +74,7 @@
                                 <form action="{{ route('cart.add') }}" method="POST" class="add-to-cart-form">
                                     @csrf
                                     <input type="hidden" name="eventId" value="{{ $event->id }}">
-                                    <button type="submit" class="btn btn-primary flex-grow-1">
-                                        <i class= "bi bi-cart-plus me-1"></i> カートに追加</button>
+                                    <button type="submit" class="btn btn-primary flex-grow-1">カートに追加</button>
                                 </form>
 
                             </div>

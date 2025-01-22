@@ -45,7 +45,7 @@ function createHeader() {
                         <a href="/~se2a_24_lara/public/Cart" class="nav-link cart-button me-2">
                             <i class="bi bi-cart3"></i>
                             <span>カート</span>
-                            <span class="cart-count"></span>
+                            <span class="cart-count">window.cartCount</span>
                         </a>
                     </div>
 
