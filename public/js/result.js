@@ -4,6 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const requestcontent = document.querySelector('.request-content');
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
+/////////////////////////Loading//////////////////////////
+    const citations = document.querySelector('.citations');
+    const loadingElement = document.getElementById("loading");
+    const citationsTittle = document.querySelector(".citations-tittle");
+    let dotCount = 1;
+
+    setInterval(() => {
+        // if (dotCount > 3) {
+        //     dotCount = 1;
+        // }
+        loadingElement.textContent = "Loading" + ".".repeat(dotCount);
+        dotCount++;
+    }, 1000);
+//////////////////////////////////////////////////////////
+
     requestcontent.textContent = question;
 
     console.log(question);
@@ -35,7 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             if (data.choices && data.choices[0] && data.choices[0].message.content) {
+                console.log(data);
                 resultcontent.textContent = data.choices[0].message.content;
+                loadingElement.style.display = "none";
+                citationsTittle.textContent = '参考：';
+                citations.innerHTML = data.citations.map(citation => `<a href="${citation}" target="_blank">${citation}</a>`).join('<br>');
             } else {
                 resultcontent.textContent = 'No valid response from API.';
             }

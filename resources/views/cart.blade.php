@@ -106,6 +106,10 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
                                                     <option value="180">3時間</option>
                                                     <option value="210">3時間30分</option>
                                                     <option value="240">4時間</option>
+                                                    <option value="270">4時間30分</option>
+                                                    <option value="300">5時間</option>
+                                                    <option value="330">5時間30分</option>
+                                                    <option value="360">6時間</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -144,7 +148,7 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
                                 </label>
                                 <select id="startTime" class="form-select">
                                     <option value="">選択してください</option>
-                                    <?php for ($i = 6; $i < 16; $i++): ?>
+                                    <?php for ($i = 6; $i < 18; $i++): ?>
                                         <option value="<?= htmlspecialchars($i) ?>"><?= htmlspecialchars($i) ?>:00</option>
                                     <?php endfor; ?>
                                 </select>
@@ -155,7 +159,7 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
                                 </label>
                                 <select id="endTime" class="form-select">
                                     <option value="">選択してください</option>
-                                    <?php for ($i = 16; $i < 24; $i++): ?>
+                                    <?php for ($i = 12; $i < 25; $i++): ?>
                                         <option value="<?= htmlspecialchars($i) ?>"><?= htmlspecialchars($i) ?>:00</option>
                                     <?php endfor; ?>
                                 </select>

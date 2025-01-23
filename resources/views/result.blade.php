@@ -34,11 +34,15 @@
 
                 <div class="request-content">
                     <h5><i class="bi bi-search"></i> リクエスト内容</h5>
-                    {{-- <p>{{$question}}</p> --}}
                 </div>
 
                 <div class="result-content">
-                    <p>Loading......</p>
+                    <h5 id="loading">Loading</h5>
+                </div>
+
+                <div>
+                    <h5 class="citations-tittle"></h5>
+                    <p class="citations"></p>
                 </div>
 
                 <div class="action-buttons">
