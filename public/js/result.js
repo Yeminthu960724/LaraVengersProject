@@ -1,33 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     const resultcontent = document.querySelector('.result-content');
     const question = sessionStorage.getItem('question');
-    const requestcontent = document.querySelector('.request-content');
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-/////////////////////////Loading//////////////////////////
+    /////////////////////////Loading//////////////////////////
     const citations = document.querySelector('.citations');
     const loadingElement = document.getElementById("loading");
     const citationsTittle = document.querySelector(".citations-tittle");
-    let dotCount = 1;
 
+    let dotCount = 1;
     setInterval(() => {
-        // if (dotCount > 3) {
-        //     dotCount = 1;
-        // }
         loadingElement.textContent = "Loading" + ".".repeat(dotCount);
         dotCount++;
     }, 1000);
-//////////////////////////////////////////////////////////
-
-    requestcontent.textContent = question;
+    //////////////////////////////////////////////////////////
 
     console.log(question);
-
-    if (!question) {
-        console.error('No question found in session storage');
-        resultcontent.textContent = 'No question found in session storage.';
-        return;
-    }
 
     fetch('/~se2a_24_lara/public/api/chat', {
         method: 'POST',
@@ -36,10 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'X-CSRF-TOKEN': csrfToken
         },
         body: JSON.stringify({
-            messages: [
-                { role: 'user', content: question }
-            ],
-            model: 'sonar'
+            messages: [{ role: 'user', content: question }],
+            model: 'sonar',
+            temperature: '0'
         })
     })
         .then(response => {
