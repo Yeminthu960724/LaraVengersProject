@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         body: JSON.stringify({
             messages: [{ role: 'user', content: question }],
-            model: 'sonar',
+            model: 'sonar-pro',
             temperature: '0'
         })
     })
