@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
         以下の場所を訪れるプランを作成してください：
         ${priority.map(place => `${place.title}（優先度: ${place.priority}, 滞在時間: ${place.duration}分）`).join('、')}
 
-        条件：
+        以下の条件でご案内してください：
         - 訪問日: ${startDate}
         - 開始時間: ${startTime}時
         - 終了時間: ${endTime}時
@@ -85,9 +85,9 @@ document.addEventListener('DOMContentLoaded', function () {
         - 到着地: ${destination},${reachStationInfo}
         - ${lunchTimeInfo}
         - ${dinnerTimeInfo}
-        乗換案内、営業時間、アクセス、料金を確認してください。
-        日本語で具体的な時間のスケジュールを作成してください。
-        アドバイスをください。
+        - 乗換案内、営業時間、アクセス、料金を確認してください。
+        - 日本語で具体的な時間のスケジュールを作成してください。
+        - アドバイスをください。
         `.trim();
 
         sessionStorage.setItem('question', JSON.stringify(question));
