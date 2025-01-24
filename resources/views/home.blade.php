@@ -12,7 +12,7 @@
 <!-- ナビゲーションバーを修正 -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/~se2a_24_lara/public/">
             <i class="bi bi-compass"></i> 関西巡り
         </a>
 
@@ -23,29 +23,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link main-menu" href="/Place">
+                    <a class="nav-link main-menu" href="/~se2a_24_lara/public/Place">
                         <i class="bi bi-map"></i> 観光地
                         <span></span>
                     </a>
                 </li>
             </ul>
-
-            <!-- 検索フォームを追加 -->
-            <form class="d-flex search-form me-3">
-                <div class="search-wrapper">
-                    <input type="search" class="form-control search-input" placeholder="観光地を検索...">
-                    <button class="search-button" type="submit">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </div>
-            </form>
-
-            <div class="nav-item">
-                <a href="/login" class="nav-link login-button">
-                    <i class="bi bi-person-circle"></i>
-                    <span>ログイン</span>
-                </a>
-            </div>
         </div>
     </div>
 </nav>
