@@ -1,25 +1,23 @@
 <!-- カスタムフッター -->
-<footer class="custom-footer text-white py-5">
-    <div class="container">
-        <div class="row justify-content-center text-center g-4">
+<footer class="custom-footer">
+    <div class="footer-container">
+        <div class="footer-content">
             <!-- サイト情報 -->
-            <div class="col-md-4 col-lg-3">
-                <h3 class="h5 mb-4 position-relative pb-3 fw-bold">
-                    サイト情報
-                </h3>
-                <ul class="list-unstyled">
-                    <li class="mb-3">
-                        <a href="{{ route('about') }}" class="text-white-50 text-decoration-none d-inline-flex align-items-center hover-link">
+            <div class="footer-section">
+                <h3>サイト情報</h3>
+                <ul>
+                    <li>
+                        <a href="{{ route('about') }}">
                             <span class="emoji-icon">ℹ️</span>About Us
                         </a>
                     </li>
-                    <li class="mb-3">
-                        <a href="{{ route('terms') }}" class="text-white-50 text-decoration-none d-inline-flex align-items-center hover-link">
+                    <li>
+                        <a href="{{ route('terms') }}">
                             <span class="emoji-icon">📄</span>利用規約
                         </a>
                     </li>
-                    <li class="mb-3">
-                        <a href="{{ route('privacy') }}" class="text-white-50 text-decoration-none d-inline-flex align-items-center hover-link">
+                    <li>
+                        <a href="{{ route('privacy') }}">
                             <span class="emoji-icon">🔒</span>プライバシーポリシー
                         </a>
                     </li>
@@ -27,18 +25,16 @@
             </div>
 
             <!-- サポート -->
-            <div class="col-md-4 col-lg-3">
-                <h3 class="h5 mb-4 position-relative pb-3 fw-bold">
-                    サポート
-                </h3>
-                <ul class="list-unstyled">
-                    <li class="mb-3">
-                        <a href="{{ route('guide') }}" class="text-white-50 text-decoration-none d-inline-flex align-items-center hover-link">
+            <div class="footer-section">
+                <h3>サポート</h3>
+                <ul>
+                    <li>
+                        <a href="{{ route('guide') }}">
                             <span class="emoji-icon">📚</span>ご利用ガイド
                         </a>
                     </li>
-                    <li class="mb-3">
-                        <a href="{{ route('faq') }}" class="text-white-50 text-decoration-none d-inline-flex align-items-center hover-link">
+                    <li>
+                        <a href="{{ route('faq') }}">
                             <span class="emoji-icon">❓</span>よくある質問
                         </a>
                     </li>
@@ -46,18 +42,16 @@
             </div>
 
             <!-- SNSリンク -->
-            <div class="col-md-4 col-lg-3">
-                <h3 class="h5 mb-4 position-relative pb-3 fw-bold">
-                    SNSでフォロー
-                </h3>
-                <div class="d-flex flex-column gap-3 align-items-center">
-                    <a href="#" class="text-white-50 text-decoration-none hover-link">
+            <div class="footer-section">
+                <h3>SNSでフォロー</h3>
+                <div class="social-links">
+                    <a href="#">
                         <span class="emoji-icon">𝕏</span>Twitter
                     </a>
-                    <a href="#" class="text-white-50 text-decoration-none hover-link">
+                    <a href="#">
                         <span class="emoji-icon">📘</span>Facebook
                     </a>
-                    <a href="#" class="text-white-50 text-decoration-none hover-link">
+                    <a href="#">
                         <span class="emoji-icon">📸</span>Instagram
                     </a>
                 </div>
@@ -65,90 +59,98 @@
         </div>
 
         <!-- コピーライト -->
-        <div class="text-center mt-5 pt-4 border-top border-white-50">
-            <p class="text-white-50 mb-0">&copy; 2025 関西巡り All Rights Reserved.</p>
+        <div class="copyright">
+            <p>&copy; 2025 関西巡り All Rights Reserved.</p>
         </div>
     </div>
 </footer>
 
 <style>
 .custom-footer {
-    background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
-    position: relative;
-    overflow: hidden;
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.2);
+    background: #1B4B8F;
+    padding: 2rem 1rem;
+    color: white;
+    margin-top: -1px;
 }
 
-.custom-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.1) 0%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    pointer-events: none;
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    text-align: center;
+}
+
+.footer-section {
+    flex: 0 1 auto;
+}
+
+.footer-section h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 1rem;
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
 }
 
 .emoji-icon {
-    display: inline-block;
-    font-size: 1.2em;
+    font-size: 1em;
     margin-right: 0.3em;
-    filter: none;  /* 親要素の色指定を無視 */
-    opacity: 1;    /* 完全な不透明度を保持 */
 }
 
-.hover-link {
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-    color: rgba(255, 255, 255, 0.9) !important;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    display: inline-flex;
-    align-items: center;
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.hover-link i {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.hover-link:hover {
-    color: #fff !important;
+.footer-section a:hover {
+    color: #fff;
     transform: translateY(-2px);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-.hover-link:hover i {
-    color: #fff;
+.copyright {
+    text-align: center;
+    margin-top: 2rem;
 }
 
-.h5 {
-    position: relative;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    color: #fff;
-    font-weight: 600;
-}
-
-.h5::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+.copyright p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.8rem;
+    margin: 0;
 }
 
 @media (max-width: 768px) {
-    .hover-link:hover {
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .footer-section a:hover {
         transform: scale(1.05);
     }
 }
