@@ -6,6 +6,10 @@ body {
 
 main {
     padding-top: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* タイトルスタイル */
@@ -14,10 +18,14 @@ h2 {
     font-weight: bold;
     letter-spacing: 0.05em;
     margin-bottom: 1rem;
-    background: linear-gradient(45deg, #ffffff, #e0e0e0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 1rem;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
 }
 
 /* アコーディオンのスタイル */
@@ -27,6 +35,7 @@ h2 {
     border-radius: 15px;
     margin-bottom: 1rem;
     overflow: hidden;
+    width: 100%;
 }
 
 /* アコーディオンボタンのスタイル */
@@ -190,6 +199,9 @@ h6 {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* サブタイトルのスタイル */
@@ -197,21 +209,24 @@ h3.h4 {
     color: white !important;
     font-weight: 600;
     margin-bottom: 1.5rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    text-align: left;
+    font-size: 1.8rem;
 }
 
 /* アコーディオンヘッダーのスタイル */
 .accordion-header h5 {
-    color: #1B4B8F !important;  /* タイトルを濃い青に */
+    color: white !important;  /* タイトルを白に変更 */
     font-weight: 600;
 }
 
 .accordion-header small {
-    color: #666 !important;  /* 小さいテキストを濃いグレーに */
+    color: rgba(255, 255, 255, 0.8) !important;  /* 小さいテキストを薄い白に変更 */
 }
 
 .accordion-header i {
-    color: #1B4B8F !important;  /* アイコンを濃い青に */
+    color: white !important;  /* アイコンを白に変更 */
 }
 
 /* バッジのスタイル */
@@ -226,4 +241,181 @@ h3.h4 {
 
 .accordion-header .badge.bg-success {
     background-color: #198754 !important;  /* 観光施設バッジの背景色 */
+}
+
+/* カートコンテンツのレイアウト調整 */
+.cart-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+}
+
+/* カートセクション全体のコンテナ */
+#cartSection {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+}
+
+/* イベントリストのコンテナ */
+#cartEvents {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* 旅行日程設定フォームのスタイル */
+.travel-date-form {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0;  /* パディングを0に変更 */
+}
+
+/* フォームヘッダー */
+.travel-date-form h3 {
+    background-color: #1B4B8F !important;
+    color: white !important;
+    padding: 15px 20px;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* フォームの内容部分 */
+.travel-date-form form {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* フォームグループのスタイル */
+.travel-date-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* ラベルとアイコンのコンテナ */
+.travel-date-form .label-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+}
+
+/* アイコンのスタイル */
+.travel-date-form .label-container i {
+    color: #1B4B8F;
+}
+
+/* ラベルのスタイル */
+.travel-date-form .form-label {
+    color: #1B4B8F;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+/* 必須マーク */
+.travel-date-form .required {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-left: 4px;
+}
+
+/* 入力フィールドとセレクトのスタイル */
+.travel-date-form .form-control,
+.travel-date-form .form-select {
+    border: 1px solid rgba(27, 75, 143, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    height: calc(1.5em + 1rem + 2px);
+    width: 100%;
+    background-color: white;
+}
+
+/* チェックボックスのラベル */
+.travel-date-form .form-check-label {
+    color: #1B4B8F;
+    font-weight: 500;
+}
+
+/* 旅行日程設定のコンテナ */
+.time-selector-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 旅行日程設定のタイトル */
+.time-selector-container h3 {
+    color: #1B4B8F !important;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+/* ラベルのスタイル */
+.time-selector-container .form-label {
+    color: #333;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* アイコンのスタイル */
+.time-selector-container .form-label i {
+    color: #1B4B8F;
+}
+
+/* 入力フィールドとセレクトのスタイル */
+.time-selector-container .form-control,
+.time-selector-container .form-select {
+    border: 1px solid rgba(27, 75, 143, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: #333;
+    background-color: white;
+}
+
+/* チェックボックスのラベル */
+.time-selector-container .form-check-label {
+    color: #333;
+    font-weight: 500;
+}
+
+/* プラン生成ボタン */
+.btn-generate-plan {
+    background-color: #1B4B8F;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-generate-plan:hover {
+    background-color: #154178;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(27, 75, 143, 0.3);
+}
+
+/* チェックボックスのカスタマイズ */
+.time-selector-container .form-check-input:checked {
+    background-color: #1B4B8F;
+    border-color: #1B4B8F;
+}
+
+/* フォーカス時のスタイル */
+.time-selector-container .form-control:focus,
+.time-selector-container .form-select:focus {
+    border-color: #1B4B8F;
+    box-shadow: 0 0 0 0.2rem rgba(27, 75, 143, 0.25);
 }
