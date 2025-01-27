@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
 
@@ -42,16 +45,18 @@
             <div class="container">
                 <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeIn"
                     style="font-size: 6.5rem;
-                       letter-spacing: 0.08em;
-                       background: linear-gradient(45deg, #ffffff, #e0e0e0);
-                       -webkit-background-clip: text;
-                       -webkit-text-fill-color: transparent;
-                       text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);">
+                           font-family: 'Zen Maru Gothic', sans-serif;
+                           letter-spacing: 0.08em;
+                           background: linear-gradient(45deg, #ffffff, #e0e0e0);
+                           -webkit-background-clip: text;
+                           -webkit-text-fill-color: transparent;
+                           text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);">
                     関西巡り
                 </h1>
 
                 <div class="subtitle mb-4 animate__animated animate__fadeIn animate__delay-1s"
                     style="font-size: 3rem;
+                        font-family: 'Zen Maru Gothic', sans-serif;
                         font-weight: 500;
                         color: rgba(255, 255, 255, 0.95);
                         letter-spacing: 0.15em;
@@ -62,15 +67,15 @@
 
                 <p class="lead fs-4 mb-5 animate__animated animate__fadeIn animate__delay-2s"
                     style="font-size: 1.8rem !important;
-                      font-family: 'Noto Sans JP', sans-serif;
-                      line-height: 2.2;
-                      color: rgba(255, 255, 255, 0.9);
-                      max-width: 900px;
-                      margin: 2rem auto;
-                      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-                      letter-spacing: 0.1em;
-                      font-weight: 300;">
-                    「オリジナルプランで最高の思い出を。」
+                          font-family: 'Zen Maru Gothic', sans-serif;
+                          line-height: 2.2;
+                          color: rgba(255, 255, 255, 0.9);
+                          max-width: 900px;
+                          margin: 2rem auto;
+                          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+                          letter-spacing: 0.1em;
+                          font-weight: 300;">
+                    オリジナルプランで最高の思い出を。
 
                 </p>
 
@@ -78,7 +83,7 @@
                 <a href="{{ route('Place.index') }}"
                     class="btn btn-lg px-5 py-3 rounded-pill shadow-lg animate__animated animate__fadeIn animate__delay-3s"
                     style="font-size: 1.6rem;
-                      font-family: 'Noto Sans JP', sans-serif;
+                      font-family: 'Zen Maru Gothic', sans-serif;
                       font-weight: 500;
                       letter-spacing: 0.1em;
                       background: rgba(255, 255, 255, 0.1);
