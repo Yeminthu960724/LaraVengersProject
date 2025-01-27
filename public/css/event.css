@@ -132,14 +132,26 @@
             color: rgba(255, 255, 255, 0.7) !important;
         }
 
-        /* ボタンのスタイル */
+        /* ボタンの共通スタイル */
+        .btn-outline-primary,
+        .btn-primary {
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            min-width: 120px;  /* 最小幅を設定 */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 38px;  /* 高さを統一 */
+            margin: 5px;
+        }
+
+        /* 詳細ボタン */
         .btn-outline-primary {
             color: #1B4B8F !important;
             border-color: #1B4B8F !important;
             background-color: transparent;
-            font-weight: 600;
-            padding: 8px 20px;
-            border-radius: 30px;
             transition: all 0.3s ease;
         }
 
@@ -150,13 +162,11 @@
             box-shadow: 0 4px 15px rgba(27, 75, 143, 0.2);
         }
 
+        /* 追加ボタン */
         .btn-primary {
             background-color: #1B4B8F !important;
             border: none;
             color: white !important;
-            font-weight: 600;
-            padding: 8px 20px;
-            border-radius: 30px;
             transition: all 0.3s ease;
         }
 
@@ -164,6 +174,14 @@
             background-color: #154178 !important;
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(27, 75, 143, 0.3);
+        }
+
+        /* ボタンコンテナのスタイル */
+        .d-flex.gap-2.mt-auto {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 10px !important;
         }
 
         /* ローディングとno-resultsのスタイル */
@@ -238,11 +256,6 @@
         .card p {
             color: #666 !important;
             font-size: 0.9rem;
-        }
-
-        /* ボタンコンテナ */
-        .d-flex.gap-2.mt-auto {
-            margin-top: 1rem;
         }
 
         /* バッジのスタイル */
