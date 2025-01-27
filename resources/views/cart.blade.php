@@ -194,7 +194,7 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
                         <div class="row justify-content-center mb-4">
                             <div class="col-md-4 mb-3">
                                 <form class="row g-3 needs-validation" novalidate>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <label for="validationCustom01" class="form-label">出発駅(ご自由に)</label>
                                         <input type="text" class="form-control" id="startStation" value="">
                                     </div>
@@ -202,7 +202,7 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
                             </div>
                             <div class="col-md-4 mb-6">
                                 <form class="row g-3 needs-validation" novalidate>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <label for="validationCustom01" class="form-label">帰る駅(ご自由に)</label>
                                         <input type="text" class="form-control" id="reachStation" value="">
                                     </div>
