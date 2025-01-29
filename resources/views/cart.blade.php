@@ -86,7 +86,7 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
 
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">行く順番：</label>
-                                                <select id="placePriority{{$item['id']}}" class="form-select" onchange="getSelectValues('{{ $item['id'] }}')">
+                                                <select id="placePriority{{$item['id']}}" class="form-select" onchange="updateEventOrder({{ $index }}, this.value),getSelectValues('{{ $item['id'] }}')">
                                                     @for ($i = 1; $i <= count($cart); $i++)
                                                     <option value="{{ $i }}" {{ $i == (int)$index + 1 ? 'selected' : '' }}>
                                                             {{ $i }}番目
@@ -125,6 +125,9 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
 
                     <div class="time-selector-container" style="display: none;">
                         <div class="row justify-content-center mb-4">
+                        <div id="timeline">
+                        </div>
+                        <p></p>
                             <div class="col-md-6">
                                 <h3 class="h5 mb-4 text-center">旅行日程の設定</h3>
                             </div>
