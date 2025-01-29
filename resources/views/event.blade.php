@@ -16,11 +16,6 @@
     <header id="header"></header>
 
     <main>
-        {{-- @if(session('cartCount'))
-            <script>
-                document.querySelector('.cart-count').textContent = {{ session('cartCount') }};
-            </script>
-        @endif --}}
         <div class="container">
             <!-- ヘッダーセクション -->
             <div class="text-center mb-5 animate__animated animate__fadeIn">
@@ -74,8 +69,7 @@
                                 <form action="{{ route('cart.add') }}" method="POST" class="add-to-cart-form">
                                     @csrf
                                     <input type="hidden" name="eventId" value="{{ $event->id }}">
-                                    <button type="submit" class="btn btn-primary flex-grow-1">
-                                        <i class= "bi bi-cart-plus me-1"></i> カートに追加</button>
+                                    <button type="submit" class="btn btn-primary flex-grow-1">カートに追加</button>
                                 </form>
 
                             </div>
@@ -102,5 +96,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/common.js') }}"></script>
     <script src="{{ asset('js/addtocart.js') }}"></script>
+    @include('components.footer')
 </body>
 </html>

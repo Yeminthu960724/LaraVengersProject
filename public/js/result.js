@@ -1,18 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     const resultcontent = document.querySelector('.result-content');
     const question = sessionStorage.getItem('question');
-    const requestcontent = document.querySelector('.request-content');
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    /////////////////////////Loading//////////////////////////
+    const citations = document.querySelector('.citations');
+    const loadingElement = document.getElementById("loading");
+    const citationsTittle = document.querySelector(".citations-tittle");
 
-    requestcontent.textContent = question;
+    let dotCount = 1;
+    setInterval(() => {
+        loadingElement.textContent = "Loading" + ".".repeat(dotCount);
+        dotCount++;
+    }, 1000);
+    //////////////////////////////////////////////////////////
 
     console.log(question);
-
-    if (!question) {
-        console.error('No question found in session storage');
-        resultcontent.textContent = 'No question found in session storage.';
-        return;
-    }
 
     fetch('/~se2a_24_lara/public/api/chat', {
         method: 'POST',
@@ -21,10 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'X-CSRF-TOKEN': csrfToken
         },
         body: JSON.stringify({
-            messages: [
-                { role: 'user', content: question }
-            ],
-            model: 'sonar'
+            messages: [{ role: 'user', content: question }],
+            model: 'sonar-pro',
+            temperature: '0'
         })
     })
         .then(response => {
@@ -35,7 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             if (data.choices && data.choices[0] && data.choices[0].message.content) {
+                console.log(data);
                 resultcontent.textContent = data.choices[0].message.content;
+                loadingElement.style.display = "none";
+                citationsTittle.textContent = '参考：';
+                citations.innerHTML = data.citations.map(citation => `<a href="${citation}" target="_blank">${citation}</a>`).join('<br>');
             } else {
                 resultcontent.textContent = 'No valid response from API.';
             }

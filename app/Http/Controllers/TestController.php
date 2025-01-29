@@ -3,21 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Http;
 
-class ResultController extends Controller
+class TestController extends Controller
 {
     public function index()
     {
-
-        return view('result');
-
+        return view('test');
     }
 
+    // 接收前端請求，並向 Perplexity API 發送請求
     public function chat(Request $request)
     {
         try {

@@ -86,7 +86,7 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
 
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">行く順番：</label>
-                                                <select id="placePriority{{$item['id']}}" class="form-select" onchange="getSelectValues('{{ $item['id'] }}')">
+                                                <select id="placePriority{{$item['id']}}" class="form-select" onchange="updateEventOrder({{ $index }}, this.value),getSelectValues('{{ $item['id'] }}')">
                                                     @for ($i = 1; $i <= count($cart); $i++)
                                                     <option value="{{ $i }}" {{ $i == (int)$index + 1 ? 'selected' : '' }}>
                                                             {{ $i }}番目
@@ -106,6 +106,10 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
                                                     <option value="180">3時間</option>
                                                     <option value="210">3時間30分</option>
                                                     <option value="240">4時間</option>
+                                                    <option value="270">4時間30分</option>
+                                                    <option value="300">5時間</option>
+                                                    <option value="330">5時間30分</option>
+                                                    <option value="360">6時間</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -125,6 +129,9 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
 
                     <div class="time-selector-container" style="display: none;">
                         <div class="row justify-content-center mb-4">
+                        <div id="timeline">
+                        </div>
+                        <p></p>
                             <div class="col-md-6">
                                 <h3 class="h5 mb-4 text-center">旅行日程の設定</h3>
                             </div>
@@ -132,7 +139,7 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
                         <div class="row justify-content-center mb-4">
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">
-                                    <i class="bi bi-calendar-event"></i> 出発期日(＊必要)
+                                    <i class="bi bi-calendar-event"></i> 日付(＊必要)
                                 </label>
                                 <input type="date" id="startDate" class="form-control">
                             </div>
@@ -140,23 +147,23 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
                         <div class="row justify-content-center mb-4">
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">
-                                    <i class="bi bi-clock"></i> 開始時間(＊必要)
+                                    <i class="bi bi-clock"></i> 出発時間(＊必要)
                                 </label>
                                 <select id="startTime" class="form-select">
                                     <option value="">選択してください</option>
-                                    <?php for ($i = 6; $i < 16; $i++): ?>
-                                        <option value="<?= htmlspecialchars($i) ?>"><?= htmlspecialchars($i) ?>:00</option>
+                                    <?php for ($i = 6; $i < 18; $i++): ?>
+                                    <option value="<?= htmlspecialchars($i) ?>"><?= htmlspecialchars($i) ?>:00</option>
                                     <?php endfor; ?>
                                 </select>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">
-                                    <i class="bi bi-clock-history"></i> 終了時間(＊必要)
+                                    <i class="bi bi-clock-history"></i> 帰る時間(＊必要)
                                 </label>
                                 <select id="endTime" class="form-select">
                                     <option value="">選択してください</option>
-                                    <?php for ($i = 16; $i < 24; $i++): ?>
-                                        <option value="<?= htmlspecialchars($i) ?>"><?= htmlspecialchars($i) ?>:00</option>
+                                    <?php for ($i = 12; $i < 25; $i++): ?>
+                                    <option value="<?= htmlspecialchars($i) ?>"><?= htmlspecialchars($i) ?>:00</option>
                                     <?php endfor; ?>
                                 </select>
                             </div>
@@ -165,18 +172,19 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
                         <div class="row justify-content-center mb-4">
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">
-                                    <i class="bi bi-building-fill-down"></i> 出発地(＊必要)
+                                    <i class="bi bi-building-fill-down"></i> 出発場所(＊必要)
                                 </label>
                                 <select id="departurePlace" class="form-select">
                                     <option value="">選択してください</option>
                                     <?php foreach ($place as $key => $value): ?>
-                                        <option value="<?= htmlspecialchars($value) ?>"><?= htmlspecialchars($value) ?></option>
+                                    <option value="<?= htmlspecialchars($value) ?>"><?= htmlspecialchars($value) ?>
+                                    </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">
-                                    <i class="bi bi-building-fill-up"></i> 到着地(＊必要)
+                                    <i class="bi bi-building-fill-up"></i> 帰る場所(＊必要)
                                 </label>
                                 <select id="destination" class="form-select">
                                     <option value="">選択してください</option>
@@ -189,16 +197,16 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
                         <div class="row justify-content-center mb-4">
                             <div class="col-md-4 mb-3">
                                 <form class="row g-3 needs-validation" novalidate>
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <label for="validationCustom01" class="form-label">出発駅(ご自由に)</label>
                                         <input type="text" class="form-control" id="startStation" value="">
                                     </div>
                                 </form>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-6">
                                 <form class="row g-3 needs-validation" novalidate>
-                                    <div class="col-md-4">
-                                        <label for="validationCustom01" class="form-label">到着駅(ご自由に)</label>
+                                    <div class="col-md-12">
+                                        <label for="validationCustom01" class="form-label">帰る駅(ご自由に)</label>
                                         <input type="text" class="form-control" id="reachStation" value="">
                                     </div>
                                 </form>
@@ -229,6 +237,7 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </main>
 

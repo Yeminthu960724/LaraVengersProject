@@ -15,6 +15,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\FooterPagesController;
+use App\Http\Controllers\TestController;
 
 
 /*
@@ -50,6 +51,10 @@ Route::resource('Event', EventController::class);
 Route::get('/EventDetail', [EventDetailController::class, 'index']);
 Route::get('/Result', [ResultController::class, 'index']);
 Route::post('/api/chat', [ResultController::class, 'chat']);
+Route::post('/api/generate-plan', [ResultController::class, 'generatePlan']);
+//////test//////
+Route::get('/Test', [TestController::class, 'index']);
+Route::post('/api/chat', [TestController::class, 'chat']);
 
 // ログイン関連のルート
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
