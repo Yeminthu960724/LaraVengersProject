@@ -86,7 +86,8 @@ $place = ['大阪', '京都', '奈良', '神戸', '和歌山', '滋賀', '兵庫
 
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">行く順番：</label>
-                                                <select id="placePriority{{$item['id']}}" class="form-select" onchange="updateEventOrder({{ $index }}, this.value),getSelectValues('{{ $item['id'] }}')">
+                                                <select id="placePriority{{$item['id']}}" class="form-select"
+                                                        onchange="updateEventOrder({{ $loop->index }}, this.value)">
                                                     {{-- JavaScriptで動的に生成されます --}}
                                                 </select>
                                             </div>

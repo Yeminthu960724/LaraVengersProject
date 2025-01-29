@@ -120,11 +120,15 @@ function getSelectValues(id) {
 function updateTimelineFromCart(cartArray) {
     const points = [];
     points.push({ label: '出発場所' });
+
+    // カートの順番通りにポイントを追加
     cartArray.forEach(item => {
         points.push({ label: item.name });
     });
+
     points.push({ label: '帰る場所' });
 
+    // タイムラインを再作成
     createTimeline(points);
 }
 
@@ -132,24 +136,76 @@ function updateEventOrder(selectedIndex, selectedValue) {
     const newOrder = parseInt(selectedValue) - 1;
     const cart = Object.values(window.cart || {});
 
-    // 現在の選択された項目を一時的に保存
-    const selectedItem = cart[selectedIndex];
+    // 並び替えの処理を関数に分離
+    reorderCart(selectedIndex, newOrder);
+    updateCartUI(selectedIndex, newOrder);
+    updateOrderSelects();
+    updateTimelineFromCart(window.cart);
+}
 
-    // カートから選択された項目を削除し、新しい位置に挿入
-    cart.splice(selectedIndex, 1);
-    cart.splice(newOrder, 0, selectedItem);
-
-    // window.cartを更新
+// カートデータの並び替え
+function reorderCart(fromIndex, toIndex) {
+    const cart = Object.values(window.cart);
+    const [movedItem] = cart.splice(fromIndex, 1);
+    cart.splice(toIndex, 0, movedItem);
     window.cart = cart;
+}
 
-    // 他の選択肢の値を更新
-    const orderSelects = document.querySelectorAll('[id^="placePriority"]');
-    orderSelects.forEach((select, index) => {
-        select.innerHTML = generateOrderOptions(cart.length, index);
+// カートUIの更新
+function updateCartUI(fromIndex, toIndex) {
+    const cartAccordion = document.getElementById('cartAccordion');
+    if (!cartAccordion) return;
+
+    const items = Array.from(cartAccordion.children);
+    if (!items[fromIndex] || !items[toIndex]) return;
+
+    const movedElement = items[fromIndex].cloneNode(true); // 要素をクローン
+
+    // 新しい要素にイベントリスナーを再設定
+    const selects = movedElement.querySelectorAll('select');
+    selects.forEach(select => {
+        if (select.id.startsWith('placePriority')) {
+            const itemId = select.id.replace('placePriority', '');
+            select.onchange = function(e) {
+                updateEventOrder(toIndex, e.target.value);
+                getSelectValues(itemId);
+            };
+        }
     });
 
-    // タイムラインを更新
-    updateTimelineFromCart(cart);
+    // DOMの更新
+    if (toIndex < fromIndex) {
+        // 上に移動
+        items[toIndex].parentNode.insertBefore(movedElement, items[toIndex]);
+    } else {
+        // 下に移動
+        if (items[toIndex + 1]) {
+            items[toIndex + 1].parentNode.insertBefore(movedElement, items[toIndex + 1]);
+        } else {
+            items[toIndex].parentNode.appendChild(movedElement);
+        }
+    }
+
+    // 古い要素を削除
+    items[fromIndex].remove();
+}
+
+// セレクトボックスの更新
+function updateOrderSelects() {
+    const cart = Object.values(window.cart);
+    const orderSelects = document.querySelectorAll('[id^="placePriority"]');
+
+    orderSelects.forEach((select, index) => {
+        const itemId = select.id.replace('placePriority', '');
+        select.innerHTML = generateOrderOptions(cart.length, index);
+        select.value = index + 1;
+
+        // イベントリスナーを再設定
+        select.onchange = function(e) {
+            updateEventOrder(index, e.target.value);
+            getSelectValues(itemId);
+        };
+    });
 }
 
 function initializeOrderSelects() {
@@ -157,7 +213,15 @@ function initializeOrderSelects() {
     const orderSelects = document.querySelectorAll('[id^="placePriority"]');
 
     orderSelects.forEach((select, index) => {
+        const itemId = select.id.replace('placePriority', '');
         select.innerHTML = generateOrderOptions(cart.length, index);
+        select.value = index + 1;
+
+        // 初期のイベントリスナーを設定
+        select.onchange = function(e) {
+            updateEventOrder(index, e.target.value);
+            getSelectValues(itemId);
+        };
     });
 }
 
@@ -192,11 +256,10 @@ function createTimeline(points) {
 }
 
 function generateOrderOptions(total, current) {
-    let options = '';
-    for (let i = 1; i <= total; i++) {
-        options += `<option value="${i}" ${i === current + 1 ? 'selected' : ''}>${i}番目</option>`;
-    }
-    return options;
+    return Array.from({ length: total }, (_, i) => {
+        const value = i + 1;
+        return `<option value="${value}" ${value === current + 1 ? 'selected' : ''}>${value}番目</option>`;
+    }).join('');
 }
 
 window.addEventListener('DOMContentLoaded', () => {
