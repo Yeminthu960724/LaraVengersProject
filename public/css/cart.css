@@ -424,8 +424,8 @@ h3.h4 {
 #timeline {
     position: relative;
     width: 100%;
-    height: 100px;
-    margin: 20px 0;
+    height: 150px;
+    margin: 40px 0;
     padding: 20px 0;
 }
 
@@ -436,6 +436,7 @@ h3.h4 {
     background: linear-gradient(90deg, #1B4B8F, #4B8EC8);
     top: 50%;
     transform: translateY(-50%);
+    transition: all 0.3s ease-in-out;
 }
 
 /* タイムラインのポイント */
@@ -450,7 +451,7 @@ h3.h4 {
     transform: translate(-50%, -50%);
     z-index: 2;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
 /* ポイントのホバー効果 */
@@ -480,6 +481,32 @@ h3.h4 {
 .point.active {
     background-color: #4B8EC8;
     transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* エンドポイント（出発場所と帰る場所）のスタイル */
+.point.endpoint {
+    background-color: #4B8EC8;
+    width: 24px;
+    height: 24px;
+}
+
+/* ポイントのラベルの位置調整 */
+.point:nth-child(odd)::before {
+    top: -30px;
+}
+
+.point:nth-child(even)::before {
+    top: 30px;
+}
+
+/* アニメーション効果 */
+.point, .line {
+    transition: all 0.3s ease-in-out;
+}
+
+.point.moving {
+    transform: translate(-50%, -50%) scale(1.2);
+    background-color: #4B8EC8;
 }
 
 /* タイムラインのコンテナをレスポンシブに */
