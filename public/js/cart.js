@@ -12,6 +12,16 @@ document.addEventListener('DOMContentLoaded', function () {
         timeSelectorContainer.style.display = 'none';
     } else {
         timeSelectorContainer.style.display = 'block';
+
+        const points = [];
+        points.push({ label: '出発場所' });
+        cartArray.forEach((item, index) => {
+            points.push({ label: item.name });
+        });
+        points.push({ label: '帰る場所' });
+
+        createTimeline(points);
+
         console.log('Cart items:', cartArray);
     }
 
@@ -54,21 +64,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         ///////////////////////////////////////////////////
         let lunchTimeInfo = '';
-        if(lunchTime.checked){
+        if (lunchTime.checked) {
             lunchTimeInfo = '一時間ランチタイムを追加して'
         };
         let dinnerTimeInfo = '';
-        if(dinnerTime.checked){
+        if (dinnerTime.checked) {
             dinnerTimeInfo = '一時間ディナータイムを追加して'
         };
         /////////////////////////////////////////////////////
         let startStationInfo = '';
-        if(startStation){
+        if (startStation) {
             startStationInfo = startStation;
         }
 
         let reachStationInfo = '';
-        if(startStation){
+        if (startStation) {
             reachStationInfo = reachStation;
         }
         /////////////////////////////////////////////////////
@@ -112,37 +122,72 @@ function getSelectValues(id) {
     return { priorityValue, durationValue };
 }
 
-    // function generateOrderOptions(total, current) {
-    //         return Array.from({ length: total }, (_, i) => {
-    //             return `<option value="${i + 1}" ${i === current ? 'selected' : ''}>${i + 1}番目</option>`;
-    //         }).join('');
-    //     }
+function updateEventOrder(selectedIndex, selectedValue) {
+    const newOrder = parseInt(selectedValue) - 1;
+    const selects = document.querySelectorAll('.form-select1');
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    // function generateDurationOptions() {
-    //     const durations = [
-    //         { value: 30, text: '30分' },
-    //         { value: 60, text: '1時間' },
-    //         { value: 90, text: '1時間30分' },
-    //         { value: 120, text: '2時間' },
-    //         { value: 150, text: '2時間30分' },
-    //         { value: 180, text: '3時間' },
-    //         { value: 210, text: '3時間30分' },
-    //         { value: 240, text: '4時間' }
-    //     ];
-    //     return durations.map(duration =>
-    //         `<option value="${duration.value}">${duration.text}</option>`
-    //     ).join('');
-    // }
+    // 現在の選択された項目を一時的に保存
+    const selectedItem = cart[selectedIndex];
 
-    // // イベントハンドラ
-    // function updateEventOrder(index, order) {
-    //     const cart = getCart();
-    //     cart[index].order = parseInt(order);
-    //     localStorage.setItem('cart', JSON.stringify(cart));
-    // }
+    // 他のアイテムの順番を調整
+    cart.forEach((item, index) => {
+        if (index === selectedIndex) return;
+        const currentOrder = parseInt(selects[index].value) - 1;
 
-    // function updateEventDuration(index, duration) {
-    //     const cart = getCart();
-    //     cart[index].duration = parseInt(duration);
-    //     localStorage.setItem('cart', JSON.stringify(cart));
-    // }
+        if (newOrder <= currentOrder) {
+            selects[index].value = (currentOrder + 1).toString();
+        }
+    });
+
+    // カートから選択された項目を削除
+    cart.splice(selectedIndex, 1);
+    // 新しい位置に項目を挿入
+    cart.splice(newOrder, 0, selectedItem);
+
+    // カートを保存
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // ページをリロードして新しい順序を反映
+    location.reload();
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const selects = document.querySelectorAll('.form-select1');
+    selects.forEach(select => {
+        select.setAttribute('data-prev-value', select.value);
+    });
+
+});
+
+
+
+function createTimeline(points) {
+    const timeline = document.getElementById('timeline');
+    timeline.innerHTML = '';
+
+    points.forEach((point, index) => {
+        const pointDiv = document.createElement('div');
+        pointDiv.classList.add('point');
+        const position = (100 / (points.length - 1)) * index;
+        pointDiv.style.left = `${position}%`;
+        pointDiv.setAttribute('data-label', point.label);
+        timeline.appendChild(pointDiv);
+
+        if (index < points.length - 1) {
+            const lineDiv = document.createElement('div');
+            lineDiv.classList.add('line');
+            lineDiv.style.left = `${position}%`;
+            lineDiv.style.width = `${100 / (points.length - 1)}%`;
+            timeline.appendChild(lineDiv);
+        }
+    });
+}
+
+function generateOrderOptions(total, current) {
+    let options = '';
+    for (let i = 1; i <= total; i++) {
+        options += `<option value="${i}" ${i === current + 1 ? 'selected' : ''}>${i}番目</option>`;
+    }
+    return options;
+}
