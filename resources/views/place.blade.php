@@ -106,11 +106,11 @@
                                         <h5 class="card-title">{{ $place->placeName }}</h5>
                                         <p class="card-text">{{ $place->shortDetail }}</p>
                                         <div class="d-flex gap-2">
-                                            <a href="{{ route('Place.show', $place->placeNumber) }}" class="btn btn-primary flex-fill">詳細</a>
+                                            <a href="{{ route('Place.show', $place->placeNumber) }}" class="btn-details">詳細</a>
                                             <form action="{{ route('cart.add') }}" method="POST" class="add-to-cart-form">
                                                 @csrf
                                                 <input type="hidden" name="placeId" value="{{ $place->placeNumber }}">
-                                                <button type="submit" class="btn btn-primary w-100">カートに追加</button>
+                                                <button type="submit"  class="add-to-cart-btn">カートに追加</button>
                                             </form>
 
                                         </div>
@@ -119,6 +119,7 @@
                             </div>
                         @endforeach
                     </div>
+
 
                     <!-- ページネーション -->
                     <div class="pagination-container">
@@ -173,6 +174,7 @@
     </script>
     <script src="{{ asset('js/common.js') }}"></script>
     <script src="{{ asset('js/addtocart.js') }}"></script>
+    @include('components.footer')
 
 </body>
 

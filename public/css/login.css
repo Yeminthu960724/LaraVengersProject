@@ -1,13 +1,13 @@
 :root {
-    --primary-color: #00b4d8;
-    --secondary-color: #90e0ef;
-    --accent-color: #caf0f8;
-    --dark-color: #0077b6;
+    --primary-color: #1B4B8F;
+    --secondary-color: #4B8EC8;
+    --accent-color: #90e0ef;
+    --dark-color: #0d2547;
     --light-color: #f0fbff;
 }
 
 body {
-    background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -22,10 +22,10 @@ body {
 }
 
 .login-card {
-    background: rgba(255, 255, 255, 0.98);
-    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     transform: translateY(0);
@@ -34,32 +34,17 @@ body {
 
 .login-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
 }
 
 .login-header {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--primary-color);
     padding: 40px 30px;
     position: relative;
 }
 
-.login-header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 1px;
-    background: linear-gradient(90deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-    );
-}
-
 .login-header h3 {
-    color: #1B4B8F;
+    color: white;
     margin: 0;
     font-size: 2.2rem;
     font-weight: 600;
@@ -75,8 +60,8 @@ body {
 }
 
 .form-control {
-    border: 1px solid rgba(27, 75, 143, 0.2);
-    border-radius: 8px;
+    border: 2px solid rgba(27, 75, 143, 0.2);
+    border-radius: 12px;
     padding: 16px 20px;
     font-size: 1rem;
     background: rgba(255, 255, 255, 0.9);
@@ -84,74 +69,56 @@ body {
 }
 
 .form-control:focus {
-    border-color: #4B8EC8;
-    box-shadow: 0 0 0 3px rgba(75, 142, 200, 0.15);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(27, 75, 143, 0.15);
     background: #ffffff;
 }
 
 .btn-login {
-    background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
-    border-radius: 8px;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    border: none;
+    border-radius: 12px;
     padding: 16px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 500;
     letter-spacing: 0.5px;
     position: relative;
     overflow: hidden;
-}
-
-.btn-login::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    transition: 0.5s;
-}
-
-.btn-login:hover::before {
-    left: 100%;
+    transition: all 0.3s ease;
 }
 
 .btn-login:hover {
-    background: linear-gradient(135deg, #5998CC 0%, #265AAA 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(27, 75, 143, 0.2);
 }
 
 .register-link {
     text-align: center;
-    margin-top: 25px;
+    margin-top: 30px;
     padding-top: 25px;
     border-top: 1px solid rgba(27, 75, 143, 0.1);
     color: #666;
 }
 
 .register-link a {
-    color: #4B8EC8;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 .register-link a:hover {
-    color: #1B4B8F;
+    color: var(--secondary-color);
     text-decoration: underline;
 }
 
 .alert {
-    border-radius: 15px;
+    border-radius: 12px;
     border: none;
     margin-bottom: 25px;
     padding: 20px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     background: rgba(255, 82, 82, 0.1);
     border-left: 4px solid #ff5252;
     color: #c62828;

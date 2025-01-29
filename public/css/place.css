@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
+    background: linear-gradient(135deg, #1B4B8F 0%, #1B4B8F 100%);
 }
 
 /* Card Container */
@@ -164,9 +164,93 @@ body {
     border-radius: 20px;
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: all 0.3s ease;
+    padding: 15px !important;
+    width: 230px !important;
+    height: auto !important;
+    min-height: auto !important;
+}
+
+/* 絞り込み検索のヘッダー */
+.filter-sidebar h3 {
+    color: #ffffff;
+    font-size: 1rem !important;
+    margin-bottom: 10px !important;
+    font-weight: 600;
+}
+
+/* カテゴリーセクション */
+.filter-sidebar h4 {
+    color: #ffffff;
+    font-size: 0.9rem !important;
+    margin: 10px 0 5px !important;
+    font-weight: 500;
+}
+
+/* チェックボックスラベル */
+.filter-sidebar label {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem !important;
+    padding: 4px 6px !important;
+    margin: 1px 0 !important;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.filter-sidebar label:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* チェックボックス */
+.filter-sidebar input[type="checkbox"] {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.filter-sidebar input[type="checkbox"]:checked {
+    background: #4B8EC8;
+    border-color: #4B8EC8;
+}
+
+.filter-sidebar input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 10px;
+    left: 2px;
+    top: -2px;
+}
+
+/* 絞り込みボタン */
+.filter-button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 15px;
+    font-size: 0.85rem;
+    background: linear-gradient(135deg, #4B8EC8 0%, #1B4B8F 100%);
+    border: none;
+    border-radius: 6px;
+    color: white;
+}
+
+.filter-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #5499d1 0%, #1f5cb0 100%);
+}
+
+.filter-button:active {
+    transform: translateY(0);
 }
 
 .row.row-cols-1.row-cols-md-3 {
@@ -300,13 +384,13 @@ h1 {
     font-size: 1.2rem;
 }
 
-/* レスポンシブ対応 */
+/* レスポンシブ対応
 @media (max-width: 991.98px) {
     .search-wrapper {
         width: 100%;
         margin: 10px 0;
     }
-}
+} */
 
 /* ハンバーガーメニュー */
 .navbar-toggler {
@@ -369,7 +453,7 @@ h1 {
     font-weight: 600;
 }
 
-/* ナビゲーションバー全��整 */
+/* ナビゲーションバー全整 */
 .navbar {
     padding: 15px 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -477,13 +561,13 @@ h1 {
 .filter-options {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
 }
 
 .filter-option {
     display: flex;
     align-items: center;
-    padding: 8px 12px;
+    padding: 6px 12px;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -563,13 +647,13 @@ h1 {
 .filter-options {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
 }
 
 .filter-option {
     display: flex;
     align-items: center;
-    padding: 8px 12px;
+    padding: 6px 12px;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -689,8 +773,8 @@ h1 {
 
 /* セクションヘッダー */
 .filter-header h4 {
-        color: white;
-        font-size: 0.9rem;
+    color: white;
+    font-size: 0.9rem;
     font-weight: 500;
     margin: 0;
     display: flex;
@@ -790,9 +874,8 @@ h1 {
     background: rgba(255, 255, 255, 0.12);
     border-radius: 15px;
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
+    border: none;  /* ボーダーを削除 */
+    box-shadow: none;  /* シャドウを削除 */}
 
 /* ページ情報のスタイル */
 .page-info {
@@ -845,52 +928,46 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
+    gap: 12px; /* ボタン間のスペースを調整 */
     margin-top: auto;
     padding: 0 0.8rem;
 }
 
 /* 詳細ボタンのスタイル */
-.btn-detail {
-    flex: 1;
-    background-color: transparent;
-    border: 2px solid #1B4B8F;
-    color: #1B4B8F;
-    padding: 6px 12px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border-radius: 25px;
-    transition: all 0.3s ease;
+.btn-details,
+.add-to-cart-btn {
+    flex: 1; /* ボタンの幅を均等にする */
+    height: 40px; /* ボタンの高さを統一 */
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    text-decoration: none;
+    font-size: 0.9rem; /* フォントサイズを統一 */
+    font-weight: 600; /* フォントの太さを統一 */
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.btn-detail:hover {
+/* 詳細ボタン */
+.btn-details {
+    color: white !important;
     background-color: #1B4B8F;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(27, 75, 143, 0.3);
+    border: none; /* 線を削除 */
+    padding: 0 16px; /* 内側の余白を調整 */
 }
 
-/* カートに追加ボタンのスタイル */
+.btn-details:hover {
+    background-color: white;
+    color: #3498db !important;
+    transform: translateY(-2px);
+}
+
+/* カートに追加ボタン */
 .add-to-cart-btn {
-    flex: 1;
     background-color: #1B4B8F;
     color: white;
     border: none;
-    padding: 6px 12px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    cursor: pointer;
+    padding: 0 16px; /* 内側の余白を調整 */
 }
 
 .add-to-cart-btn:hover {
@@ -899,10 +976,12 @@ h1 {
     box-shadow: 0 4px 12px rgba(27, 75, 143, 0.3);
 }
 
-/* ボタン内のアイコン */
-.btn-detail i,
+/* ボタン内のアイコンスタイル */
+.btn-details i,
 .add-to-cart-btn i {
     font-size: 1rem;
+    margin-right: 8px; /* アイコンとテキストの間隔 */
+    color: inherit; /* 親要素の色に合わせる */
 }
 
 /* レスポンシブ対応 */

@@ -32,13 +32,14 @@
                     <div class="result-date">{{ date('Y年m月d日') }}</div>
                 </div>
 
-                <div class="request-content">
-                    <h5><i class="bi bi-search"></i> リクエスト内容</h5>
-                    {{-- <p>{{$question}}</p> --}}
+                <div class="result-content">
+                    {{-- <h5><i class="bi bi-search"></i> リクエスト内容</h5> --}}
+                    <h5 id="loading">Loading</h5>
                 </div>
 
-                <div class="result-content">
-                    <p>Loading......</p>
+                <div class="citations-content">
+                    <h5 class="citations-tittle"></h5>
+                    <p class="citations"></p>
                 </div>
 
                 <div class="action-buttons">

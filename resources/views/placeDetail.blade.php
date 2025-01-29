@@ -110,6 +110,7 @@
     <script src="{{ asset('js/common.js') }}"></script>
     <script src="{{ asset('js/slideshow.js') }}"></script>
     <script src="{{ asset('js/addtocart.js') }}"></script>
+    @include('components.footer')
 </body>
 
 </html>
