@@ -182,9 +182,9 @@
                             得意なこと：データ収集、API開発、旅行プランの企画
                         </p>
                         <div class="team-skills">
-                            <span class="badge bg-light text-dark me-2 mb-2">HTML/CSS</span>
-                            <span class="badge bg-light text-dark me-2 mb-2">JavaScript</span>
-                            <span class="badge bg-light text-dark me-2 mb-2">Bootstrap</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">API開発</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">データ管理</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">Laravel</span>
                         </div>
                     </div>
                 </div>
@@ -233,9 +233,9 @@
                             得意なこと：UIデザイン、イベントページ作成、プランページ設計
                         </p>
                         <div class="team-skills">
-                            <span class="badge bg-light text-dark me-2 mb-2">API開発</span>
-                            <span class="badge bg-light text-dark me-2 mb-2">データ管理</span>
-                            <span class="badge bg-light text-dark me-2 mb-2">Laravel</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">HTML/CSS</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">JavaScript</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">Bootstrap</span>
                         </div>
                     </div>
                 </div>
