@@ -37,8 +37,10 @@
                 <div class="col">
                     <div class="card h-100">
                         <div class="position-relative">
-                            <img src="{{ $event->image_url }}" class="card-img-top" alt="{{ $event->title }}"
+                            <a href="{{ route('Event.show', $event->id) }}">
+                                <img src="{{ $event->image_url }}" class="card-img-top" alt="{{ $event->title }}"
                                  style="height: 200px; object-fit: cover;">
+                            </a>
                             <div class="position-absolute top-0 end-0 m-2">
                                 <span class="badge" style="background-color: #1B4B8F;">
                                     {{ $event->category }}
