@@ -99,7 +99,7 @@
                         @foreach ($places as $place)
                             <div class="col" data-location ="{{ $place->location }}" data-characteristics="{{ $place->characteristics }}">
                                 <div class="card">
-                                    <a href="/PlaceDetail">
+                                    <a href="{{ route('Place.show', $place->placeNumber) }}">
                                         <img src="{{$place->im1}}" class="card-img-top card-img-fixed" alt="">
                                     </a>
                                     <div class="card-body">
