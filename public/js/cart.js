@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         let reachStationInfo = '';
-        if (startStation) {
+        if (reachStation) {
             reachStationInfo = reachStation;
         }
         /////////////////////////////////////////////////////
