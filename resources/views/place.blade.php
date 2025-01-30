@@ -66,7 +66,7 @@
                         <form method="GET" action="{{ route('Place.index') }}">
                             <div>
                                 <h4>カテゴリー</h4>
-                                @foreach (['お寺', '買い物', '自然', '風景', '建築', '公園', '植物園', '水族館', '動物園', '博物館', '美術館', '遊園地'] as $characteristic)
+                                @foreach (['お寺/神社', '買い物', '自然', '風景', '建築', '公園', '植物園', '水族館', '動物園', '博物館', '美術館', '遊園地'] as $characteristic)
                                     <label>
                                         <input type="checkbox" name="characteristics[]" value="{{ $characteristic }}"
                                             {{ in_array($characteristic, request('characteristics', [])) ? 'checked' : '' }}>
