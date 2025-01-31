@@ -81,8 +81,8 @@ document.addEventListener('DOMContentLoaded', function () {
         - 訪問日: ${startDate}
         - 開始時間: ${startTime}時
         - 終了時間: ${endTime}時
-        - 出発地: ${departurePlace},${startStationInfo}
-        - 到着地: ${destination},${reachStationInfo}
+        - 出発場所: ${departurePlace},${startStationInfo}
+        - 到着場所: ${destination},${reachStationInfo}
         - ${lunchTimeInfo}
         - ${dinnerTimeInfo}
         乗換案内、営業時間、アクセス、料金を確認してください。

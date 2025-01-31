@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
     //////////////////////////////////////////////////////////
 
-    console.log(question);
+    // console.log(question);
 
     fetch('/~se2a_24_lara/public/api/chat', {
         method: 'POST',
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             if (data.choices && data.choices[0] && data.choices[0].message.content) {
-                console.log(data);
+                // console.log(data);
                 resultcontent.textContent = data.choices[0].message.content;
                 loadingElement.style.display = "none";
                 citationsTittle.textContent = '参考：';
